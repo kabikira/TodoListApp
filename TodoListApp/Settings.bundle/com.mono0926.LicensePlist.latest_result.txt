@@ -1,0 +1,100 @@
+name: abseil, nameSpecified: 
+body: 
+                   …
+version: 1.20220623.0
+
+name: BoringSSL-GRPC, nameSpecified: 
+body: BoringSSL is a fork …
+version: 0.0.24
+
+name: Firebase, nameSpecified: 
+body: 
+                   …
+version: 10.10.0
+
+name: FirebaseAnalytics, nameSpecified: 
+body: Copyright 2022 Googl…
+version: 10.10.0
+
+name: FirebaseAppCheckInterop, nameSpecified: 
+body: 
+                   …
+version: 10.10.0
+
+name: FirebaseAuth, nameSpecified: 
+body: 
+                   …
+version: 10.10.0
+
+name: FirebaseCore, nameSpecified: 
+body: 
+                   …
+version: 10.10.0
+
+name: FirebaseCoreInternal, nameSpecified: 
+body: 
+                   …
+version: 10.10.0
+
+name: FirebaseFirestore, nameSpecified: 
+body: 
+                   …
+version: 10.10.0
+
+name: FirebaseInstallations, nameSpecified: 
+body: 
+                   …
+version: 10.10.0
+
+name: GoogleAppMeasurement, nameSpecified: 
+body: Copyright 2022 Googl…
+version: 10.10.0
+
+name: GoogleUtilities, nameSpecified: 
+body: 
+                   …
+version: 7.11.1
+
+name: gRPC-C++, nameSpecified: 
+body: 
+                   …
+version: 
+
+name: gRPC-Core, nameSpecified: 
+body: 
+                   …
+version: 1.50.1
+
+name: GTMSessionFetcher, nameSpecified: 
+body: 
+                   …
+version: 3.1.1
+
+name: IQKeyboardManagerSwift, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 6.5.11
+
+name: leveldb-library, nameSpecified: 
+body: Copyright (c) 2011 T…
+version: 1.22.2
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 3.24.5
+
+name: nanopb, nameSpecified: 
+body: Copyright (c) 2011 P…
+version: 2.30909.0
+
+name: PromisesObjC, nameSpecified: 
+body: 
+                   …
+version: 2.2.0
+
+add-version-numbers: false
+
+LicensePlist Version: 3.24.5
