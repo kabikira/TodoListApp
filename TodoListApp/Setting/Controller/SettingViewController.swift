@@ -27,7 +27,14 @@ class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO: セルによって画面遷移分岐させる
-        Router.shared.showSetting(from: self)
+        switch indexPath.row {
+        case SettingItemCell.singOutCellRow.rawValue:
+            print("アラート")
+        case SettingItemCell.withDrawCellRow.rawValue:
+            print("アラート")
+        default:
+            Router.shared.showStettingItems(from: self, settingItem: settingItems[indexPath.row])
+        }
     }
 
 }
