@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="ZUd-ZL-E5t">
             <objects>
-                <viewController id="4Ww-JI-ttl" customClass="LoginViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Ww-JI-ttl" customClass="LoginViewController" customModule="TodoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AQc-6B-K37">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +75,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bgB-YM-PMA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="SqM-ho-WxU" firstAttribute="centerY" secondItem="AQc-6B-K37" secondAttribute="centerY" id="eZD-zb-Wus"/>
                             <constraint firstItem="SqM-ho-WxU" firstAttribute="centerX" secondItem="AQc-6B-K37" secondAttribute="centerX" id="uBm-Ux-jIE"/>
@@ -97,8 +97,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
