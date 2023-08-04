@@ -87,6 +87,10 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="notesTextView" destination="Y1T-gx-dgc" id="0qi-9E-DL1"/>
+                        <outlet property="titleTextField" destination="UYD-td-OPP" id="jLX-Av-uXn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

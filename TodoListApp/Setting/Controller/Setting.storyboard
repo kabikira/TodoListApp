@@ -31,6 +31,9 @@
                             <constraint firstItem="iXS-ij-dEX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="so1-AI-u6y"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="iXS-ij-dEX" id="YJK-lE-YYj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

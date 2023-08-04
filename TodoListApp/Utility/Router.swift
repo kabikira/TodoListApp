@@ -57,10 +57,11 @@ final class Router {
     }
 
     func showTodoAdd(from: UIViewController) {
-        guard let todoadd = UIStoryboard.init(name: "TodoAdd", bundle: nil).instantiateInitialViewController() else {
+        guard let todoAdd = UIStoryboard.init(name: "TodoAdd", bundle: nil).instantiateInitialViewController() else {
             return
         }
-        showPresent(from: from, to: todoadd)
+
+        show(from: from, to: todoAdd)
     }
     func showTodoEdit(from: UIViewController, todoItems: TodoItemModel) {
         guard let todoEdit = UIStoryboard.init(name: "TodoEdit", bundle: nil).instantiateInitialViewController() as? TodoEditViewController else {
@@ -74,7 +75,7 @@ final class Router {
         guard let setting = UIStoryboard.init(name: "Setting", bundle: nil).instantiateInitialViewController() else {
             return
         }
-        showPresent(from: from, to: setting)
+        show(from: from, to: setting)
     }
 
     func showReStart() {

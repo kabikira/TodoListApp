@@ -27,8 +27,7 @@ class LoginViewController: UIViewController {
              passwordResetButton.addTarget(self, action: #selector(tapedPasswordResetButton(_:)), for: .touchUpInside)
             }
     }
-    private let firebaseUserManager = FirebaseUserManager()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -45,7 +44,7 @@ private extension LoginViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         // ログイン処理
-        firebaseUserManager.singIn(email: email, password: password) { [weak self] result in
+        FirebaseUserManager.singIn(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():
