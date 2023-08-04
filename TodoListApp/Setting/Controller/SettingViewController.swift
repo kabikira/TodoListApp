@@ -29,7 +29,18 @@ extension SettingViewController: UITableViewDelegate {
         //TODO: セルによって画面遷移分岐させる
         switch indexPath.row {
         case SettingItemCell.singOutCellRow.rawValue:
-            print("アラート")
+            FirebaseUserManager.singOut { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case.failure(let error):
+                    self.showErrorAlert(error: error, vc: self)
+                case.success():
+                    // TODO: サインアウトのアラート追加する
+                    print("サインアウト")
+                    UserDefaults.standard.isLogined = false
+                    Router.shared.showReStart()
+                }
+            }
         case SettingItemCell.withDrawCellRow.rawValue:
             print("アラート")
         default:
