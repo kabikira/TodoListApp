@@ -10,5 +10,5 @@ struct TodoItemModel {
     let id: String
     let title: String
     let notes: String
-    let isDone: Bool
+    var isDone: Bool
 }

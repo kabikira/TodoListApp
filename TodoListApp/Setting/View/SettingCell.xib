@@ -65,6 +65,10 @@
                 <constraint firstItem="arU-Fg-M38" firstAttribute="leading" secondItem="NEh-US-iSa" secondAttribute="leading" id="qhU-EO-Kfi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="emojiLabel" destination="QYV-Xu-gVl" id="dCx-Hd-hcH"/>
+                <outlet property="titleLabel" destination="us2-nt-XJk" id="jsC-1o-Dfl"/>
+            </connections>
             <point key="canvasLocation" x="116.79389312977099" y="20.422535211267608"/>
         </view>
     </objects>

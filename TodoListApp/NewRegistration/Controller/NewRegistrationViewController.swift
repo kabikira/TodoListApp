@@ -24,7 +24,6 @@ class NewRegistrationViewController: UIViewController {
         }
     }
 
-    private let firebaseUserManager = FirebaseUserManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +38,13 @@ private extension NewRegistrationViewController {
         let email = registerEmailTextField.text ?? ""
         let password = registerPasswordTextField.text ?? ""
         //  user登録してメールを送信
-        firebaseUserManager.createUser(email: email, password: password) { [weak self] result in
+        FirebaseUserManager.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success(let user):
                 print("登録成功")
                 //TODO: Resultになおしてエラー処理書いたほうがいいかも
-                self.firebaseUserManager.sendEmailVerification(to:user)
+                FirebaseUserManager.sendEmailVerification(to:user)
             case .failure(let error):
                 self.showErrorAlert(error: error, vc: self)
             }
@@ -56,7 +55,7 @@ private extension NewRegistrationViewController {
         // mailをチェックしていたらログイン ユーザデフォ
         let email = registerEmailTextField.text ?? ""
         let password = registerPasswordTextField.text ?? ""
-        firebaseUserManager.checkAuthenticationEmail(email: email, password: password) { [weak self] result in
+        FirebaseUserManager.checkAuthenticationEmail(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():

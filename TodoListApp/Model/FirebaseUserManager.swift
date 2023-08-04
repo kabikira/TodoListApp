@@ -10,7 +10,7 @@ import FirebaseAuth
 
 final class FirebaseUserManager {
     // MARK: - アカウント作成機能
-    func createUser(email: String, password: String, completion: @escaping(Result<User, NSError>) -> Void) {
+   static func createUser(email: String, password: String, completion: @escaping(Result<User, NSError>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error as NSError? {
                 completion(.failure(error))
@@ -21,7 +21,7 @@ final class FirebaseUserManager {
         }
     }
     // MARK: - ログイン機能
-    func singIn(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
+    static func singIn(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error as NSError? {
                 completion(.failure(error))
@@ -42,12 +42,12 @@ final class FirebaseUserManager {
 //        }
 //    }
     // errorを伝えたいならResultのほうがいいかな?
-    func sendEmailVerification(to user: User) {
+    static func sendEmailVerification(to user: User) {
         user.sendEmailVerification()
         print("mail送信")
     }
     // MARK: - 登録認証のメールのURLを確認したか
-    func  checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
+    static func  checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
                 if let error = error as NSError? {
                     completion(.failure(error))
@@ -62,7 +62,7 @@ final class FirebaseUserManager {
             }
     }
     // MARK: - パスワード再設定案内のメール送信
-    func sendPasswordReset(email: String, completion: @escaping (Result<(), NSError>) -> Void) {
+    static func sendPasswordReset(email: String, completion: @escaping (Result<(), NSError>) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 completion(.failure(error as NSError))
@@ -71,6 +71,19 @@ final class FirebaseUserManager {
             }
         }
     }
+    // MARK: - ログイン状態をチェック
+    static func checkIsLogin(completion: () -> Void) {
+        if Auth.auth().currentUser != nil {
+            completion()
+        }
+    }
+    // MARK: - ログアウト状態をチェック
+    static func checkIsLogout(completion: () -> Void) {
+        if Auth.auth().currentUser == nil {
+            completion()
+        }
+    }
+
 }
 ///
 ///Success型がVoidであるときスッキリかける拡張
