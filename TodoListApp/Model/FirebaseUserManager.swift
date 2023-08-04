@@ -83,6 +83,15 @@ final class FirebaseUserManager {
             completion()
         }
     }
+    // MARK: - ログアウト
+    static func singOut(completion: @escaping (Result<Void, NSError>) -> Void) {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            completion(.failure(error as NSError))
+        }
+        completion(.success)
+    }
 
 }
 ///
