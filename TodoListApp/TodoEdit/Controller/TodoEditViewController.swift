@@ -28,7 +28,7 @@ class TodoEditViewController: UIViewController {
         titleTextField.text = todoItems?.title
         notesTextView.text = todoItems?.notes
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(tapedDoneButton(_:)))
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapedCancelBotton(_:)))
     }
     
     
@@ -51,5 +51,8 @@ private extension TodoEditViewController {
                 self.navigationController?.popViewController(animated: true)
             }
         }
+    }
+    @objc func tapedCancelBotton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
