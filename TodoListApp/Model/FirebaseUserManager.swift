@@ -92,7 +92,16 @@ final class FirebaseUserManager {
         }
         completion(.success)
     }
-
+    // MARK: - 退会
+    static func withDarw(completion: @escaping(Result<Void, NSError>) -> Void) {
+        Auth.auth().currentUser?.delete { error in
+            if let error = error {
+                completion(.failure(error as NSError))
+            } else {
+                completion(.success)
+            }
+        }
+    }
 }
 ///
 ///Success型がVoidであるときスッキリかける拡張
