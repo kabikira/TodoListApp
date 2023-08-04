@@ -77,7 +77,30 @@ final class Router {
         }
         show(from: from, to: setting)
     }
+    func showStettingItems(from: UIViewController, settingItem: SettingItem) {
+        // お問い合わせとプライバシーアンドポリシーはブラウザから見てもらう
+        switch settingItem.title {
+        case settingItems[0].title:
+            // TODO: チュートリアル画面を実装
+            print("説明画面へ")
+        case settingItems[1].title:
+            print("お問い合わせ")
+            guard let url = URL(string: URLs.googleForms) else { return }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        case settingItems[2].title:
+            print("プライバシ")
+            guard let url = URL(string: URLs.privacyPolicy) else { return }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
 
+        default:
+            break
+
+        }
+    }
     func showReStart() {
         showRoot(window: window)
     }
