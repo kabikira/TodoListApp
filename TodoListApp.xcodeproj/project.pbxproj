@@ -134,6 +134,7 @@
 				3B89CEB82A7655930090550A /* Login */,
 				3B89CF002A77F75C0090550A /* PasswordReset */,
 				3B89CEB92A7655A10090550A /* TodoList */,
+				3B89CEBF2A7656270090550A /* TodoAdd */,
 				3B89CEC02A76563B0090550A /* TodoEdit */,
 				3B89CEC52A7656820090550A /* Setting */,
 				3B83073B2A75E42A00C3068B /* Main.storyboard */,
@@ -188,7 +189,6 @@
 		3B89CEBA2A7655B50090550A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3B89CEBF2A7656270090550A /* TodoAdd */,
 				3B89CEDA2A7658ED0090550A /* TodoListCell.xib */,
 				3B89CED82A7658DB0090550A /* TodoListCell.swift */,
 			);
