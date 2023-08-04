@@ -29,7 +29,7 @@ class TodoAddViewController: UIViewController {
         // TODO: Doneでtodo編集してセルを更新させてとじる
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(tapedDoneBotton(_:)))
         // TODO: 閉じる
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapedCancelBotton(_:)))
 
     }
 }
@@ -51,6 +51,9 @@ private extension TodoAddViewController {
             }
         }
         // Todo一覧画面に戻る処理
+        self.navigationController?.popViewController(animated: true)
+    }
+    @objc func tapedCancelBotton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
 }
