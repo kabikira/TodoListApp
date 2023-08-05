@@ -86,7 +86,7 @@ private extension TodoListViewController {
             guard let self = self else { return }
             switch result {
             case.failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             case.success(let todos):
                 self.todoItems = todos
                 self.tableView.reloadData()
@@ -98,7 +98,7 @@ private extension TodoListViewController {
             guard let self = self else { return }
             switch result {
             case.failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             case.success(let todos):
                 self.todoItems = todos
                 self.tableView.reloadData()
@@ -119,7 +119,7 @@ extension TodoListViewController: UITableViewDelegate {
             guard let self = self else { return }
             switch result {
             case.failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             case.success():
                 self.todoItems[indexPath.row] = todoItem
                 tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -134,7 +134,7 @@ extension TodoListViewController: UITableViewDelegate {
                 guard let self = self else { return }
                 switch result {
                 case.failure(let error):
-                    self.showErrorAlert(error: error, vc: self)
+                    Alert.showErrorAlert(vc: self, error: error)
                 case.success():
                     print("削除")
                     // itemToRemove.idと同じ要素をもつ最初のインデックスを探して削除

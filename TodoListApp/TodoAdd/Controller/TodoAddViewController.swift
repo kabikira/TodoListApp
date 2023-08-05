@@ -47,7 +47,7 @@ private extension TodoAddViewController {
 //                NotificationCenter.default.post(name: .updateTodoListView, object: nil)
                
             case .failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             }
         }
         // Todo一覧画面に戻る処理

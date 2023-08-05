@@ -47,7 +47,7 @@ private extension NewRegistrationViewController {
                 FirebaseUserManager.sendEmailVerification(to:user)
                 Alert.okAlert(vc: self, title: "Email sent.", message: "Please access the URL in the email")
             case .failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             }
         }
 
@@ -66,7 +66,7 @@ private extension NewRegistrationViewController {
                 // loginへ画面遷移
                 Router.shared.showTodoList(from: self)
             case.failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             }
 
         }

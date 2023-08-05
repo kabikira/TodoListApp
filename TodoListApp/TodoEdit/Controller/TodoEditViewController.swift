@@ -45,7 +45,7 @@ private extension TodoEditViewController {
             guard let self = self else { return }
             switch result {
             case.failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             case.success():
                 print("edit完了")
                 self.navigationController?.popViewController(animated: true)
