@@ -23,8 +23,7 @@ class TodoAddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        notesTextView.delegate = self
         navigationItem.title = "AddTodo"
         // TODO: Doneでtodo編集してセルを更新させてとじる
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(tapedDoneBotton(_:)))
@@ -55,5 +54,11 @@ private extension TodoAddViewController {
     }
     @objc func tapedCancelBotton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+// MARK: - UITextViewDelegate
+extension TodoAddViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return notesTextView.text.count + (text.count - range.length) <= MaxNumCharacters.maxNotes.rawValue
     }
 }
