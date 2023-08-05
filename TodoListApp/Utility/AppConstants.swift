@@ -11,6 +11,7 @@ enum MaxNumCharacters: Int {
     case maxEmail = 254
     case maxPassword = 32
     case maxUserName = 20
+    case maxNotes = 140
 }
 enum SettingItemCell: Int {
     case singOutCellRow = 4
