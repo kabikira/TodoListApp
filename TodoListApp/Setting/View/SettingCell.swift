@@ -21,5 +21,6 @@ final class SettingCell: UITableViewCell {
     func configure(settingItem: SettingItem) {
         emojiLabel.text = settingItem.emoji
         titleLabel.text = settingItem.title
+        accessoryType = .disclosureIndicator
     }
 }

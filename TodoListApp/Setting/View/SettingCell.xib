@@ -23,7 +23,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYV-Xu-gVl">
                                     <rect key="frame" x="6" y="6" width="68" height="88"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -41,7 +41,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us2-nt-XJk">
                                     <rect key="frame" x="6" y="0.0" width="307" height="100"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
