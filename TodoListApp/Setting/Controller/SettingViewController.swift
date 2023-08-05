@@ -43,18 +43,19 @@ extension SettingViewController: UITableViewDelegate {
                 }
             })
         case SettingItemCell.withDrawCellRow.rawValue:
-            FirebaseUserManager.withDarw { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case.failure(let error):
-                    self.showErrorAlert(error: error, vc: self)
-                case.success():
-                    // TODO: 退会のアラート追加する
-                    print("退会成功")
-                    UserDefaults.standard.isLogined = false
-                    Router.shared.showReStart()
+            Alert.cancelAlert(vc: self, title: "Are you sure you want to delete your account?", message: "Are you sure you want to delete your saved information?" ,handler: { [weak self] _ in
+                FirebaseUserManager.withDarw { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case.failure(let error):
+                        self.showErrorAlert(error: error, vc: self)
+                    case.success():
+                        print("退会成功")
+                        UserDefaults.standard.isLogined = false
+                        Router.shared.showReStart()
+                    }
                 }
-            }
+            })
         default:
             Router.shared.showStettingItems(from: self, settingItem: settingItems[indexPath.row])
         }
