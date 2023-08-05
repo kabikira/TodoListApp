@@ -30,6 +30,8 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     
@@ -63,4 +65,20 @@ private extension LoginViewController {
         Router.shared.showPasswordReset(form: self)
     }
     
+}
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        if email.count > MaxNumCharacters.maxEmail.rawValue {
+            // 最大文字以上なら切り捨て
+            emailTextField.text = String(email.prefix(MaxNumCharacters.maxEmail.rawValue))
+        }
+        emailTextField.text = email.removingWhiteSpace()
+
+        if password.count > MaxNumCharacters.maxPassword.rawValue {
+            passwordTextField.text = String(password.prefix(MaxNumCharacters.maxPassword.rawValue))
+        }
+        passwordTextField.text = password.removingWhiteSpace()
+    }
 }
