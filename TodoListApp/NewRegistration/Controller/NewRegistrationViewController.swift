@@ -77,24 +77,27 @@ private extension NewRegistrationViewController {
 
 // MARK: - UITextFieldDelegate
 extension NewRegistrationViewController: UITextFieldDelegate {
-    // テキストフィールドのセレクションが変更された時に処理を行う
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let updatedTextLength = currentText.count + (string.count - range.length)
+
+        switch textField {
+        case registerEmailTextField:
+            return updatedTextLength <= MaxNumCharacters.maxEmail.rawValue
+        case registerPasswordTextField:
+            return updatedTextLength <= MaxNumCharacters.maxPassword.rawValue
+        case registerNameTextField:
+            return updatedTextLength <= MaxNumCharacters.maxUserName.rawValue
+        default:
+            return true
+        }
+    }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let email = registerEmailTextField.text else { return }
         guard let password = registerPasswordTextField.text else { return }
         guard let userName = registerNameTextField.text else { return }
-        if email.count > MaxNumCharacters.maxEmail.rawValue {
-            // 最大文字以上なら切り捨て
-            print(MaxNumCharacters.maxEmail.rawValue)
-            registerEmailTextField.text = String(email.prefix(MaxNumCharacters.maxEmail.rawValue))
-        }
         registerEmailTextField.text = email.removingWhiteSpace()
-        if password.count > MaxNumCharacters.maxPassword.rawValue {
-            registerPasswordTextField.text = String(password.prefix(MaxNumCharacters.maxPassword.rawValue))
-        }
         registerPasswordTextField.text = password.removingWhiteSpace()
-        if userName.count > MaxNumCharacters.maxUserName.rawValue {
-            registerNameTextField.text = String(password.prefix(MaxNumCharacters.maxUserName.rawValue))
-        }
         registerNameTextField.text = userName.removingWhiteSpace()
     }
 }
