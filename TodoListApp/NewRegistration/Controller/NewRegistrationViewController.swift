@@ -45,6 +45,7 @@ private extension NewRegistrationViewController {
                 print("登録成功")
                 //TODO: Resultになおしてエラー処理書いたほうがいいかも
                 FirebaseUserManager.sendEmailVerification(to:user)
+                Alert.okAlert(vc: self, title: "Email sent.", message: "Please access the URL in the email")
             case .failure(let error):
                 self.showErrorAlert(error: error, vc: self)
             }
