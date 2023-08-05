@@ -22,9 +22,6 @@ class PasswordResetViewController: UIViewController {
         emailTextField.delegate = self
 
     }
-    
-
-
 }
 private extension PasswordResetViewController {
     @objc func tapedPasswordResetEmailButton(_ sender: Any) {
@@ -39,18 +36,18 @@ private extension PasswordResetViewController {
             case.failure(let error):
                 Alert.showErrorAlert(vc: self, error: error)
             }
-
         }
     }
 }
+// MARK: - UITextFieldDelegate
 extension PasswordResetViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let updatedTextLength = currentText.count + (string.count - range.length)
+        return updatedTextLength <= MaxNumCharacters.maxEmail.rawValue
+    }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let email = emailTextField.text else { return }
-        if email.count > MaxNumCharacters.maxEmail.rawValue {
-            // 最大文字以上なら切り捨て
-            emailTextField.text = String(email.prefix(MaxNumCharacters.maxEmail.rawValue))
-        }
         emailTextField.text = email.removingWhiteSpace()
     }
-
 }
