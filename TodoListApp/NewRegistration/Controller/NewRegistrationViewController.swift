@@ -87,11 +87,14 @@ extension NewRegistrationViewController: UITextFieldDelegate {
             print(MaxNumCharacters.maxEmail.rawValue)
             registerEmailTextField.text = String(email.prefix(MaxNumCharacters.maxEmail.rawValue))
         }
+        registerEmailTextField.text = email.removingWhiteSpace()
         if password.count > MaxNumCharacters.maxPassword.rawValue {
             registerPasswordTextField.text = String(password.prefix(MaxNumCharacters.maxPassword.rawValue))
         }
+        registerPasswordTextField.text = password.removingWhiteSpace()
         if userName.count > MaxNumCharacters.maxUserName.rawValue {
             registerNameTextField.text = String(password.prefix(MaxNumCharacters.maxUserName.rawValue))
         }
+        registerNameTextField.text = userName.removingWhiteSpace()
     }
 }
