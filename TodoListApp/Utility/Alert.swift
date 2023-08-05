@@ -22,6 +22,16 @@ final class Alert {
         cancelAlertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         vc.present(cancelAlertVC, animated: true, completion: nil)
     }
+    // error時のアラート
+    static func showErrorAlert(vc: UIViewController, error: Error?, title: String = "エラーが起きました") {
+        guard let error = error else { return }
+        print(title + error.localizedDescription)
+        let message = ErrorHandling.firebaseErrorMessage(of: error)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        vc.present(alert, animated: true, completion: nil)
+    }
+
 
     // TextField付きアラート
     static func textFieldAlert(vc: UIViewController, title: String, message: String, placeholder: String, securyText: Bool, handler: ((String?) -> Void)? = nil) {
