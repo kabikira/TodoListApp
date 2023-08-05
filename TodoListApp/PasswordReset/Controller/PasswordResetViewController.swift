@@ -19,6 +19,7 @@ class PasswordResetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
 
     }
     
@@ -41,4 +42,15 @@ private extension PasswordResetViewController {
 
         }
     }
+}
+extension PasswordResetViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let email = emailTextField.text else { return }
+        if email.count > MaxNumCharacters.maxEmail.rawValue {
+            // 最大文字以上なら切り捨て
+            emailTextField.text = String(email.prefix(MaxNumCharacters.maxEmail.rawValue))
+        }
+        emailTextField.text = email.removingWhiteSpace()
+    }
+
 }

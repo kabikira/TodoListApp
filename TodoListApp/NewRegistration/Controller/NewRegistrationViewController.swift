@@ -27,8 +27,9 @@ class NewRegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        registerEmailTextField.delegate = self
+        registerPasswordTextField.delegate = self
+        registerNameTextField.delegate = self
     }
 
 }
@@ -71,5 +72,29 @@ private extension NewRegistrationViewController {
 
         }
 
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension NewRegistrationViewController: UITextFieldDelegate {
+    // テキストフィールドのセレクションが変更された時に処理を行う
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let email = registerEmailTextField.text else { return }
+        guard let password = registerPasswordTextField.text else { return }
+        guard let userName = registerNameTextField.text else { return }
+        if email.count > MaxNumCharacters.maxEmail.rawValue {
+            // 最大文字以上なら切り捨て
+            print(MaxNumCharacters.maxEmail.rawValue)
+            registerEmailTextField.text = String(email.prefix(MaxNumCharacters.maxEmail.rawValue))
+        }
+        registerEmailTextField.text = email.removingWhiteSpace()
+        if password.count > MaxNumCharacters.maxPassword.rawValue {
+            registerPasswordTextField.text = String(password.prefix(MaxNumCharacters.maxPassword.rawValue))
+        }
+        registerPasswordTextField.text = password.removingWhiteSpace()
+        if userName.count > MaxNumCharacters.maxUserName.rawValue {
+            registerNameTextField.text = String(password.prefix(MaxNumCharacters.maxUserName.rawValue))
+        }
+        registerNameTextField.text = userName.removingWhiteSpace()
     }
 }

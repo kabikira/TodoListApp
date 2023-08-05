@@ -7,6 +7,11 @@
 
 import Foundation
 import Firebase
+enum MaxNumCharacters: Int {
+    case maxEmail = 254
+    case maxPassword = 32
+    case maxUserName = 20
+}
 enum SettingItemCell: Int {
     case singOutCellRow = 4
     case withDrawCellRow = 5
