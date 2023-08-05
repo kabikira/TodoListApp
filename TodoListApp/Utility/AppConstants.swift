@@ -15,8 +15,8 @@ enum MaxNumCharacters: Int {
     case maxTitle = 50
 }
 enum SettingItemCell: Int {
-    case singOutCellRow = 4
-    case withDrawCellRow = 5
+    case singOutCellRow = 3
+    case withDrawCellRow = 4
 }
 enum URLs {
     static let googleForms = "https://docs.google.com/forms/d/e/1FAIpQLSfpFrJaXEElgvXTiovIgSMzstFfu5rATe4pc4L8lIe12MiXWw/viewform"
