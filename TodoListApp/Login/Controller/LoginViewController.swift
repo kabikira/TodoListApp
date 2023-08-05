@@ -33,11 +33,8 @@ class LoginViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
-    
-    
-    
-    
 }
+// MARK: - Actions
 private extension LoginViewController {
     @objc func tapedNewRegistrationButton(_ sender: Any) {
         Router.shared.showNewRegistration(form: self)
@@ -66,19 +63,26 @@ private extension LoginViewController {
     }
     
 }
+// MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let updatedTextLength = currentText.count + (string.count - range.length)
+
+        switch textField {
+        case emailTextField:
+            return updatedTextLength <= MaxNumCharacters.maxEmail.rawValue
+        case passwordTextField:
+            return updatedTextLength <= MaxNumCharacters.maxPassword.rawValue
+        default:
+            return true
+        }
+    }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        if email.count > MaxNumCharacters.maxEmail.rawValue {
-            // 最大文字以上なら切り捨て
-            emailTextField.text = String(email.prefix(MaxNumCharacters.maxEmail.rawValue))
-        }
         emailTextField.text = email.removingWhiteSpace()
-
-        if password.count > MaxNumCharacters.maxPassword.rawValue {
-            passwordTextField.text = String(password.prefix(MaxNumCharacters.maxPassword.rawValue))
-        }
         passwordTextField.text = password.removingWhiteSpace()
     }
 }
+
