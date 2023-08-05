@@ -34,7 +34,7 @@ extension SettingViewController: UITableViewDelegate {
                     guard let self = self else { return }
                     switch result {
                     case.failure(let error):
-                        self.showErrorAlert(error: error, vc: self)
+                        Alert.showErrorAlert(vc: self, error: error)
                     case.success():
                         print("サインアウト")
                         UserDefaults.standard.isLogined = false
@@ -48,7 +48,7 @@ extension SettingViewController: UITableViewDelegate {
                     guard let self = self else { return }
                     switch result {
                     case.failure(let error):
-                        self.showErrorAlert(error: error, vc: self)
+                        Alert.showErrorAlert(vc: self, error: error)
                     case.success():
                         print("退会成功")
                         UserDefaults.standard.isLogined = false
