@@ -25,6 +25,8 @@ class TodoEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        notesTextView.delegate = self
+        titleTextField.delegate = self
         titleTextField.text = todoItems?.title
         notesTextView.text = todoItems?.notes
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(tapedDoneButton(_:)))
@@ -54,5 +56,18 @@ private extension TodoEditViewController {
     }
     @objc func tapedCancelBotton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+// MARK: - UITextViewDelegate
+extension TodoEditViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return notesTextView.text.count + (text.count - range.length) <= MaxNumCharacters.maxNotes.rawValue
+    }
+}
+// MARK: - UITextFieldDelegate
+extension TodoEditViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let titleText = titleTextField.text ?? ""
+        return titleText.count + (string.count - range.length) <= MaxNumCharacters.maxTitle.rawValue
     }
 }
