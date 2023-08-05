@@ -44,6 +44,7 @@
 		3B89CF052A77F79E0090550A /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */; };
 		3B8F5C922A79C03D00C969E6 /* SettingItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C912A79C03D00C969E6 /* SettingItemModel.swift */; };
 		3B8F5C962A7B76C500C969E6 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C952A7B76C500C969E6 /* Notification+.swift */; };
+		3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C972A7DD9C700C969E6 /* Alert.swift */; };
 		9111305FEC1717BF98C8238C /* Pods_TodoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		3B8F5C912A79C03D00C969E6 /* SettingItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemModel.swift; sourceTree = "<group>"; };
 		3B8F5C952A7B76C500C969E6 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		3B8F5C972A7DD9C700C969E6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD276F2FB2DE0C4DAD80A825 /* Pods-TodoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,6 +291,7 @@
 				3B89CEEB2A765A6A0090550A /* Router.swift */,
 				3B89CEED2A765A7C0090550A /* AppConstants.swift */,
 				3B89CEEF2A765A9F0090550A /* UserDefaults+.swift */,
+				3B8F5C972A7DD9C700C969E6 /* Alert.swift */,
 				3B89CEFE2A7680A80090550A /* UIViewController+.swift */,
 				3B8F5C952A7B76C500C969E6 /* Notification+.swift */,
 			);
@@ -478,6 +481,7 @@
 				3B89CEE92A765A520090550A /* NetworkMonitor.swift in Sources */,
 				3B89CED72A7658C90090550A /* TodoListViewController.swift in Sources */,
 				3B89CEF02A765A9F0090550A /* UserDefaults+.swift in Sources */,
+				3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */,
 				3B89CEF22A765B6F0090550A /* TodoItemModel.swift in Sources */,
 				3B89CEE32A76595C0090550A /* TodoEditViewController.swift in Sources */,
 				3B83073A2A75E42A00C3068B /* ViewController.swift in Sources */,
