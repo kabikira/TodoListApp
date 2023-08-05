@@ -29,31 +29,33 @@ extension SettingViewController: UITableViewDelegate {
         //TODO: セルによって画面遷移分岐させる
         switch indexPath.row {
         case SettingItemCell.singOutCellRow.rawValue:
-            FirebaseUserManager.singOut { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case.failure(let error):
-                    self.showErrorAlert(error: error, vc: self)
-                case.success():
-                    // TODO: サインアウトのアラート追加する
-                    print("サインアウト")
-                    UserDefaults.standard.isLogined = false
-                    Router.shared.showReStart()
+            Alert.cancelAlert(vc: self, title: "Sign out?", message: "",handler: { [weak self] _ in
+                FirebaseUserManager.singOut { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case.failure(let error):
+                        Alert.showErrorAlert(vc: self, error: error)
+                    case.success():
+                        print("サインアウト")
+                        UserDefaults.standard.isLogined = false
+                        Router.shared.showReStart()
+                    }
                 }
-            }
+            })
         case SettingItemCell.withDrawCellRow.rawValue:
-            FirebaseUserManager.withDarw { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case.failure(let error):
-                    self.showErrorAlert(error: error, vc: self)
-                case.success():
-                    // TODO: 退会のアラート追加する
-                    print("退会成功")
-                    UserDefaults.standard.isLogined = false
-                    Router.shared.showReStart()
+            Alert.cancelAlert(vc: self, title: "Are you sure you want to delete your account?", message: "Are you sure you want to delete your saved information?" ,handler: { [weak self] _ in
+                FirebaseUserManager.withDarw { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case.failure(let error):
+                        Alert.showErrorAlert(vc: self, error: error)
+                    case.success():
+                        print("退会成功")
+                        UserDefaults.standard.isLogined = false
+                        Router.shared.showReStart()
+                    }
                 }
-            }
+            })
         default:
             Router.shared.showStettingItems(from: self, settingItem: settingItems[indexPath.row])
         }

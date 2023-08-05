@@ -39,11 +39,11 @@
 		3B89CEF62A7663D50090550A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B89CEF52A7663D50090550A /* Settings.bundle */; };
 		3B89CEFB2A767D180090550A /* FirebaseUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEFA2A767D180090550A /* FirebaseUserManager.swift */; };
 		3B89CEFD2A767D2D0090550A /* FirebaseTodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEFC2A767D2D0090550A /* FirebaseTodoManager.swift */; };
-		3B89CEFF2A7680A80090550A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEFE2A7680A80090550A /* UIViewController+.swift */; };
 		3B89CF032A77F7910090550A /* PasswordReset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B89CF022A77F7910090550A /* PasswordReset.storyboard */; };
 		3B89CF052A77F79E0090550A /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */; };
 		3B8F5C922A79C03D00C969E6 /* SettingItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C912A79C03D00C969E6 /* SettingItemModel.swift */; };
 		3B8F5C962A7B76C500C969E6 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C952A7B76C500C969E6 /* Notification+.swift */; };
+		3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C972A7DD9C700C969E6 /* Alert.swift */; };
 		9111305FEC1717BF98C8238C /* Pods_TodoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,11 +84,11 @@
 		3B89CEF52A7663D50090550A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		3B89CEFA2A767D180090550A /* FirebaseUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserManager.swift; sourceTree = "<group>"; };
 		3B89CEFC2A767D2D0090550A /* FirebaseTodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTodoManager.swift; sourceTree = "<group>"; };
-		3B89CEFE2A7680A80090550A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		3B89CF022A77F7910090550A /* PasswordReset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordReset.storyboard; sourceTree = "<group>"; };
 		3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		3B8F5C912A79C03D00C969E6 /* SettingItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemModel.swift; sourceTree = "<group>"; };
 		3B8F5C952A7B76C500C969E6 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		3B8F5C972A7DD9C700C969E6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD276F2FB2DE0C4DAD80A825 /* Pods-TodoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,7 +289,7 @@
 				3B89CEEB2A765A6A0090550A /* Router.swift */,
 				3B89CEED2A765A7C0090550A /* AppConstants.swift */,
 				3B89CEEF2A765A9F0090550A /* UserDefaults+.swift */,
-				3B89CEFE2A7680A80090550A /* UIViewController+.swift */,
+				3B8F5C972A7DD9C700C969E6 /* Alert.swift */,
 				3B8F5C952A7B76C500C969E6 /* Notification+.swift */,
 			);
 			path = Utility;
@@ -478,6 +478,7 @@
 				3B89CEE92A765A520090550A /* NetworkMonitor.swift in Sources */,
 				3B89CED72A7658C90090550A /* TodoListViewController.swift in Sources */,
 				3B89CEF02A765A9F0090550A /* UserDefaults+.swift in Sources */,
+				3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */,
 				3B89CEF22A765B6F0090550A /* TodoItemModel.swift in Sources */,
 				3B89CEE32A76595C0090550A /* TodoEditViewController.swift in Sources */,
 				3B83073A2A75E42A00C3068B /* ViewController.swift in Sources */,
@@ -491,7 +492,6 @@
 				3B89CEEE2A765A7C0090550A /* AppConstants.swift in Sources */,
 				3B89CED32A76581B0090550A /* LoginViewController.swift in Sources */,
 				3B89CF052A77F79E0090550A /* PasswordResetViewController.swift in Sources */,
-				3B89CEFF2A7680A80090550A /* UIViewController+.swift in Sources */,
 				3B8307382A75E42A00C3068B /* SceneDelegate.swift in Sources */,
 				3B89CEFD2A767D2D0090550A /* FirebaseTodoManager.swift in Sources */,
 				3B885DE02A796072004DCA7B /* SettingCell.swift in Sources */,

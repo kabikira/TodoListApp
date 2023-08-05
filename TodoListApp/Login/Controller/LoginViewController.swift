@@ -53,7 +53,7 @@ private extension LoginViewController {
                 // 画面遷移TodoListへ
                 Router.shared.showTodoList(from: self)
             case.failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             }
         }
         

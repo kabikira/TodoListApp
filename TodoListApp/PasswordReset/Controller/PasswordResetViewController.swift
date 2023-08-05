@@ -33,10 +33,10 @@ private extension PasswordResetViewController {
             guard let self = self else { return }
             switch result {
             case.success():
-                // ､アラートかモダールかの処理
+                Alert.okAlert(vc: self, title: "Email sent.", message: "Please access the URL in the email")
                 print("リセットメール送信")
             case.failure(let error):
-                self.showErrorAlert(error: error, vc: self)
+                Alert.showErrorAlert(vc: self, error: error)
             }
 
         }
