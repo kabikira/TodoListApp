@@ -31,9 +31,10 @@ class TodoListViewController: UIViewController {
             addTaskButton.addTarget(self, action: #selector(tapedAddBotton(_:)), for: .touchUpInside)
         }
     }
+    @IBOutlet private weak var indicator: UIActivityIndicatorView!
+
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-
             // ビューが表示されるときにデータをリロード
             reloadData()
         }
@@ -90,9 +91,26 @@ private extension TodoListViewController {
             selectedTodos = FirebaseCollections.Todos.todosFirst.rawValue
         }
     }
+    // MARK: - Indicator Control
+    func startIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.indicator.isHidden = false
+            self.indicator.startAnimating()
+        }
+    }
+
+    func stopIndecator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.indicator.isHidden = true
+            self.indicator.stopAnimating()
+        }
+    }
 
     // MARK: - Data Fetching
     func reloadData() {
+        startIndicator()
         if showingDone {
             getAllTodos()
         } else {
@@ -109,7 +127,9 @@ private extension TodoListViewController {
                 self.todoItems = todos
                 self.tableView.reloadData()
             }
+            self.stopIndecator()
         }
+
     }
     func getUncompletedTodos() {
         FirebaseDBManager.getUndoneTodoDataForFirestore(todos: selectedTodos) { [weak self] result in
@@ -121,6 +141,7 @@ private extension TodoListViewController {
                 self.todoItems = todos
                 self.tableView.reloadData()
             }
+            self.stopIndecator()
         }
     }
     // MARK: - Notification Handling
