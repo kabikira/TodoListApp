@@ -31,6 +31,7 @@ class TodoEditViewController: UIViewController {
         titleTextField.delegate = self
         titleTextField.text = todoItems?.title
         notesTextView.text = todoItems?.notes
+        observeNotifications()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(tapedDoneButton(_:)))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(tapedCancelBotton(_:)))
     }
@@ -61,6 +62,18 @@ private extension TodoEditViewController {
     @objc func tapedCancelBotton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    // MARK: - Notification Handling
+    func observeNotifications() {
+        NetworkMonitor.shared.startMonitoring()
+        NotificationCenter.default.addObserver(self, selector: #selector(connectionLost), name: NetworkMonitor.connectionLost, object: nil)
+    }
+    @objc func connectionLost() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            Alert.okAlert(vc: self, title: "Network Errors", message: NetworkMonitor.connectionLost.rawValue)
+        }
+    }
+
 }
 // MARK: - UITextViewDelegate
 extension TodoEditViewController: UITextViewDelegate {
