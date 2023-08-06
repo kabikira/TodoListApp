@@ -131,7 +131,7 @@ private extension TodoListViewController {
     @objc func connectionLost() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            Alert.okAlert(vc: self, title: "OK", message: NetworkMonitor.connectionLost.rawValue)
+            Alert.okAlert(vc: self, title: "Network Errors", message: NetworkMonitor.connectionLost.rawValue)
         }
     }
 }
