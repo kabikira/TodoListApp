@@ -10,11 +10,13 @@ import UIKit
 class TodoEditViewController: UIViewController {
     
     private var todoItems: TodoItemModel?
+    private var selectedTodos: String?
     
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var notesTextView: UITextView!
-    func configure(todoItems: TodoItemModel) {
+    func configure(todoItems: TodoItemModel, todos: String) {
         self.todoItems = todoItems
+        self.selectedTodos = todos
     }
     override func viewDidLayoutSubviews() {
         notesTextView.layer.borderWidth = 1.0
@@ -41,9 +43,11 @@ private extension TodoEditViewController {
     @objc func tapedDoneButton(_ sender: Any) {
         guard let title = titleTextField.text,
               let notes = notesTextView.text,
-              let todoItems = todoItems else { return }
+              let todoItems = todoItems,
+              let selectedTodos = selectedTodos else { return }
+        print(selectedTodos)
         let updatedTodoItem = TodoItemModel(id: todoItems.id, title: title, notes: notes, isDone: todoItems.isDone)
-        FirebaseDBManager.updateTodoData(todoItem: updatedTodoItem) { [weak self] result in
+        FirebaseDBManager.updateTodoData(todos: selectedTodos,todoItem: updatedTodoItem) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.failure(let error):
