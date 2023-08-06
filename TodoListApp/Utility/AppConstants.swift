@@ -7,6 +7,26 @@
 
 import Foundation
 import Firebase
+
+struct FirebaseCollections {
+    static let user = "user"
+    enum Todos: String {
+        case todosFirst
+        case todosSecond
+        case todosThird
+        case todosFourth
+    }
+}
+struct FirebaseFields {
+    enum TodosItem: String {
+        case title
+        case notes
+        case isDone
+        case createdAt
+        case updatedAt
+    }
+}
+
 enum MaxNumCharacters: Int {
     case maxEmail = 254
     case maxPassword = 32

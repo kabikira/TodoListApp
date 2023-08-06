@@ -56,18 +56,19 @@ final class Router {
         show(from: from, to: todoList)
     }
 
-    func showTodoAdd(from: UIViewController) {
-        guard let todoAdd = UIStoryboard.init(name: "TodoAdd", bundle: nil).instantiateInitialViewController() else {
+    func showTodoAdd(from: UIViewController, todos: String = FirebaseCollections.Todos.todosFirst.rawValue) {
+        guard let todoAdd = UIStoryboard.init(name: "TodoAdd", bundle: nil).instantiateInitialViewController() as? TodoAddViewController else {
             return
         }
+        todoAdd.configure(todos: todos)
 
         show(from: from, to: todoAdd)
     }
-    func showTodoEdit(from: UIViewController, todoItems: TodoItemModel) {
+    func showTodoEdit(from: UIViewController, todoItems: TodoItemModel, todos: String = FirebaseCollections.Todos.todosFirst.rawValue) {
         guard let todoEdit = UIStoryboard.init(name: "TodoEdit", bundle: nil).instantiateInitialViewController() as? TodoEditViewController else {
             return
         }
-        todoEdit.configure(todoItems: todoItems)
+        todoEdit.configure(todoItems: todoItems, todos: todos)
 
         show(from: from, to: todoEdit)
     }

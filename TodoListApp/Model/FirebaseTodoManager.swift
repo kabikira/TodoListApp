@@ -10,10 +10,10 @@ import Firebase
 
 // MARK: - Todoリスト作成
 final class FirebaseDBManager {
-   static func createTodo(title: String, notes: String, completion: @escaping(Result<Void, NSError>) -> Void) {
+    static func createTodo(title: String, notes: String, todos: String = FirebaseCollections.Todos.todosFirst.rawValue, completion: @escaping(Result<Void, NSError>) -> Void) {
         if let user = Auth.auth().currentUser {
             let createdTime = FieldValue.serverTimestamp()
-            Firestore.firestore().collection("user").document(user.uid).collection("todosFirst").document().setData(
+            Firestore.firestore().collection("user").document(user.uid).collection(todos).document().setData(
                 [
                     "title": title,
                     "notes": notes,
@@ -36,10 +36,10 @@ final class FirebaseDBManager {
 
     }
     // MARK: - 全Todoデータを取得
-    static func getTodoDataForFirestore(completion: @escaping(Result<[TodoItemModel], Error>) -> Void) {
+    static func getTodoDataForFirestore(todos: String = FirebaseCollections.Todos.todosFirst.rawValue, completion: @escaping(Result<[TodoItemModel], Error>) -> Void) {
         if let user = Auth.auth().currentUser {
             print("Current User ID: \(user.uid)") // ユーザーIDをログに出力します
-            Firestore.firestore().collection("user").document(user.uid).collection("todosFirst").order(by: "createdAt").getDocuments { (querySnapshot, error) in
+            Firestore.firestore().collection("user").document(user.uid).collection(todos).order(by: "createdAt").getDocuments { (querySnapshot, error) in
                 if let error = error {
                     print("Error: \(error)") // エラーをログに出力します
                     completion(.failure(error))
@@ -69,9 +69,9 @@ final class FirebaseDBManager {
         }
     }
     // MARK: - 未完了のTodoを取得
-    static func getUndoneTodoDataForFirestore(completion: @escaping(Result<[TodoItemModel], Error>) -> Void) {
+    static func getUndoneTodoDataForFirestore(todos: String = FirebaseCollections.Todos.todosFirst.rawValue, completion: @escaping(Result<[TodoItemModel], Error>) -> Void) {
         if let user = Auth.auth().currentUser {
-            Firestore.firestore().collection("user").document(user.uid).collection("todosFirst").whereField("isDone", isEqualTo: false).order(by: "createdAt").getDocuments { (querySnapshot, error) in
+            Firestore.firestore().collection("user").document(user.uid).collection(todos).whereField("isDone", isEqualTo: false).order(by: "createdAt").getDocuments { (querySnapshot, error) in
                 if let error = error {
                     completion(.failure(error))
                 } else if let querySnapshot = querySnapshot {
@@ -99,9 +99,9 @@ final class FirebaseDBManager {
     }
 
     // MARK: - 　Todoをアップデート
-    static func updateTodoData(todoItem: TodoItemModel, completion: @escaping(Result<Void, Error>) -> Void) {
+    static func updateTodoData(todos: String = FirebaseCollections.Todos.todosFirst.rawValue, todoItem: TodoItemModel, completion: @escaping(Result<Void, Error>) -> Void) {
         if let user = Auth.auth().currentUser {
-            Firestore.firestore().collection("user").document(user.uid).collection("todosFirst").document(todoItem.id).updateData(
+            Firestore.firestore().collection("user").document(user.uid).collection(todos).document(todoItem.id).updateData(
                 [
                     "title": todoItem.title,
                     "notes": todoItem.notes,
@@ -123,9 +123,9 @@ final class FirebaseDBManager {
         }
     }
     // MARK: - 　Todoを削除
-    static func deleteTodoData(todoItem: TodoItemModel, completion: @escaping(Result<Void, Error>) -> Void) {
+    static func deleteTodoData(todos: String = FirebaseCollections.Todos.todosFirst.rawValue, todoItem: TodoItemModel, completion: @escaping(Result<Void, Error>) -> Void) {
         if let user = Auth.auth().currentUser {
-            Firestore.firestore().collection("user").document(user.uid).collection("todosFirst").document(todoItem.id).delete() { error in
+            Firestore.firestore().collection("user").document(user.uid).collection(todos).document(todoItem.id).delete() { error in
                 if let error = error {
                     completion(.failure(error))
                 } else {
