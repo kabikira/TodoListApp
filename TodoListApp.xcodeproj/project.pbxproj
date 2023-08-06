@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3B8307362A75E42A00C3068B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307352A75E42A00C3068B /* AppDelegate.swift */; };
 		3B8307382A75E42A00C3068B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307372A75E42A00C3068B /* SceneDelegate.swift */; };
-		3B83073A2A75E42A00C3068B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307392A75E42A00C3068B /* ViewController.swift */; };
-		3B83073D2A75E42A00C3068B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B83073B2A75E42A00C3068B /* Main.storyboard */; };
 		3B83073F2A75E42C00C3068B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B83073E2A75E42C00C3068B /* Assets.xcassets */; };
 		3B8307422A75E42C00C3068B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B8307402A75E42C00C3068B /* LaunchScreen.storyboard */; };
 		3B885DDE2A79603A004DCA7B /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B885DDD2A79603A004DCA7B /* SettingCell.xib */; };
@@ -53,8 +51,6 @@
 		3B8307322A75E42A00C3068B /* TodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8307352A75E42A00C3068B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B8307372A75E42A00C3068B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3B8307392A75E42A00C3068B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3B83073C2A75E42A00C3068B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B83073E2A75E42C00C3068B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B8307412A75E42C00C3068B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B8307432A75E42C00C3068B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,8 +135,6 @@
 				3B89CEBF2A7656270090550A /* TodoAdd */,
 				3B89CEC02A76563B0090550A /* TodoEdit */,
 				3B89CEC52A7656820090550A /* Setting */,
-				3B83073B2A75E42A00C3068B /* Main.storyboard */,
-				3B8307392A75E42A00C3068B /* ViewController.swift */,
 				3B83073E2A75E42C00C3068B /* Assets.xcassets */,
 				3B8307402A75E42C00C3068B /* LaunchScreen.storyboard */,
 				3B89CEB62A763BBC0090550A /* Localizable.strings */,
@@ -407,7 +401,6 @@
 				3B89CED52A7658BA0090550A /* TodoList.storyboard in Resources */,
 				3B89CECD2A7657D90090550A /* NewRegistration.storyboard in Resources */,
 				3B89CEE52A7659720090550A /* Setting.storyboard in Resources */,
-				3B83073D2A75E42A00C3068B /* Main.storyboard in Resources */,
 				3B89CF032A77F7910090550A /* PasswordReset.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,7 +477,6 @@
 				3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */,
 				3B89CEF22A765B6F0090550A /* TodoItemModel.swift in Sources */,
 				3B89CEE32A76595C0090550A /* TodoEditViewController.swift in Sources */,
-				3B83073A2A75E42A00C3068B /* ViewController.swift in Sources */,
 				3B89CEEC2A765A6A0090550A /* Router.swift in Sources */,
 				3B8307362A75E42A00C3068B /* AppDelegate.swift in Sources */,
 				3B89CECF2A7657E40090550A /* NewRegistrationViewController.swift in Sources */,
@@ -507,14 +499,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3B83073B2A75E42A00C3068B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3B83073C2A75E42A00C3068B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3B8307402A75E42C00C3068B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
