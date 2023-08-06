@@ -119,29 +119,33 @@ private extension TodoListViewController {
     }
     func getAllTodos() {
         FirebaseDBManager.getTodoDataForFirestore(todos: selectedTodos) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case.failure(let error):
-                Alert.showErrorAlert(vc: self, error: error)
-            case.success(let todos):
-                self.todoItems = todos
-                self.tableView.reloadData()
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case.failure(let error):
+                    Alert.showErrorAlert(vc: self, error: error)
+                case.success(let todos):
+                    self.todoItems = todos
+                    self.tableView.reloadData()
+                }
+                self.stopIndecator()
             }
-            self.stopIndecator()
         }
 
     }
     func getUncompletedTodos() {
         FirebaseDBManager.getUndoneTodoDataForFirestore(todos: selectedTodos) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case.failure(let error):
-                Alert.showErrorAlert(vc: self, error: error)
-            case.success(let todos):
-                self.todoItems = todos
-                self.tableView.reloadData()
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case.failure(let error):
+                    Alert.showErrorAlert(vc: self, error: error)
+                case.success(let todos):
+                    self.todoItems = todos
+                    self.tableView.reloadData()
+                }
+                self.stopIndecator()
             }
-            self.stopIndecator()
         }
     }
     // MARK: - Notification Handling
@@ -168,7 +172,9 @@ extension TodoListViewController: UITableViewDelegate {
             guard let self = self else { return }
             switch result {
             case.failure(let error):
-                Alert.showErrorAlert(vc: self, error: error)
+                DispatchQueue.main.async {
+                    Alert.showErrorAlert(vc: self, error: error)
+                }
             case.success():
                 self.todoItems[indexPath.row] = todoItem
                 tableView.reloadRows(at: [indexPath], with: .automatic)
@@ -180,16 +186,19 @@ extension TodoListViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
             let itemToRemove = self.todoItems[indexPath.row]
             FirebaseDBManager.deleteTodoData(todos: self.selectedTodos,todoItem: self.todoItems[indexPath.row]) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case.failure(let error):
-                    Alert.showErrorAlert(vc: self, error: error)
-                case.success():
-                    print("削除")
-                    // itemToRemove.idと同じ要素をもつ最初のインデックスを探して削除
-                    if let index = self.todoItems.firstIndex(where: { $0.id == itemToRemove.id }) {
-                        self.todoItems.remove(at: index)
-                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                DispatchQueue.main.async {
+
+                    guard let self = self else { return }
+                    switch result {
+                    case.failure(let error):
+                        Alert.showErrorAlert(vc: self, error: error)
+                    case.success():
+                        print("削除")
+                        // itemToRemove.idと同じ要素をもつ最初のインデックスを探して削除
+                        if let index = self.todoItems.firstIndex(where: { $0.id == itemToRemove.id }) {
+                            self.todoItems.remove(at: index)
+                            tableView.deleteRows(at: [indexPath], with: .automatic)
+                        }
                     }
                 }
             }

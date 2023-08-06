@@ -50,12 +50,14 @@ private extension TodoEditViewController {
         let updatedTodoItem = TodoItemModel(id: todoItems.id, title: title, notes: notes, isDone: todoItems.isDone)
         FirebaseDBManager.updateTodoData(todos: selectedTodos,todoItem: updatedTodoItem) { [weak self] result in
             guard let self = self else { return }
-            switch result {
-            case.failure(let error):
-                Alert.showErrorAlert(vc: self, error: error)
-            case.success():
-                print("edit完了")
-                self.navigationController?.popViewController(animated: true)
+            DispatchQueue.main.async {
+                switch result {
+                case.failure(let error):
+                    Alert.showErrorAlert(vc: self, error: error)
+                case.success():
+                    print("edit完了")
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }

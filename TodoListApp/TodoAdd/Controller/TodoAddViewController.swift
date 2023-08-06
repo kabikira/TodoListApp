@@ -46,14 +46,16 @@ private extension TodoAddViewController {
         guard let selectedTodos = selectedTodos else { return }
         // ログイン済みか確認 // FirestoreにTodoデータを作成する
         FirebaseDBManager.createTodo(title: title, notes: notes, todos: selectedTodos) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case.success():
-                print("データベース作成")
-//                NotificationCenter.default.post(name: .updateTodoListView, object: nil)
-               
-            case .failure(let error):
-                Alert.showErrorAlert(vc: self, error: error)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case.success():
+                    print("データベース作成")
+                    //                NotificationCenter.default.post(name: .updateTodoListView, object: nil)
+
+                case .failure(let error):
+                    Alert.showErrorAlert(vc: self, error: error)
+                }
             }
         }
         // Todo一覧画面に戻る処理

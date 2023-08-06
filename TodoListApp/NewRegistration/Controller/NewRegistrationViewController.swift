@@ -46,12 +46,15 @@ private extension NewRegistrationViewController {
                 print("登録成功")
                 //TODO: Resultになおしてエラー処理書いたほうがいいかも
                 FirebaseUserManager.sendEmailVerification(to:user)
-                Alert.okAlert(vc: self, title: "Email sent.", message: "Please access the URL in the email")
+                DispatchQueue.main.async {
+                    Alert.okAlert(vc: self, title: "Email sent.", message: "Please access the URL in the email")
+                }
             case .failure(let error):
-                Alert.showErrorAlert(vc: self, error: error)
+                DispatchQueue.main.async {
+                    Alert.showErrorAlert(vc: self, error: error)
+                }
             }
         }
-
     }
     @objc func tappedLogin(_ sender: Any) {
         // mailをチェックしていたらログイン ユーザデフォ
@@ -85,7 +88,9 @@ private extension NewRegistrationViewController {
                 // loginへ画面遷移
                 Router.shared.showTodoList(from: self)
             case.failure(let error):
-                Alert.showErrorAlert(vc: self, error: error)
+                DispatchQueue.main.async {
+                    Alert.showErrorAlert(vc: self, error: error)
+                }
             }
 
         }
