@@ -40,6 +40,8 @@ class TodoListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // ネットワーク接続を監視
+        observeNotifications()
         // 完了済みを非表示にするボタン
         navigationItem.rightBarButtonItem = UIBarButtonItem(
                     image: UIImage(systemName: showingDone ? "checkmark.circle" : "circle"),
@@ -49,10 +51,7 @@ class TodoListViewController: UIViewController {
                 )
         navigationItem.title = "TodoList"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "gearshape"), style: .done, target: self, action: #selector(tapedLeftBarButton(_:)))
-        // 通知を受け取りリロード
-//        NotificationCenter.default.addObserver(self, selector: #selector(getTodoItems), name: .updateTodoListView, object: nil)
-        // Todoをロード
-//        reloadData()
+
     }
 
 }
@@ -124,7 +123,17 @@ private extension TodoListViewController {
             }
         }
     }
-
+    // MARK: - Notification Handling
+    func observeNotifications() {
+        NetworkMonitor.shared.startMonitoring()
+        NotificationCenter.default.addObserver(self, selector: #selector(connectionLost), name: NetworkMonitor.connectionLost, object: nil)
+    }
+    @objc func connectionLost() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            Alert.okAlert(vc: self, title: "OK", message: NetworkMonitor.connectionLost.rawValue)
+        }
+    }
 }
 
 
