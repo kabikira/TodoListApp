@@ -29,6 +29,7 @@ class TodoAddViewController: UIViewController {
         super.viewDidLoad()
         notesTextView.delegate = self
         titleTextField.delegate = self
+        observeNotifications()
         navigationItem.title = "AddTodo"
         // TODO: Doneでtodo編集してセルを更新させてとじる
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(tapedDoneBotton(_:)))
@@ -61,6 +62,18 @@ private extension TodoAddViewController {
     @objc func tapedCancelBotton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    // MARK: - Notification Handling
+    func observeNotifications() {
+        NetworkMonitor.shared.startMonitoring()
+        NotificationCenter.default.addObserver(self, selector: #selector(connectionLost), name: NetworkMonitor.connectionLost, object: nil)
+    }
+    @objc func connectionLost() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            Alert.okAlert(vc: self, title: "Network Errors", message: NetworkMonitor.connectionLost.rawValue)
+        }
+    }
+
 }
 // MARK: - UITextViewDelegate
 extension TodoAddViewController: UITextViewDelegate {
