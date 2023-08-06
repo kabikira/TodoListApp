@@ -11,6 +11,7 @@ class TodoListViewController: UIViewController {
 
     private var todoItems: [TodoItemModel] = []
     private var showingDone = true
+    private var selectedTodos = FirebaseCollections.Todos.todosFirst.rawValue
 
 
     @IBOutlet private weak var tableView: UITableView! {
@@ -20,7 +21,11 @@ class TodoListViewController: UIViewController {
             tableView.dataSource = self
         }
     }
-    @IBOutlet private weak var changeTodosControl: UISegmentedControl!
+    @IBOutlet private weak var changeTodosControl: UISegmentedControl! {
+        didSet {
+            changeTodosControl.addTarget(self, action: #selector(tapedChangeTodosControl(_:)), for: .valueChanged)
+        }
+    }
     @IBOutlet private weak var addTaskButton: UIButton! {
         didSet {
             addTaskButton.addTarget(self, action: #selector(tapedAddBotton(_:)), for: .touchUpInside)
@@ -55,7 +60,7 @@ private extension TodoListViewController {
     // MARK: - Actions
     @objc func tapedAddBotton(_ sender: Any) {
         
-        Router.shared.showTodoAdd(from: self)
+        Router.shared.showTodoAdd(from: self, todos: selectedTodos)
     }
     @objc func tapedLeftBarButton(_ sender: Any) {
         Router.shared.showSetting(from: self)
@@ -68,10 +73,24 @@ private extension TodoListViewController {
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: showingDone ? "checkmark.circle" : "circle")
             reloadData()
         }
-//    @objc func getTodoItems() {
-//        print("通知を受け取った")
-//        reloadData()
-//    }
+    @objc func tapedChangeTodosControl(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            selectedTodos = FirebaseCollections.Todos.todosFirst.rawValue
+            reloadData()
+        case 1:
+            selectedTodos = FirebaseCollections.Todos.todosSecond.rawValue
+            reloadData()
+        case 2:
+            selectedTodos = FirebaseCollections.Todos.todosThird.rawValue
+            reloadData()
+        case 3:
+            selectedTodos = FirebaseCollections.Todos.todosFourth.rawValue
+            reloadData()
+        default:
+            selectedTodos = FirebaseCollections.Todos.todosFirst.rawValue
+        }
+    }
 
     // MARK: - Data Fetching
     func reloadData() {
@@ -82,7 +101,7 @@ private extension TodoListViewController {
         }
     }
     func getAllTodos() {
-        FirebaseDBManager.getTodoDataForFirestore() { [weak self] result in
+        FirebaseDBManager.getTodoDataForFirestore(todos: selectedTodos) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.failure(let error):
@@ -94,7 +113,7 @@ private extension TodoListViewController {
         }
     }
     func getUncompletedTodos() {
-        FirebaseDBManager.getUndoneTodoDataForFirestore() { [weak self] result in
+        FirebaseDBManager.getUndoneTodoDataForFirestore(todos: selectedTodos) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.failure(let error):
@@ -115,7 +134,7 @@ extension TodoListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         var todoItem = todoItems[indexPath.row]
         todoItem.isDone.toggle()
-        FirebaseDBManager.updateTodoData(todoItem: todoItem) { [weak self] result in
+        FirebaseDBManager.updateTodoData(todos: self.selectedTodos,todoItem: todoItem) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.failure(let error):
@@ -130,7 +149,7 @@ extension TodoListViewController: UITableViewDelegate {
         // 削除スワイプ
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
             let itemToRemove = self.todoItems[indexPath.row]
-            FirebaseDBManager.deleteTodoData(todoItem: self.todoItems[indexPath.row]) { [weak self] result in
+            FirebaseDBManager.deleteTodoData(todos: self.selectedTodos,todoItem: self.todoItems[indexPath.row]) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case.failure(let error):
@@ -149,7 +168,7 @@ extension TodoListViewController: UITableViewDelegate {
         // Editスワイプ
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
             completionHandler(true)
-            Router.shared.showTodoEdit(from: self, todoItems: self.todoItems[indexPath.row])
+            Router.shared.showTodoEdit(from: self, todoItems: self.todoItems[indexPath.row], todos: self.selectedTodos)
         }
         editAction.backgroundColor = .green
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
