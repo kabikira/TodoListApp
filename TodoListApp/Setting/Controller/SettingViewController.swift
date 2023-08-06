@@ -20,6 +20,7 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        observeNotifications()
 
     }
 
@@ -61,6 +62,19 @@ extension SettingViewController: UITableViewDelegate {
         }
     }
 
+}
+private extension SettingViewController {
+    // MARK: - Notification Handling
+    func observeNotifications() {
+        NetworkMonitor.shared.startMonitoring()
+        NotificationCenter.default.addObserver(self, selector: #selector(connectionLost), name: NetworkMonitor.connectionLost, object: nil)
+    }
+    @objc func connectionLost() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            Alert.okAlert(vc: self, title: "Network Error", message: NetworkMonitor.connectionLost.rawValue)
+        }
+    }
 }
 
 extension SettingViewController: UITableViewDataSource {
