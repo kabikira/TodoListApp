@@ -31,29 +31,34 @@ extension SettingViewController: UITableViewDelegate {
         switch indexPath.row {
         case SettingItemCell.singOutCellRow.rawValue:
             Alert.cancelAlert(vc: self, title: "Sign out?", message: "",handler: { [weak self] _ in
-                FirebaseUserManager.singOut { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case.failure(let error):
-                        Alert.showErrorAlert(vc: self, error: error)
-                    case.success():
-                        print("サインアウト")
-                        UserDefaults.standard.isLogined = false
-                        Router.shared.showReStart()
+                DispatchQueue.main.async {
+                    FirebaseUserManager.singOut { [weak self] result in
+                        guard let self = self else { return }
+                        switch result {
+                        case.failure(let error):
+                            Alert.showErrorAlert(vc: self, error: error)
+                        case.success():
+                            print("サインアウト")
+                            UserDefaults.standard.isLogined = false
+                            Router.shared.showReStart()
+                        }
                     }
                 }
             })
+
         case SettingItemCell.withDrawCellRow.rawValue:
             Alert.cancelAlert(vc: self, title: "Are you sure you want to delete your account?", message: "Are you sure you want to delete your saved information?" ,handler: { [weak self] _ in
                 FirebaseUserManager.withDarw { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case.failure(let error):
-                        Alert.showErrorAlert(vc: self, error: error)
-                    case.success():
-                        print("退会成功")
-                        UserDefaults.standard.isLogined = false
-                        Router.shared.showReStart()
+                    DispatchQueue.main.async {
+                        guard let self = self else { return }
+                        switch result {
+                        case.failure(let error):
+                            Alert.showErrorAlert(vc: self, error: error)
+                        case.success():
+                            print("退会成功")
+                            UserDefaults.standard.isLogined = false
+                            Router.shared.showReStart()
+                        }
                     }
                 }
             })
