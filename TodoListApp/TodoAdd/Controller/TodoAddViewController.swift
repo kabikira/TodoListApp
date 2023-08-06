@@ -9,10 +9,14 @@ import UIKit
 
 class TodoAddViewController: UIViewController {
 
+    private var selectedTodos: String?
+
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var notesTextView: UITextView!
 
-
+    func configure(todos: String) {
+        self.selectedTodos = todos
+    }
 
     override func viewDidLayoutSubviews() {
         notesTextView.layer.borderWidth = 1.0
@@ -38,8 +42,9 @@ private extension TodoAddViewController {
     @objc func tapedDoneBotton(_ sender: Any) {
         let title = titleTextField.text ?? ""
         let notes = notesTextView.text ?? ""
+        guard let selectedTodos = selectedTodos else { return }
         // ログイン済みか確認 // FirestoreにTodoデータを作成する
-        FirebaseDBManager.createTodo(title: title, notes: notes) { [weak self] result in
+        FirebaseDBManager.createTodo(title: title, notes: notes, todos: selectedTodos) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():
