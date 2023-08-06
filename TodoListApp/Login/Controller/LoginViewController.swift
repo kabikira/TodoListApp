@@ -52,10 +52,11 @@ private extension LoginViewController {
                 // 画面遷移TodoListへ
                 Router.shared.showTodoList(from: self)
             case.failure(let error):
-                Alert.showErrorAlert(vc: self, error: error)
+                DispatchQueue.main.async {
+                    Alert.showErrorAlert(vc: self, error: error)
+                }
             }
         }
-        
     }
     @objc func tapedPasswordResetButton(_ sender: Any) {
         // パスワード送信画面に遷移
