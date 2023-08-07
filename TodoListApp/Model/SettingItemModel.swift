@@ -17,5 +17,5 @@ let settingItems: [SettingItem] = [
     SettingItem(emoji: "✉️", title: "お問い合わせ"),
     SettingItem(emoji: "📝", title: "プライバシーポリシー"),
     SettingItem(emoji: "✋", title: "ログアウト"),
-    SettingItem(emoji: "✋", title: "退会")
+    SettingItem(emoji: "🦭", title: "退会")
 ]
