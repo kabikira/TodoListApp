@@ -13,6 +13,7 @@ class PasswordResetViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordResetEmailButton: UIButton! {
         didSet {
+            passwordResetEmailButton.setTitle(R.string.localizable.forgotPassword(), for: .normal)
             passwordResetEmailButton.addTarget(self, action: #selector(tapedPasswordResetEmailButton(_:)), for: .touchUpInside)
         }
     }
@@ -32,7 +33,7 @@ private extension PasswordResetViewController {
             switch result {
             case.success():
                 DispatchQueue.main.async {
-                    Alert.okAlert(vc: self, title: "Email sent.", message: "Please access the URL in the email")
+                    Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
                 }
                 print("リセットメール送信")
             case.failure(let error):
