@@ -186,15 +186,16 @@ extension TodoListViewController: UITableViewDelegate {
         var todoItem = todoItems[indexPath.row]
         todoItem.isDone.toggle()
         FirebaseDBManager.updateTodoData(todos: self.selectedTodos,todoItem: todoItem) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case.failure(let error):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case.failure(let error):
                     Alert.showErrorAlert(vc: self, error: error)
+
+                case.success():
+                    self.todoItems[indexPath.row] = todoItem
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
-            case.success():
-                self.todoItems[indexPath.row] = todoItem
-                tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
     }
