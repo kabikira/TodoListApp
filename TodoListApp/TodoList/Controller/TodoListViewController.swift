@@ -45,13 +45,13 @@ class TodoListViewController: UIViewController {
         observeNotifications()
         // 完了済みを非表示にするボタン
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-                    image: UIImage(systemName: showingDone ? "checkmark.circle" : "circle"),
+            image: UIImage(systemName: showingDone ? ImageNames.checkmarkCircle : ImageNames.circle),
                     style: .plain,
                     target: self,
                     action: #selector(toggleTodoStatus)
                 )
         navigationItem.title = R.string.localizable.todoList()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "gearshape"), style: .done, target: self, action: #selector(tapedLeftBarButton(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(systemName: ImageNames.gearshape), style: .done, target: self, action: #selector(tapedLeftBarButton(_:)))
 
     }
 
@@ -70,7 +70,7 @@ private extension TodoListViewController {
     }
     @objc func toggleTodoStatus() {
             showingDone.toggle()
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: showingDone ? "checkmark.circle" : "circle")
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: showingDone ? ImageNames.checkmarkCircle : ImageNames.circle)
             reloadData()
         }
     @objc func tapedChangeTodosControl(_ sender: UISegmentedControl) {
