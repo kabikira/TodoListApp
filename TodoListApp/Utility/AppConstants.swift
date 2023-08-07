@@ -38,6 +38,12 @@ enum SettingItemCell: Int {
     case singOutCellRow = 3
     case withDrawCellRow = 4
 }
+struct ImageNames {
+    static let checkmarkCircle = "checkmark.circle"
+    static let circle = "circle"
+    static let gearshape = "gearshape"
+}
+
 enum URLs {
     static let googleForms = "https://docs.google.com/forms/d/e/1FAIpQLSfpFrJaXEElgvXTiovIgSMzstFfu5rATe4pc4L8lIe12MiXWw/viewform"
     static let privacyPolicy = "https://kabikira.github.io/imael.github.io/privacy/privacy.html"
