@@ -9,9 +9,14 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet private weak var loginLanel: UILabel!
+    @IBOutlet private weak var loginLanel: UILabel! {
+        didSet {
+            loginLanel.text = R.string.localizable.login()
+        }
+    }
     @IBOutlet private weak var newRegistrationButton: UIButton! {
         didSet {
+            newRegistrationButton.setTitle(R.string.localizable.signUpForANewAccount(), for: .normal)
             newRegistrationButton.addTarget(self, action: #selector(tapedNewRegistrationButton(_:)), for: .touchUpInside)
         }
     }
@@ -19,11 +24,13 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginButton: UIButton! {
         didSet {
+            loginButton.setTitle(R.string.localizable.login(), for: .normal)
             loginButton.addTarget(self, action: #selector(tapedLoginButton(_:)), for: .touchUpInside)
         }
     }
     @IBOutlet private weak var passwordResetButton: UIButton! {
          didSet{
+             passwordResetButton.setTitle(R.string.localizable.forgotPassword(), for: .normal)
              passwordResetButton.addTarget(self, action: #selector(tapedPasswordResetButton(_:)), for: .touchUpInside)
             }
     }
