@@ -95,6 +95,10 @@ body:
                    …
 version: 2.2.0
 
+name: R.swift, nameSpecified: 
+body: The MIT License (MIT…
+version: 7.3.0
+
 add-version-numbers: false
 
 LicensePlist Version: 3.24.5

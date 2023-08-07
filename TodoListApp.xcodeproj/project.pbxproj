@@ -43,6 +43,7 @@
 		3B8F5C962A7B76C500C969E6 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C952A7B76C500C969E6 /* Notification+.swift */; };
 		3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C972A7DD9C700C969E6 /* Alert.swift */; };
 		3B8F5C9A2A7E2EE400C969E6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C992A7E2EE400C969E6 /* String+.swift */; };
+		3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C9C2A81120900C969E6 /* R.generated.swift */; };
 		9111305FEC1717BF98C8238C /* Pods_TodoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		3B8F5C952A7B76C500C969E6 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		3B8F5C972A7DD9C700C969E6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3B8F5C992A7E2EE400C969E6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		3B8F5C9C2A81120900C969E6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD276F2FB2DE0C4DAD80A825 /* Pods-TodoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +108,7 @@
 		3B8307292A75E42A00C3068B = {
 			isa = PBXGroup;
 			children = (
+				3B8F5C9C2A81120900C969E6 /* R.generated.swift */,
 				3B8307342A75E42A00C3068B /* TodoListApp */,
 				3B8307332A75E42A00C3068B /* Products */,
 				5C2B24D71C88C8A6DE6C9749 /* Pods */,
@@ -334,6 +337,7 @@
 			buildConfigurationList = 3B8307462A75E42C00C3068B /* Build configuration list for PBXNativeTarget "TodoListApp" */;
 			buildPhases = (
 				99032559A58D1073840011DB /* [CP] Check Pods Manifest.lock */,
+				3B8F5C9B2A81114300C969E6 /* ShellScript */,
 				3B83072E2A75E42A00C3068B /* Sources */,
 				3B83072F2A75E42A00C3068B /* Frameworks */,
 				3B8307302A75E42A00C3068B /* Resources */,
@@ -442,6 +446,25 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path $PROJECT_NAME/Settings.bundle\nfi\n";
 		};
+		3B8F5C9B2A81114300C969E6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n\n";
+		};
 		99032559A58D1073840011DB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -483,6 +506,7 @@
 				3B89CEE72A7659860090550A /* SettingViewController.swift in Sources */,
 				3B89CEDF2A76591D0090550A /* TodoAddViewController.swift in Sources */,
 				3B89CED92A7658DB0090550A /* TodoListCell.swift in Sources */,
+				3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */,
 				3B8F5C962A7B76C500C969E6 /* Notification+.swift in Sources */,
 				3B89CEEE2A765A7C0090550A /* AppConstants.swift in Sources */,
 				3B89CED32A76581B0090550A /* LoginViewController.swift in Sources */,
