@@ -50,7 +50,7 @@ class TodoListViewController: UIViewController {
                     target: self,
                     action: #selector(toggleTodoStatus)
                 )
-        navigationItem.title = "TodoList"
+        navigationItem.title = R.string.localizable.todoList()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "gearshape"), style: .done, target: self, action: #selector(tapedLeftBarButton(_:)))
 
     }
@@ -156,7 +156,7 @@ private extension TodoListViewController {
     @objc func connectionLost() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            Alert.okAlert(vc: self, title: "Network Errors", message: NetworkMonitor.connectionLost.rawValue)
+            Alert.okAlert(vc: self, title: R.string.localizable.networkErrors(), message: NetworkMonitor.connectionLost.rawValue)
         }
     }
 }
@@ -201,7 +201,7 @@ extension TodoListViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // 削除スワイプ
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: R.string.localizable.delete()) { (action, view, completionHandler) in
             let itemToRemove = self.todoItems[indexPath.row]
             FirebaseDBManager.deleteTodoData(todos: self.selectedTodos,todoItem: self.todoItems[indexPath.row]) { [weak self] result in
                 DispatchQueue.main.async {
@@ -223,7 +223,7 @@ extension TodoListViewController: UITableViewDelegate {
             completionHandler(true)
         }
         // Editスワイプ
-        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completionHandler) in
+        let editAction = UIContextualAction(style: .normal, title: R.string.localizable.edit()) { (action, view, completionHandler) in
             completionHandler(true)
             Router.shared.showTodoEdit(from: self, todoItems: self.todoItems[indexPath.row], todos: self.selectedTodos)
         }
