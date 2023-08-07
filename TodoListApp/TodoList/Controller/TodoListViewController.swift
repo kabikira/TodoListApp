@@ -209,7 +209,7 @@ extension TodoListViewController: UITableViewDelegate {
             completionHandler(true)
             Router.shared.showTodoEdit(from: self, todoItems: self.todoItems[indexPath.row], todos: self.selectedTodos)
         }
-        editAction.backgroundColor = .green
+        editAction.backgroundColor = .systemGreen
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
 }
