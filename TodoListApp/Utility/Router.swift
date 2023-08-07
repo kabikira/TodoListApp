@@ -17,15 +17,11 @@ final class Router {
     private var window: UIWindow?
     func showRoot(window: UIWindow?) {
         if UserDefaults.standard.isLogined {
-                guard let vc = UIStoryboard.init(name: "TodoList", bundle: nil).instantiateInitialViewController() else {
-                    return
-                }
+            guard let vc = R.storyboard.todoList.instantiateInitialViewController() else { return }
                 let nav = UINavigationController(rootViewController: vc)
                 window?.rootViewController = nav
             } else {
-                guard let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateInitialViewController() else {
-                    return
-                }
+                guard let vc = R.storyboard.login.instantiateInitialViewController() else { return }
                 let nav = UINavigationController(rootViewController: vc)
                 window?.rootViewController = nav
             }
@@ -33,49 +29,39 @@ final class Router {
         self.window = window
         }
     func showLogin(form: UIViewController) {
-        guard let login = UIStoryboard.init(name: "Login", bundle: nil).instantiateInitialViewController() else {
-            return
-        }
+        guard let login = R.storyboard.login.instantiateInitialViewController() else { return }
         show(from: form, to: login)
     }
 
     func showNewRegistration(form: UIViewController) {
-        guard let newRegistration = UIStoryboard.init(name: "NewRegistration", bundle: nil).instantiateInitialViewController() else { return }
+        guard let newRegistration = R.storyboard.newRegistration.instantiateInitialViewController() else { return }
         show(from: form, to: newRegistration)
     }
 
     func showPasswordReset(form: UIViewController) {
-        guard let passwordReset = UIStoryboard.init(name: "PasswordReset", bundle: nil).instantiateInitialViewController() else { return }
+        guard let passwordReset = R.storyboard.passwordReset.instantiateInitialViewController() else { return }
         showPresent(from: form, to: passwordReset)
     }
 
     func showTodoList(from: UIViewController) {
-        guard let todoList = UIStoryboard.init(name: "TodoList", bundle: nil).instantiateInitialViewController() else {
-            return
-        }
+        guard let todoList = R.storyboard.todoList.instantiateInitialViewController() else { return }
         show(from: from, to: todoList)
     }
 
     func showTodoAdd(from: UIViewController, todos: String = FirebaseCollections.Todos.todosFirst.rawValue) {
-        guard let todoAdd = UIStoryboard.init(name: "TodoAdd", bundle: nil).instantiateInitialViewController() as? TodoAddViewController else {
-            return
-        }
+        guard let todoAdd = R.storyboard.todoAdd.instantiateInitialViewController() else { return }
         todoAdd.configure(todos: todos)
 
         show(from: from, to: todoAdd)
     }
     func showTodoEdit(from: UIViewController, todoItems: TodoItemModel, todos: String = FirebaseCollections.Todos.todosFirst.rawValue) {
-        guard let todoEdit = UIStoryboard.init(name: "TodoEdit", bundle: nil).instantiateInitialViewController() as? TodoEditViewController else {
-            return
-        }
+        guard let todoEdit = R.storyboard.todoEdit.instantiateInitialViewController() else { return }
         todoEdit.configure(todoItems: todoItems, todos: todos)
 
         show(from: from, to: todoEdit)
     }
     func showSetting(from: UIViewController) {
-        guard let setting = UIStoryboard.init(name: "Setting", bundle: nil).instantiateInitialViewController() else {
-            return
-        }
+        guard let setting = R.storyboard.setting.instantiateInitialViewController() else { return }
         show(from: from, to: setting)
     }
     func showStettingItems(from: UIViewController, settingItem: SettingItem) {
