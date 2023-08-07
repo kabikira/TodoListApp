@@ -5,3 +5,8 @@
   Created by koala panda on 2023/07/30.
   
 */
+"NewRegistration" = "新規登録";
+"Register and send an email." = "登録してメールを送信します";
+"Check your email and log in" = "メールを確認してログインしてください";
+"Email sent." = "メールを送信しました。";
+"Please access the URL in the email" = "メール内のURLにアクセスしてください";
