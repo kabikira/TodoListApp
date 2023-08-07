@@ -26,3 +26,11 @@
 "Sign out?" = "サインアウトしますか？";
 "Are you sure you want to delete your account?" = "アカウントを削除してもよろしいですか？";
 "Are you sure you want to delete your saved information?" = "保存された情報を削除してもよろしいですか？";
+
+"TodoList" = "TodoList";
+
+"AppDescription" = "アプリの説明";
+"ContactUs" = "お問い合わせ";
+"PrivacyPolicy" = "プライバシーポリシー";
+"Logout" = "ログアウト";
+"DeleteAccount" = "アカウント削除";
