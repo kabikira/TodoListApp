@@ -9,17 +9,23 @@ import UIKit
 
 class NewRegistrationViewController: UIViewController {
     
-    @IBOutlet private weak var newRegisterLabel: UILabel!
+    @IBOutlet private weak var newRegisterLabel: UILabel! {
+        didSet {
+            newRegisterLabel.text = R.string.localizable.newRegistration()
+        }
+    }
     @IBOutlet private weak var registerEmailTextField: UITextField!
     @IBOutlet private weak var registerPasswordTextField: UITextField!
     @IBOutlet private weak var registerNameTextField: UITextField!
     @IBOutlet private weak var registerSendMailButton: UIButton! {
         didSet {
+            registerSendMailButton.setTitle(R.string.localizable.registerAndSendAnEmail(), for: .normal)
             registerSendMailButton.addTarget(self, action: #selector(tappedSendMail(_:)), for: .touchUpInside)
         }
     }
     @IBOutlet private weak var loginButton: UIButton! {
         didSet {
+            loginButton.setTitle(R.string.localizable.checkYourEmailAndLogIn(), for: .normal)
             loginButton.addTarget(self, action: #selector(tappedLogin(_:)), for: .touchUpInside)
         }
     }
@@ -47,7 +53,7 @@ private extension NewRegistrationViewController {
                 //TODO: Resultになおしてエラー処理書いたほうがいいかも
                 FirebaseUserManager.sendEmailVerification(to:user)
                 DispatchQueue.main.async {
-                    Alert.okAlert(vc: self, title: "Email sent.", message: "Please access the URL in the email")
+                    Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
