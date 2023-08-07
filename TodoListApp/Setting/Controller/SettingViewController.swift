@@ -30,7 +30,7 @@ extension SettingViewController: UITableViewDelegate {
         //TODO: セルによって画面遷移分岐させる
         switch indexPath.row {
         case SettingItemCell.singOutCellRow.rawValue:
-            Alert.cancelAlert(vc: self, title: "Sign out?", message: "",handler: { [weak self] _ in
+            Alert.cancelAlert(vc: self, title: R.string.localizable.signOut(), message: "",handler: { [weak self] _ in
                 DispatchQueue.main.async {
                     FirebaseUserManager.singOut { [weak self] result in
                         guard let self = self else { return }
@@ -47,7 +47,7 @@ extension SettingViewController: UITableViewDelegate {
             })
 
         case SettingItemCell.withDrawCellRow.rawValue:
-            Alert.cancelAlert(vc: self, title: "Are you sure you want to delete your account?", message: "Are you sure you want to delete your saved information?" ,handler: { [weak self] _ in
+            Alert.cancelAlert(vc: self, title: R.string.localizable.areYouSureYouWantToDeleteYourAccount(), message: R.string.localizable.areYouSureYouWantToDeleteYourSavedInformation() ,handler: { [weak self] _ in
                 FirebaseUserManager.withDarw { [weak self] result in
                     DispatchQueue.main.async {
                         guard let self = self else { return }
@@ -77,7 +77,7 @@ private extension SettingViewController {
     @objc func connectionLost() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            Alert.okAlert(vc: self, title: "Network Error", message: NetworkMonitor.connectionLost.rawValue)
+            Alert.okAlert(vc: self, title: R.string.localizable.networkErrors(), message: NetworkMonitor.connectionLost.rawValue)
         }
     }
 }
