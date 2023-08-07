@@ -164,7 +164,24 @@ private extension TodoListViewController {
 
 // MARK: - TableView
 extension TodoListViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.alpha = 0
+//        UIView.animate(withDuration: 0.4) {
+//            cell.alpha = 1.0
+//        }
+//    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.2,
+                       animations: {
+            cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        },
+                       completion: { _ in
+            UIView.animate(withDuration: 0.2) {
+                cell?.transform = CGAffineTransform.identity
+            }
+        })
         tableView.deselectRow(at: indexPath, animated: true)
         var todoItem = todoItems[indexPath.row]
         todoItem.isDone.toggle()
@@ -209,7 +226,7 @@ extension TodoListViewController: UITableViewDelegate {
             completionHandler(true)
             Router.shared.showTodoEdit(from: self, todoItems: self.todoItems[indexPath.row], todos: self.selectedTodos)
         }
-        editAction.backgroundColor = .green
+        editAction.backgroundColor = .systemGreen
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
 }

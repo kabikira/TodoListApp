@@ -19,10 +19,8 @@ class TodoEditViewController: UIViewController {
         self.selectedTodos = todos
     }
     override func viewDidLayoutSubviews() {
-        notesTextView.layer.borderWidth = 1.0
-        notesTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
-        notesTextView.layer.cornerRadius = 5.0
-        notesTextView.layer.masksToBounds = true
+        styleTextField(titleTextField)
+        styleTextView(notesTextView)
     }
     
     override func viewDidLoad() {
@@ -64,6 +62,22 @@ private extension TodoEditViewController {
     @objc func tapedCancelBotton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    // MARK: - Design
+    func styleTextField(_ textField: UITextField) {
+        textField.layer.cornerRadius = 12
+        textField.layer.shadowColor = UIColor.black.cgColor
+        textField.layer.shadowOffset = CGSize(width: 0, height: 2)
+        textField.layer.shadowOpacity = 0.1
+        textField.layer.shadowRadius = 10.0
+    }
+
+    func styleTextView(_ textView: UITextView) {
+        textView.layer.cornerRadius = 12
+        textView.layer.shadowColor = UIColor.black.cgColor
+        textView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        textView.layer.shadowOpacity = 0.1
+        textView.layer.shadowRadius = 10.0
+    }
     // MARK: - Notification Handling
     func observeNotifications() {
         NetworkMonitor.shared.startMonitoring()
@@ -88,5 +102,16 @@ extension TodoEditViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let titleText = titleTextField.text ?? ""
         return titleText.count + (string.count - range.length) <= MaxNumCharacters.maxTitle.rawValue
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.2) {
+            textField.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+        }
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.2) {
+            textField.transform = CGAffineTransform.identity
+        }
     }
 }
