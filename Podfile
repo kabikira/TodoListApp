@@ -9,6 +9,8 @@ target 'TodoListApp' do
   pod 'Firebase/Firestore'
   pod 'IQKeyboardManagerSwift'
   pod 'LicensePlist'
+  pod 'R.swift'
+
 
 
   # Pods for TodoListApp
