@@ -10,3 +10,19 @@
 "Check your email and log in" = "メールを確認してログインしてください";
 "Email sent." = "メールを送信しました。";
 "Please access the URL in the email" = "メール内のURLにアクセスしてください";
+
+"Login" = "ログイン";
+"Sign up for a new account" = "新規登録する";
+"ForgotPassword" = "パスワードを忘れた";
+
+"Password reset email sent" = "パスワードリセットのメールを送信しました";
+"Network Errors" = "ネットワークエラー";
+"Delete" = "削除";
+"Edit" = "編集";
+"TITLE" = "タイトル";
+"NOTES" = "ノート";
+"Done" = "完了";
+"Cancel" = "キャンセル";
+"Sign out?" = "サインアウトしますか？";
+"Are you sure you want to delete your account?" = "アカウントを削除してもよろしいですか？";
+"Are you sure you want to delete your saved information?" = "保存された情報を削除してもよろしいですか？";
