@@ -26,6 +26,16 @@ struct FirebaseFields {
         case updatedAt
     }
 }
+// 最初に入れるダミーデータ
+struct TodoConstants {
+    static let todosTitles = ["First Todo", "Second Todo", "Third Todo", "Fourth Todo"]
+    static let todosNotes = ["Notes for First Todo", "Notes for Second Todo", "Notes for Third Todo", "Notes for Fourth Todo"]
+    static let todosTypes = [FirebaseCollections.Todos.todosFirst.rawValue,
+                             FirebaseCollections.Todos.todosSecond.rawValue,
+                             FirebaseCollections.Todos.todosThird.rawValue,
+                             FirebaseCollections.Todos.todosFourth.rawValue]
+}
+
 
 enum MaxNumCharacters: Int {
     case maxEmail = 254

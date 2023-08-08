@@ -73,24 +73,8 @@ private extension NewRegistrationViewController {
                 print("メールチェック")
                 // userDefaに値をいれる
                 UserDefaults.standard.isLogined = true
-                //TODO: Todosを4つ作成､この処理を切り分ける､仮のタイトル､notes入力ユーザにわかりやすい例をいれておく
-                let todosTitles = ["First Todo", "Second Todo", "Third Todo", "Fourth Todo"]
-                let todosNotes = ["Notes for First Todo", "Notes for Second Todo", "Notes for Third Todo", "Notes for Fourth Todo"]
-                let todosTypes = [FirebaseCollections.Todos.todosFirst.rawValue,
-                                  FirebaseCollections.Todos.todosSecond.rawValue,
-                                  FirebaseCollections.Todos.todosThird.rawValue,
-                                  FirebaseCollections.Todos.todosFourth.rawValue]
-
-                for i in 0..<todosTypes.count {
-                    FirebaseDBManager.createTodo(title: todosTitles[i], notes: todosNotes[i], todos: todosTypes[i]) { result in
-                        switch result {
-                        case .success():
-                            print("Successfully created \(todosTypes[i]) database")
-                        case .failure(let error):
-                            print("Failed to create \(todosTypes[i]) database: \(error)")
-                        }
-                    }
-                }
+                // サンプルデータをTodoに入れる
+                self.createTodosFromConstants()
                 // loginへ画面遷移
                 Router.shared.showTodoList(from: self)
             case.failure(let error):
@@ -98,9 +82,23 @@ private extension NewRegistrationViewController {
                     Alert.showErrorAlert(vc: self, error: error)
                 }
             }
-
         }
-
+    }
+    func createTodosFromConstants() {
+        for i in 0..<TodoConstants.todosTypes.count {
+            FirebaseDBManager.createTodo(
+                title: TodoConstants.todosTitles[i],
+                notes: TodoConstants.todosNotes[i],
+                todos: TodoConstants.todosTypes[i]
+            ) { result in
+                switch result {
+                case .success():
+                    print("Successfully created \(TodoConstants.todosTypes[i]) database")
+                case .failure(let error):
+                    print("Failed to create \(TodoConstants.todosTypes[i]) database: \(error)")
+                }
+            }
+        }
     }
 }
 
