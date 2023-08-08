@@ -43,3 +43,4 @@
 "WrongPasswordError" = "入力した認証情報でサインインできません";
 "UserDisabledError" = "このアカウントは無効です";
 "WeakPasswordError" = "パスワードが脆弱すぎます";
+"Use without creating an account" = "簡単ログイン";
