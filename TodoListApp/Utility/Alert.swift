@@ -23,7 +23,7 @@ final class Alert {
         vc.present(cancelAlertVC, animated: true, completion: nil)
     }
     // error時のアラート
-    static func showErrorAlert(vc: UIViewController, error: Error?, title: String = "エラーが起きました") {
+    static func showErrorAlert(vc: UIViewController, error: Error?, title: String = R.string.localizable.generalError()) {
         guard let error = error else { return }
         print(title + error.localizedDescription)
         let message = ErrorHandling.firebaseErrorMessage(of: error)

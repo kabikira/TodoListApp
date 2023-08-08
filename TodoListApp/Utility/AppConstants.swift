@@ -38,24 +38,29 @@ enum SettingItemCell: Int {
     case singOutCellRow = 3
     case withDrawCellRow = 4
 }
+struct ImageNames {
+    static let checkmarkCircle = "checkmark.circle"
+    static let circle = "circle"
+    static let gearshape = "gearshape"
+}
+
 enum URLs {
     static let googleForms = "https://docs.google.com/forms/d/e/1FAIpQLSfpFrJaXEElgvXTiovIgSMzstFfu5rATe4pc4L8lIe12MiXWw/viewform"
     static let privacyPolicy = "https://kabikira.github.io/imael.github.io/privacy/privacy.html"
 }
-
 struct ErrorHandling {
     static func firebaseErrorMessage(of error: Error) -> String {
-        var message = "エラーが発生しました"
+        var message = R.string.localizable.generalError()
         // エラー処理
         if let error = error as? AuthErrorCode {
             switch error.code {
-            case .networkError: message = "ネットワークに接続できません"
-            case .userNotFound: message = "ユーザが見つかりません"
-            case .invalidEmail: message = "不正なメールアドレスです"
-            case .emailAlreadyInUse: message = "このメールアドレスは既に使われています"
-            case .wrongPassword: message = "入力した認証情報でサインインできません"
-            case .userDisabled: message = "このアカウントは無効です"
-            case .weakPassword: message = "パスワードが脆弱すぎます"
+            case .networkError: message = R.string.localizable.networkError()
+            case .userNotFound: message = R.string.localizable.userNotFoundError()
+            case .invalidEmail: message = R.string.localizable.invalidEmailError()
+            case .emailAlreadyInUse: message = R.string.localizable.emailInUseError()
+            case .wrongPassword: message = R.string.localizable.wrongPasswordError()
+            case .userDisabled: message = R.string.localizable.userDisabledError()
+            case .weakPassword: message = R.string.localizable.weakPasswordError()
             default:
                 print("unknown error")
             }

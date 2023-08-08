@@ -5,3 +5,41 @@
   Created by koala panda on 2023/07/30.
   
 */
+"NewRegistration" = "新規登録";
+"Register and send an email." = "登録してメールを送信します";
+"Check your email and log in" = "メールを確認してログインしてください";
+"Email sent." = "メールを送信しました。";
+"Please access the URL in the email" = "メール内のURLにアクセスしてください";
+
+"Login" = "ログイン";
+"Sign up for a new account" = "新規登録する";
+"ForgotPassword" = "パスワードを忘れた";
+
+"Password reset email sent" = "パスワードリセットのメールを送信しました";
+"Network Errors" = "ネットワークエラー";
+"Delete" = "削除";
+"Edit" = "編集";
+"TITLE" = "タイトル";
+"NOTES" = "ノート";
+"Done" = "完了";
+"Cancel" = "キャンセル";
+"Sign out?" = "サインアウトしますか？";
+"Are you sure you want to delete your account?" = "アカウントを削除してもよろしいですか？";
+"Are you sure you want to delete your saved information?" = "保存された情報を削除してもよろしいですか？";
+
+"TodoList" = "TodoList";
+
+"AppDescription" = "アプリの説明";
+"ContactUs" = "お問い合わせ";
+"PrivacyPolicy" = "プライバシーポリシー";
+"Logout" = "ログアウト";
+"DeleteAccount" = "アカウント削除";
+
+"GeneralError" = "エラーが発生しました";
+"NetworkError" = "ネットワークに接続できません";
+"UserNotFoundError" = "ユーザが見つかりません";
+"InvalidEmailError" = "不正なメールアドレスです";
+"EmailInUseError" = "このメールアドレスは既に使われています";
+"WrongPasswordError" = "入力した認証情報でサインインできません";
+"UserDisabledError" = "このアカウントは無効です";
+"WeakPasswordError" = "パスワードが脆弱すぎます";
