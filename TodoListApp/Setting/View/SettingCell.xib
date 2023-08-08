@@ -57,7 +57,7 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="mBY-La-dOB"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
             <constraints>
                 <constraint firstItem="arU-Fg-M38" firstAttribute="bottom" secondItem="NEh-US-iSa" secondAttribute="bottom" priority="750" id="TIA-p4-WSf"/>
                 <constraint firstItem="arU-Fg-M38" firstAttribute="top" secondItem="NEh-US-iSa" secondAttribute="top" id="V8u-DD-Eev"/>
@@ -73,7 +73,7 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
