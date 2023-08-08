@@ -28,6 +28,7 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DaI-8q-0FL" userLabel="Register Email Text Field">
                                         <rect key="frame" x="0.0" y="33.333333333333371" width="300" height="44"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="D8e-QE-Vfh"/>
                                             <constraint firstAttribute="height" constant="44" id="cZt-wY-4zX"/>
@@ -37,6 +38,7 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mR-xj-Dyb" userLabel="Register Password Text Field">
                                         <rect key="frame" x="0.0" y="85.333333333333371" width="300" height="44"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="1zo-PF-jTr"/>
                                             <constraint firstAttribute="height" constant="44" id="b0K-DW-XER"/>
@@ -46,6 +48,7 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zwJ-j7-keR" userLabel="Register Name Text Field">
                                         <rect key="frame" x="0.0" y="137.33333333333337" width="300" height="44"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Io4-oZ-Jp1"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="UYY-Li-lBr"/>
@@ -74,7 +77,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="voE-Na-bXR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="WGW-Jv-Kuv"/>
                             <constraint firstItem="voE-Na-bXR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="e42-IB-zxL"/>
@@ -95,7 +98,10 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGray6Color">
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>

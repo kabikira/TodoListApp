@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ww-JI-ttl">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -39,6 +39,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gsK-LR-UeQ" userLabel="Register Email Text Field">
                                                 <rect key="frame" x="14.666666666666657" y="93.333333333333371" width="300" height="44"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="84h-dH-PJG"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="azb-ZU-fq3"/>
@@ -48,6 +49,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="guE-I9-v9K" userLabel="Register Password Text Field">
                                                 <rect key="frame" x="14.666666666666657" y="149.33333333333337" width="300" height="44"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="FaB-cI-hb9"/>
                                                     <constraint firstAttribute="height" constant="44" id="KNI-hU-hMO"/>
@@ -75,7 +77,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bgB-YM-PMA"/>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SqM-ho-WxU" firstAttribute="centerY" secondItem="AQc-6B-K37" secondAttribute="centerY" id="eZD-zb-Wus"/>
                             <constraint firstItem="SqM-ho-WxU" firstAttribute="centerX" secondItem="AQc-6B-K37" secondAttribute="centerX" id="uBm-Ux-jIE"/>
@@ -97,7 +99,10 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGray6Color">
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
