@@ -8,7 +8,13 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
+
+    @IBOutlet weak var anonymousLoginButton: UIButton! {
+        didSet {
+            anonymousLoginButton.setTitle(R.string.localizable.useWithoutCreatingAnAccount(), for: .normal)
+            anonymousLoginButton.addTarget(self, action: #selector(tapedAnonymousLoginButton(_:)), for: .touchUpInside)
+        }
+    }
     @IBOutlet private weak var loginLanel: UILabel! {
         didSet {
             loginLanel.text = R.string.localizable.login()
@@ -69,7 +75,41 @@ private extension LoginViewController {
         // パスワード送信画面に遷移
         Router.shared.showPasswordReset(form: self)
     }
-    
+    // 匿名ログイン
+    @objc func tapedAnonymousLoginButton(_ sender: Any) {
+        FirebaseUserManager.anonymousLogin { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case.failure(let error):
+                DispatchQueue.main.async {
+                    Alert.showErrorAlert(vc: self, error: error)
+                }
+            case.success():
+                // userDefaに値をいれる
+                UserDefaults.standard.isLogined = true
+                // サンプルデータをTodoに入れる
+                self.createTodosFromConstants()
+                // 画面遷移TodoListへ
+                Router.shared.showTodoList(from: self)
+            }
+        }
+    }
+    func createTodosFromConstants() {
+        for i in 0..<TodoConstants.todosTypes.count {
+            FirebaseDBManager.createTodo(
+                title: TodoConstants.todosTitles[i],
+                notes: TodoConstants.todosNotes[i],
+                todos: TodoConstants.todosTypes[i]
+            ) { result in
+                switch result {
+                case .success():
+                    print("Successfully created \(TodoConstants.todosTypes[i]) database")
+                case .failure(let error):
+                    print("Failed to create \(TodoConstants.todosTypes[i]) database: \(error)")
+                }
+            }
+        }
+    }
 }
 // MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
