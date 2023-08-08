@@ -20,6 +20,18 @@ final class FirebaseUserManager {
             }
         }
     }
+    // MARK: - 匿名ログイン
+   static func anonymousLogin(completion: @escaping(Result<Void, NSError>) -> Void) {
+        Auth.auth().signInAnonymously() { result, error  in
+            if let error = error {
+                completion(.failure(error as NSError))
+            } else {
+                guard let user = result?.user else { return }
+                print(user.uid)
+                completion(.success)
+            }
+        }
+    }
     // MARK: - ログイン機能
     static func singIn(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
