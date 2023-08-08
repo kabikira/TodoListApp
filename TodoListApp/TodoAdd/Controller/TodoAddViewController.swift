@@ -28,7 +28,6 @@ class TodoAddViewController: UIViewController {
         notesTextView.delegate = self
         titleTextField.delegate = self
         observeNotifications()
-        navigationItem.title = "AddTodo"
         // TODO: Doneでtodo編集してセルを更新させてとじる
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.done(), style: .done, target: self, action: #selector(tapedDoneBotton(_:)))
         // TODO: 閉じる
