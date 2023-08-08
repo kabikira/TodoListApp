@@ -44,6 +44,8 @@
 		3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C972A7DD9C700C969E6 /* Alert.swift */; };
 		3B8F5C9A2A7E2EE400C969E6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C992A7E2EE400C969E6 /* String+.swift */; };
 		3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C9C2A81120900C969E6 /* R.generated.swift */; };
+		3B8F5CA02A8283F800C969E6 /* AccountUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B8F5C9F2A8283F800C969E6 /* AccountUpgrade.storyboard */; };
+		3B8F5CA22A82841E00C969E6 /* AccountUpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */; };
 		9111305FEC1717BF98C8238C /* Pods_TodoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		3B8F5C972A7DD9C700C969E6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3B8F5C992A7E2EE400C969E6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3B8F5C9C2A81120900C969E6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		3B8F5C9F2A8283F800C969E6 /* AccountUpgrade.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountUpgrade.storyboard; sourceTree = "<group>"; };
+		3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUpgradeViewController.swift; sourceTree = "<group>"; };
 		FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD276F2FB2DE0C4DAD80A825 /* Pods-TodoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +137,7 @@
 				3B89CEB72A76558A0090550A /* Model */,
 				3B89CEC62A7656DE0090550A /* NewRegistration */,
 				3B89CEB82A7655930090550A /* Login */,
+				3B8F5C9E2A8283BC00C969E6 /* AccountUpgrade */,
 				3B89CF002A77F75C0090550A /* PasswordReset */,
 				3B89CEB92A7655A10090550A /* TodoList */,
 				3B89CEBF2A7656270090550A /* TodoAdd */,
@@ -312,6 +317,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		3B8F5C9E2A8283BC00C969E6 /* AccountUpgrade */ = {
+			isa = PBXGroup;
+			children = (
+				3B8F5C9F2A8283F800C969E6 /* AccountUpgrade.storyboard */,
+				3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */,
+			);
+			path = AccountUpgrade;
+			sourceTree = "<group>";
+		};
 		5C2B24D71C88C8A6DE6C9749 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +416,7 @@
 				3B89CEF42A7662B10090550A /* GoogleService-Info.plist in Resources */,
 				3B89CEDB2A7658ED0090550A /* TodoListCell.xib in Resources */,
 				3B83073F2A75E42C00C3068B /* Assets.xcassets in Resources */,
+				3B8F5CA02A8283F800C969E6 /* AccountUpgrade.storyboard in Resources */,
 				3B89CED52A7658BA0090550A /* TodoList.storyboard in Resources */,
 				3B89CECD2A7657D90090550A /* NewRegistration.storyboard in Resources */,
 				3B89CEE52A7659720090550A /* Setting.storyboard in Resources */,
@@ -499,6 +514,7 @@
 				3B89CEF02A765A9F0090550A /* UserDefaults+.swift in Sources */,
 				3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */,
 				3B89CEF22A765B6F0090550A /* TodoItemModel.swift in Sources */,
+				3B8F5CA22A82841E00C969E6 /* AccountUpgradeViewController.swift in Sources */,
 				3B89CEE32A76595C0090550A /* TodoEditViewController.swift in Sources */,
 				3B89CEEC2A765A6A0090550A /* Router.swift in Sources */,
 				3B8307362A75E42A00C3068B /* AppDelegate.swift in Sources */,
