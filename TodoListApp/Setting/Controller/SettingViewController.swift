@@ -29,7 +29,17 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO: セルによって画面遷移分岐させる
         switch indexPath.row {
+        case SettingItemCell.AccountUpgrade.rawValue:
+            DispatchQueue.main.async {
+                Alert.cancelAlert(vc: self, title: "アカウントをアップグレードします", message: "データが保存されます", handler: { [weak self] _ in
+                    guard let self = self else { return }
+//                    Router.shared.showPasswordReset(form: self)
+                    Router.shared.showAccountUpgrade(from: self)
+                })
+            }
+
         case SettingItemCell.singOutCellRow.rawValue:
+            //TODO: メインスレッドで実行
             Alert.cancelAlert(vc: self, title: R.string.localizable.signOut(), message: "",handler: { [weak self] _ in
                 DispatchQueue.main.async {
                     FirebaseUserManager.singOut { [weak self] result in
