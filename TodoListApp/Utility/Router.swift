@@ -37,6 +37,11 @@ final class Router {
         guard let newRegistration = R.storyboard.newRegistration.instantiateInitialViewController() else { return }
         show(from: form, to: newRegistration)
     }
+    func showAccountUpgrade(from: UIViewController) {
+        guard let accountUpgrade = R.storyboard.accountUpgrade.instantiateInitialViewController() else { return }
+        showPresent(from: from, to: accountUpgrade)
+        
+    }
 
     func showPasswordReset(form: UIViewController) {
         guard let passwordReset = R.storyboard.passwordReset.instantiateInitialViewController() else { return }
@@ -67,9 +72,6 @@ final class Router {
     func showStettingItems(from: UIViewController, settingItem: SettingItem) {
         // お問い合わせとプライバシーアンドポリシーはブラウザから見てもらう
         switch settingItem.title {
-        case settingItems[0].title:
-            // TODO: チュートリアル画面を実装
-            print("説明画面へ")
         case settingItems[1].title:
             print("お問い合わせ")
             guard let url = URL(string: URLs.googleForms) else { return }
