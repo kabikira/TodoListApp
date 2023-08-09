@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="CGH-wI-Rg4" userLabel="Base Stack View">
-                                <rect key="frame" x="46.666666666666657" y="301.33333333333331" width="300" height="249.33333333333331"/>
+                                <rect key="frame" x="46.666666666666657" y="329.33333333333331" width="300" height="193.33333333333331"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SWX-Es-geb" userLabel="Log in Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="249.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="193.33333333333334"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AccountUpgrade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-4K-7Ef">
                                                 <rect key="frame" x="72" y="0.0" width="156" height="25.333333333333332"/>
@@ -49,22 +49,13 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZL-i8-agN">
-                                                <rect key="frame" x="47.333333333333343" y="149.33333333333337" width="205" height="44"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpQ-RM-XL7">
+                                                <rect key="frame" x="131.33333333333334" y="149.33333333333337" width="37" height="44"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="4Qm-f3-K3Q"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Register and send us an email"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcC-a8-o56">
-                                                <rect key="frame" x="55.333333333333343" y="205.33333333333337" width="189" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="uNf-su-vlo"/>
+                                                    <constraint firstAttribute="height" constant="44" id="TtD-4o-Ixd"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Check your email and log in"/>
+                                                <state key="normal" title="Done"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -81,10 +72,9 @@
                     <navigationItem key="navigationItem" id="cWd-8r-q1D"/>
                     <connections>
                         <outlet property="AccountUpgradeLabel" destination="4gt-4K-7Ef" id="9L7-k4-9t9"/>
+                        <outlet property="doneButton" destination="GpQ-RM-XL7" id="vk7-oW-kbU"/>
                         <outlet property="emailTextField" destination="3wJ-Wv-fsh" id="xLr-D7-e2h"/>
-                        <outlet property="loginButton" destination="xcC-a8-o56" id="4vb-yK-2yf"/>
                         <outlet property="passwordTextField" destination="rQZ-rZ-Gyh" id="5A8-z2-fF2"/>
-                        <outlet property="registerSendMailButton" destination="5ZL-i8-agN" id="nYu-om-OyZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0j-QJ-nMp" sceneMemberID="firstResponder"/>

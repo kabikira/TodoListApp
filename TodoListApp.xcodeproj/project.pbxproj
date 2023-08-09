@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2253132A8333C000B7ECE3 /* AccountUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */; };
 		3B8307362A75E42A00C3068B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307352A75E42A00C3068B /* AppDelegate.swift */; };
 		3B8307382A75E42A00C3068B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307372A75E42A00C3068B /* SceneDelegate.swift */; };
 		3B83073F2A75E42C00C3068B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B83073E2A75E42C00C3068B /* Assets.xcassets */; };
@@ -44,13 +45,13 @@
 		3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C972A7DD9C700C969E6 /* Alert.swift */; };
 		3B8F5C9A2A7E2EE400C969E6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C992A7E2EE400C969E6 /* String+.swift */; };
 		3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C9C2A81120900C969E6 /* R.generated.swift */; };
-		3B8F5CA02A8283F800C969E6 /* AccountUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B8F5C9F2A8283F800C969E6 /* AccountUpgrade.storyboard */; };
 		3B8F5CA22A82841E00C969E6 /* AccountUpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */; };
 		9111305FEC1717BF98C8238C /* Pods_TodoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C1B6E6A4B152341A9AB756E /* Pods-TodoListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.release.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.release.xcconfig"; sourceTree = "<group>"; };
+		3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountUpgrade.storyboard; sourceTree = "<group>"; };
 		3B8307322A75E42A00C3068B /* TodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8307352A75E42A00C3068B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B8307372A75E42A00C3068B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		3B8F5C972A7DD9C700C969E6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3B8F5C992A7E2EE400C969E6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3B8F5C9C2A81120900C969E6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
-		3B8F5C9F2A8283F800C969E6 /* AccountUpgrade.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountUpgrade.storyboard; sourceTree = "<group>"; };
 		3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUpgradeViewController.swift; sourceTree = "<group>"; };
 		FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD276F2FB2DE0C4DAD80A825 /* Pods-TodoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +109,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B1905E12A83331D00986B47 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		3B8307292A75E42A00C3068B = {
 			isa = PBXGroup;
 			children = (
@@ -320,8 +327,9 @@
 		3B8F5C9E2A8283BC00C969E6 /* AccountUpgrade */ = {
 			isa = PBXGroup;
 			children = (
-				3B8F5C9F2A8283F800C969E6 /* AccountUpgrade.storyboard */,
+				3B1905E12A83331D00986B47 /* Controller */,
 				3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */,
+				3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */,
 			);
 			path = AccountUpgrade;
 			sourceTree = "<group>";
@@ -411,12 +419,12 @@
 				3B8307422A75E42C00C3068B /* LaunchScreen.storyboard in Resources */,
 				3B89CEF62A7663D50090550A /* Settings.bundle in Resources */,
 				3B89CEDD2A76590B0090550A /* TodoAdd.storyboard in Resources */,
+				3B2253132A8333C000B7ECE3 /* AccountUpgrade.storyboard in Resources */,
 				3B89CEB42A763BBC0090550A /* Localizable.strings in Resources */,
 				3B89CED12A76580E0090550A /* Login.storyboard in Resources */,
 				3B89CEF42A7662B10090550A /* GoogleService-Info.plist in Resources */,
 				3B89CEDB2A7658ED0090550A /* TodoListCell.xib in Resources */,
 				3B83073F2A75E42C00C3068B /* Assets.xcassets in Resources */,
-				3B8F5CA02A8283F800C969E6 /* AccountUpgrade.storyboard in Resources */,
 				3B89CED52A7658BA0090550A /* TodoList.storyboard in Resources */,
 				3B89CECD2A7657D90090550A /* NewRegistration.storyboard in Resources */,
 				3B89CEE52A7659720090550A /* Setting.storyboard in Resources */,
