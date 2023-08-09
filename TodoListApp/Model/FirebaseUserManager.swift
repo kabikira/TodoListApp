@@ -32,6 +32,26 @@ final class FirebaseUserManager {
             }
         }
     }
+    // MARK: - アカウントアップグレード
+    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
+        if let user = Auth.auth().currentUser, user.isAnonymous {
+            let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+            user.link(with: credential) { result, error in
+                if let error = error {
+                    // エラーが発生した場合の処理
+                    completion(.failure(error))
+                    return
+                }
+                // エラーがない場合、成功として処理
+                guard let user = result?.user else { return }
+                completion(.success(user))
+            }
+        } else {
+            // 期待するユーザー状態ではない場合のエラー
+            completion(.failure(NSError(domain: "com.example.firebase", code: -1, userInfo: [NSLocalizedDescriptionKey: "Not an anonymous user or user is nil."])))
+        }
+    }
+
     // MARK: - ログイン機能
     static func singIn(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
