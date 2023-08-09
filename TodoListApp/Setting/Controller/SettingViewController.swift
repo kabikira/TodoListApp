@@ -57,6 +57,7 @@ extension SettingViewController: UITableViewDelegate {
             })
 
         case SettingItemCell.withDrawCellRow.rawValue:
+            //TODO: メインスレッドで実行
             Alert.cancelAlert(vc: self, title: R.string.localizable.areYouSureYouWantToDeleteYourAccount(), message: R.string.localizable.areYouSureYouWantToDeleteYourSavedInformation() ,handler: { [weak self] _ in
                 FirebaseUserManager.withDarw { [weak self] result in
                     DispatchQueue.main.async {
