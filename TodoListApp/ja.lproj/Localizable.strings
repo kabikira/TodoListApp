@@ -44,3 +44,4 @@
 "UserDisabledError" = "このアカウントは無効です";
 "WeakPasswordError" = "パスワードが脆弱すぎます";
 "Use without creating an account" = "簡単ログイン";
+"AccountUpgrade" = "アカウントをアップグレード";
