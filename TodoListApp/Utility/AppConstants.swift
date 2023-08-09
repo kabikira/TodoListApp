@@ -45,6 +45,7 @@ enum MaxNumCharacters: Int {
     case maxTitle = 50
 }
 enum SettingItemCell: Int {
+    case AccountUpgrade = 0
     case singOutCellRow = 3
     case withDrawCellRow = 4
 }
