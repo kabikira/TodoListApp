@@ -103,6 +103,10 @@ final class FirebaseUserManager {
             }
         }
     }
+    // MARK: - ログインユーザーを取得
+    static func getCurrentUser() -> User? {
+            return Auth.auth().currentUser
+        }
     // MARK: - ログイン状態をチェック
     static func checkIsLogin(completion: () -> Void) {
         if Auth.auth().currentUser != nil {
