@@ -28,24 +28,28 @@ final class Router {
         window?.makeKeyAndVisible()
         self.window = window
         }
-    func showLogin(form: UIViewController) {
+    func showLogin(from: UIViewController) {
         guard let login = R.storyboard.login.instantiateInitialViewController() else { return }
-        show(from: form, to: login)
+        show(from: from, to: login)
     }
 
-    func showNewRegistration(form: UIViewController) {
+    func showNewRegistration(from: UIViewController) {
         guard let newRegistration = R.storyboard.newRegistration.instantiateInitialViewController() else { return }
-        show(from: form, to: newRegistration)
+        show(from: from, to: newRegistration)
     }
     func showAccountUpgrade(from: UIViewController) {
         guard let accountUpgrade = R.storyboard.accountUpgrade.instantiateInitialViewController() else { return }
         showPresent(from: from, to: accountUpgrade)
         
     }
+    func showEmailUpdate(from: UIViewController) {
+        guard let emailUpdate = R.storyboard.emailUpdate.instantiateInitialViewController() else { return }
+        showPresent(from: from, to: emailUpdate)
+    }
 
-    func showPasswordReset(form: UIViewController) {
+    func showPasswordReset(from: UIViewController) {
         guard let passwordReset = R.storyboard.passwordReset.instantiateInitialViewController() else { return }
-        showPresent(from: form, to: passwordReset)
+        showPresent(from: from, to: passwordReset)
     }
 
     func showTodoList(from: UIViewController) {
