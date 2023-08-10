@@ -33,6 +33,7 @@ class EmailUpdateViewController: UIViewController {
 // MARK: - ACTION
 private extension EmailUpdateViewController {
     @objc func tappedUpdateEmailButton() {
+        updateEmailButton.isUserInteractionEnabled = false
         let email = emailTextField.text ?? ""
             // メールアドレスを更新
             FirebaseUserManager.updateEmail(to: email) { [weak self] result in
@@ -51,6 +52,7 @@ private extension EmailUpdateViewController {
                         Alert.showErrorAlert(vc: self, error: error)
                     }
                 }
+                self.updateEmailButton.isUserInteractionEnabled = true
             }
     }
     @objc func tappedLoginButton() {

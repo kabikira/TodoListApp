@@ -53,6 +53,7 @@ private extension LoginViewController {
         Router.shared.showNewRegistration(from: self)
     }
     @objc func tapedLoginButton(_ sender: Any) {
+        loginButton.isUserInteractionEnabled = false
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         // ログイン処理
@@ -69,6 +70,7 @@ private extension LoginViewController {
                     Alert.showErrorAlert(vc: self, error: error)
                 }
             }
+            self.loginButton.isUserInteractionEnabled = true
         }
     }
     @objc func tapedPasswordResetButton(_ sender: Any) {
@@ -77,6 +79,7 @@ private extension LoginViewController {
     }
     // 匿名ログイン
     @objc func tapedAnonymousLoginButton(_ sender: Any) {
+        anonymousLoginButton.isUserInteractionEnabled = false
         FirebaseUserManager.anonymousLogin { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -93,6 +96,7 @@ private extension LoginViewController {
                 // 画面遷移TodoListへ
                 Router.shared.showTodoList(from: self)
             }
+            self.anonymousLoginButton.isUserInteractionEnabled = true
         }
     }
     func createTodosFromConstants() {
