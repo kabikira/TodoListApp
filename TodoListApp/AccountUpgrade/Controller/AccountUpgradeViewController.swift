@@ -24,6 +24,8 @@ class AccountUpgradeViewController: UIViewController {
         }
     }
 
+    @IBOutlet private weak var userNameTextField: UITextField!
+
     @IBOutlet private weak var loginButton: UIButton! {
         didSet {
             loginButton.setTitle(R.string.localizable.checkYourEmailAndLogIn(), for: .normal)
