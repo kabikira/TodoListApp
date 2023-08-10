@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B2253132A8333C000B7ECE3 /* AccountUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */; };
+		3B2253162A837F8200B7ECE3 /* EmailUpdate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */; };
+		3B2253182A837F9200B7ECE3 /* EmailUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */; };
 		3B8307362A75E42A00C3068B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307352A75E42A00C3068B /* AppDelegate.swift */; };
 		3B8307382A75E42A00C3068B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307372A75E42A00C3068B /* SceneDelegate.swift */; };
 		3B83073F2A75E42C00C3068B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B83073E2A75E42C00C3068B /* Assets.xcassets */; };
@@ -51,7 +53,9 @@
 
 /* Begin PBXFileReference section */
 		0C1B6E6A4B152341A9AB756E /* Pods-TodoListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.release.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.release.xcconfig"; sourceTree = "<group>"; };
-		3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountUpgrade.storyboard; sourceTree = "<group>"; };
+		3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = AccountUpgrade.storyboard; path = ../AccountUpgrade.storyboard; sourceTree = "<group>"; };
+		3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmailUpdate.storyboard; sourceTree = "<group>"; };
+		3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUpdateViewController.swift; sourceTree = "<group>"; };
 		3B8307322A75E42A00C3068B /* TodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8307352A75E42A00C3068B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B8307372A75E42A00C3068B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,8 +116,19 @@
 		3B1905E12A83331D00986B47 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */,
+				3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		3B2253142A837F5C00B7ECE3 /* EmailUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */,
+				3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */,
+			);
+			path = EmailUpdate;
 			sourceTree = "<group>";
 		};
 		3B8307292A75E42A00C3068B = {
@@ -144,6 +159,7 @@
 				3B89CEB72A76558A0090550A /* Model */,
 				3B89CEC62A7656DE0090550A /* NewRegistration */,
 				3B89CEB82A7655930090550A /* Login */,
+				3B2253142A837F5C00B7ECE3 /* EmailUpdate */,
 				3B8F5C9E2A8283BC00C969E6 /* AccountUpgrade */,
 				3B89CF002A77F75C0090550A /* PasswordReset */,
 				3B89CEB92A7655A10090550A /* TodoList */,
@@ -328,8 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				3B1905E12A83331D00986B47 /* Controller */,
-				3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */,
-				3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */,
 			);
 			path = AccountUpgrade;
 			sourceTree = "<group>";
@@ -422,6 +436,7 @@
 				3B2253132A8333C000B7ECE3 /* AccountUpgrade.storyboard in Resources */,
 				3B89CEB42A763BBC0090550A /* Localizable.strings in Resources */,
 				3B89CED12A76580E0090550A /* Login.storyboard in Resources */,
+				3B2253162A837F8200B7ECE3 /* EmailUpdate.storyboard in Resources */,
 				3B89CEF42A7662B10090550A /* GoogleService-Info.plist in Resources */,
 				3B89CEDB2A7658ED0090550A /* TodoListCell.xib in Resources */,
 				3B83073F2A75E42C00C3068B /* Assets.xcassets in Resources */,
@@ -519,6 +534,7 @@
 			files = (
 				3B89CEE92A765A520090550A /* NetworkMonitor.swift in Sources */,
 				3B89CED72A7658C90090550A /* TodoListViewController.swift in Sources */,
+				3B2253182A837F9200B7ECE3 /* EmailUpdateViewController.swift in Sources */,
 				3B89CEF02A765A9F0090550A /* UserDefaults+.swift in Sources */,
 				3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */,
 				3B89CEF22A765B6F0090550A /* TodoItemModel.swift in Sources */,
