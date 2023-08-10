@@ -17,4 +17,13 @@ extension UserDefaults {
             bool(forKey: loginedKey)
         }
     }
+    private var isAuthAccountCreatedKey: String { "isAuthAccountCreated" }
+    var isAuthAccountCreated: Bool {
+        set {
+            setValue(newValue, forKey: isAuthAccountCreatedKey)
+        }
+        get {
+            bool(forKey: isAuthAccountCreatedKey)
+        }
+    }
 }
