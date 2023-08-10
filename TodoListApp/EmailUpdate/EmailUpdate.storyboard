@@ -65,7 +65,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="e1d-bf-wW3" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="TBV-QB-aSm"/>
                             <constraint firstItem="e1d-bf-wW3" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="cbv-GM-hCB"/>
@@ -92,6 +92,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
