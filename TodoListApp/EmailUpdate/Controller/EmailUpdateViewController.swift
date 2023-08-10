@@ -64,6 +64,8 @@ private extension EmailUpdateViewController {
             switch result {
             case.success():
                 print("メールチェック")
+                // UserDefaultsに値を入れる
+                UserDefaults.standard.isAuthAccountCreated = true
                 DispatchQueue.main.async {
                     Alert.okAlert(vc: self, title: "アカウントアップグレード", message: "認証しました") { [weak self] _ in
                         guard let self = self else { return }
