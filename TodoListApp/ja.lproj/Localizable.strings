@@ -45,3 +45,4 @@
 "WeakPasswordError" = "パスワードが脆弱すぎます";
 "Use without creating an account" = "簡単ログイン";
 "AccountUpgrade" = "アカウントをアップグレード";
+"Did you enter a wrong email address?" = "メールアドレスを間違えて入力しましたか?";
