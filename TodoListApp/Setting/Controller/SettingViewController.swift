@@ -31,7 +31,7 @@ extension SettingViewController: UITableViewDelegate {
         switch indexPath.row {
         case SettingItemCell.AccountUpgrade.rawValue:
             DispatchQueue.main.async {
-                if !UserDefaults.standard.isAuthAccountCreated {
+                if UserDefaults.standard.isAuthAccountCreated {
                     Alert.okAlert(vc: self, title: "すでにアップグレード済みです", message: "")
                     return
                 }
