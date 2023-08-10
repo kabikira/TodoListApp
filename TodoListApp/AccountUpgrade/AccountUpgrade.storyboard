@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="CGH-wI-Rg4" userLabel="Base Stack View">
-                                <rect key="frame" x="46.666666666666657" y="273.33333333333337" width="300" height="305.33333333333337"/>
+                                <rect key="frame" x="46.666666666666657" y="245.33333333333334" width="300" height="361.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SWX-Es-geb" userLabel="Log in Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="305.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="361.33333333333331"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSJ-PE-e6x">
                                                 <rect key="frame" x="55.333333333333343" y="0.0" width="189" height="44"/>
