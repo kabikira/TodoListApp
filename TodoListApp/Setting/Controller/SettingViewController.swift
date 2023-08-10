@@ -50,6 +50,7 @@ extension SettingViewController: UITableViewDelegate {
                         case.success():
                             print("サインアウト")
                             UserDefaults.standard.isLogined = false
+                            UserDefaults.standard.isAuthAccountCreated = false
                             Router.shared.showReStart()
                         }
                     }
