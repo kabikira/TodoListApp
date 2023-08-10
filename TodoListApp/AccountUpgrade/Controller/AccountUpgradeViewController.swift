@@ -39,7 +39,6 @@ class AccountUpgradeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.isModalInPresentation = true
         wrongEmailButton.isHidden = true
 
     }
@@ -48,6 +47,8 @@ class AccountUpgradeViewController: UIViewController {
 // MARK: - Actions
 private extension AccountUpgradeViewController {
     @objc func tappedregisterSendMailButton(_ sender: Any) {
+        // メール送信成功時認証メールを確認するまで画面を遷移できなくする
+        self.isModalInPresentation = true
         wrongEmailButton.isHidden = false
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
