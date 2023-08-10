@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k4I-5q-dJt">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Account Upgrade View Controller-->
+        <scene sceneID="l5R-TB-1o0">
+            <objects>
+                <viewController id="k4I-5q-dJt" customClass="AccountUpgradeViewController" customModule="TodoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a2C-hT-3RY">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="CGH-wI-Rg4" userLabel="Base Stack View">
+                                <rect key="frame" x="46.666666666666657" y="273.33333333333337" width="300" height="305.33333333333337"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SWX-Es-geb" userLabel="Log in Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="305.33333333333331"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSJ-PE-e6x">
+                                                <rect key="frame" x="55.333333333333343" y="0.0" width="189" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="6bw-2U-8RJ"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Wrong email address."/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AccountUpgrade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-4K-7Ef">
+                                                <rect key="frame" x="72" y="56.000000000000007" width="156" height="25.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3wJ-Wv-fsh" userLabel="Register Email Text Field">
+                                                <rect key="frame" x="0.0" y="93.333333333333371" width="300" height="44"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="NpH-1v-3zv"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="RG9-Rx-8p7"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQZ-rZ-Gyh" userLabel="Register Password Text Field">
+                                                <rect key="frame" x="0.0" y="149.33333333333337" width="300" height="44"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="4RJ-B9-gb5"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="vEH-yH-40Y"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZL-i8-agN">
+                                                <rect key="frame" x="47.333333333333343" y="205.33333333333337" width="205" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="4Qm-f3-K3Q"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Register and send us an email"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcC-a8-o56">
+                                                <rect key="frame" x="55.333333333333343" y="261.33333333333331" width="189" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="uNf-su-vlo"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Check your email and log in"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YMZ-k8-C1r"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CGH-wI-Rg4" firstAttribute="centerY" secondItem="a2C-hT-3RY" secondAttribute="centerY" id="C47-is-Yen"/>
+                            <constraint firstItem="CGH-wI-Rg4" firstAttribute="centerX" secondItem="a2C-hT-3RY" secondAttribute="centerX" id="XNs-20-4PE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cWd-8r-q1D"/>
+                    <connections>
+                        <outlet property="AccountUpgradeLabel" destination="4gt-4K-7Ef" id="9L7-k4-9t9"/>
+                        <outlet property="emailTextField" destination="3wJ-Wv-fsh" id="xLr-D7-e2h"/>
+                        <outlet property="loginButton" destination="xcC-a8-o56" id="4vb-yK-2yf"/>
+                        <outlet property="passwordTextField" destination="rQZ-rZ-Gyh" id="5A8-z2-fF2"/>
+                        <outlet property="registerSendMailButton" destination="5ZL-i8-agN" id="nYu-om-OyZ"/>
+                        <outlet property="wrongEmailButton" destination="WSJ-PE-e6x" id="ubg-kY-sH7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0j-QJ-nMp" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2800.7633587786258" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
