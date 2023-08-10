@@ -80,6 +80,8 @@ private extension AccountUpgradeViewController {
             guard let self = self else { return }
             switch result {
             case.success():
+                // 認証アカウントのUserDefaultsをtrue
+                UserDefaults.standard.isAuthAccountCreated = true
                 print("メールチェック")
                 DispatchQueue.main.async {
                     Alert.okAlert(vc: self, title: "アカウントアップグレード", message: "認証しました") { [weak self] result in

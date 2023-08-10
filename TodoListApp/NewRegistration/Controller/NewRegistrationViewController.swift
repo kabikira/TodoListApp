@@ -79,6 +79,7 @@ private extension NewRegistrationViewController {
                 print("メールチェック")
                 // userDefaに値をいれる
                 UserDefaults.standard.isLogined = true
+                UserDefaults.standard.isAuthAccountCreated = true
                 // サンプルデータをTodoに入れる
                 self.createTodosFromConstants()
                 // loginへ画面遷移
