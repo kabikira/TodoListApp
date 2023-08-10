@@ -9,6 +9,11 @@ import UIKit
 
 class NewRegistrationViewController: UIViewController {
     
+    @IBOutlet weak var wrongEmailButton: UIButton! {
+        didSet {
+            wrongEmailButton.addTarget(self, action: #selector(tappedWrongEmailButton), for: .touchUpInside)
+        }
+    }
     @IBOutlet private weak var newRegisterLabel: UILabel! {
         didSet {
             newRegisterLabel.text = R.string.localizable.newRegistration()
@@ -48,8 +53,9 @@ private extension NewRegistrationViewController {
         FirebaseUserManager.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case.success(let user):
+            case.success():
                 print("登録成功")
+                guard let user = FirebaseUserManager.getCurrentUser() else { return }
                 //TODO: Resultになおしてエラー処理書いたほうがいいかも
                 FirebaseUserManager.sendEmailVerification(to:user)
                 DispatchQueue.main.async {
@@ -83,6 +89,9 @@ private extension NewRegistrationViewController {
                 }
             }
         }
+    }
+    @objc func tappedWrongEmailButton() {
+        Router.shared.showEmailUpdate(from: self)
     }
     func createTodosFromConstants() {
         for i in 0..<TodoConstants.todosTypes.count {

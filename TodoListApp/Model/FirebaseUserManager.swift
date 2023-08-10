@@ -10,13 +10,12 @@ import FirebaseAuth
 
 final class FirebaseUserManager {
     // MARK: - アカウント作成機能
-   static func createUser(email: String, password: String, completion: @escaping(Result<User, NSError>) -> Void) {
+   static func createUser(email: String, password: String, completion: @escaping(Result<Void, NSError>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error as NSError? {
                 completion(.failure(error))
             } else {
-                guard let user = result?.user else { return }
-                completion(.success(user))
+                 completion(.success)
             }
         }
     }
@@ -33,7 +32,7 @@ final class FirebaseUserManager {
         }
     }
     // MARK: - アカウントアップグレード
-    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
+    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         if let user = Auth.auth().currentUser, user.isAnonymous {
             let credential = EmailAuthProvider.credential(withEmail: email, password: password)
             user.link(with: credential) { result, error in
@@ -43,8 +42,7 @@ final class FirebaseUserManager {
                     return
                 }
                 // エラーがない場合、成功として処理
-                guard let user = result?.user else { return }
-                completion(.success(user))
+                completion(.success)
             }
         } else {
             // 期待するユーザー状態ではない場合のエラー
@@ -115,7 +113,7 @@ final class FirebaseUserManager {
             if let error = error {
                 completion(.failure(error as NSError))
             } else {
-                completion(.success(()))
+                completion(.success)
             }
         }
     }
