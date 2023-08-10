@@ -31,6 +31,10 @@ extension SettingViewController: UITableViewDelegate {
         switch indexPath.row {
         case SettingItemCell.AccountUpgrade.rawValue:
             DispatchQueue.main.async {
+                if !UserDefaults.standard.isAuthAccountCreated {
+                    Alert.okAlert(vc: self, title: "すでにアップグレード済みです", message: "")
+                    return
+                }
                 Alert.cancelAlert(vc: self, title: "アカウントをアップグレードします", message: "データが保存されます", handler: { [weak self] _ in
                     guard let self = self else { return }
 //                    Router.shared.showPasswordReset(form: self)
