@@ -10,8 +10,6 @@ import Firebase
 
 class AccountUpgradeViewController: UIViewController {
 
-    private var userModel = UserModel(email: "", name: "")
-
     @IBOutlet private weak var AccountUpgradeLabel: UILabel! {
         didSet {
             // 多言語wrongEmailButton
@@ -56,7 +54,8 @@ private extension AccountUpgradeViewController {
         FirebaseUserManager.accountUpgrade(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case.success(let user):
+            case.success():
+                guard let user = FirebaseUserManager.getCurrentUser() else { return }
                 FirebaseUserManager.sendEmailVerification(to: user)
                 DispatchQueue.main.async {
                     Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())

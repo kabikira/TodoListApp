@@ -9,7 +9,6 @@ import UIKit
 
 class EmailUpdateViewController: UIViewController {
 
-    private var userModel: UserModel?
 
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
@@ -44,7 +43,6 @@ private extension EmailUpdateViewController {
                     guard let user = FirebaseUserManager.getCurrentUser() else { return }
                     // mail送信
                     FirebaseUserManager.sendEmailVerification(to: user)
-                    self.userModel?.email = email
                     DispatchQueue.main.async {
                         Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
                     }
