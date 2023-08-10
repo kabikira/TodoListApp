@@ -43,7 +43,6 @@
 		3B89CF032A77F7910090550A /* PasswordReset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B89CF022A77F7910090550A /* PasswordReset.storyboard */; };
 		3B89CF052A77F79E0090550A /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */; };
 		3B8F5C922A79C03D00C969E6 /* SettingItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C912A79C03D00C969E6 /* SettingItemModel.swift */; };
-		3B8F5C962A7B76C500C969E6 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C952A7B76C500C969E6 /* Notification+.swift */; };
 		3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C972A7DD9C700C969E6 /* Alert.swift */; };
 		3B8F5C9A2A7E2EE400C969E6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C992A7E2EE400C969E6 /* String+.swift */; };
 		3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C9C2A81120900C969E6 /* R.generated.swift */; };
@@ -92,7 +91,6 @@
 		3B89CF022A77F7910090550A /* PasswordReset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordReset.storyboard; sourceTree = "<group>"; };
 		3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		3B8F5C912A79C03D00C969E6 /* SettingItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemModel.swift; sourceTree = "<group>"; };
-		3B8F5C952A7B76C500C969E6 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		3B8F5C972A7DD9C700C969E6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3B8F5C992A7E2EE400C969E6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3B8F5C9C2A81120900C969E6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -125,10 +123,51 @@
 		3B2253142A837F5C00B7ECE3 /* EmailUpdate */ = {
 			isa = PBXGroup;
 			children = (
+				3B22531B2A84EE9A00B7ECE3 /* Controller */,
+			);
+			path = EmailUpdate;
+			sourceTree = "<group>";
+		};
+		3B22531B2A84EE9A00B7ECE3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */,
 				3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */,
 			);
-			path = EmailUpdate;
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3B22531C2A84EEB600B7ECE3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3B89CEEF2A765A9F0090550A /* UserDefaults+.swift */,
+				3B8F5C992A7E2EE400C969E6 /* String+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3B22531D2A84EEF400B7ECE3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3B89CEEB2A765A6A0090550A /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3B22531E2A84EF1F00B7ECE3 /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				3B89CEE82A765A520090550A /* NetworkMonitor.swift */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
+		3B22531F2A84EF2C00B7ECE3 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				3B8F5C972A7DD9C700C969E6 /* Alert.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		3B8307292A75E42A00C3068B = {
@@ -156,6 +195,7 @@
 				3B8307352A75E42A00C3068B /* AppDelegate.swift */,
 				3B8307372A75E42A00C3068B /* SceneDelegate.swift */,
 				3B89CECB2A76579E0090550A /* Utility */,
+				3B89CEED2A765A7C0090550A /* AppConstants.swift */,
 				3B89CEB72A76558A0090550A /* Model */,
 				3B89CEC62A7656DE0090550A /* NewRegistration */,
 				3B89CEB82A7655930090550A /* Login */,
@@ -312,13 +352,10 @@
 		3B89CECB2A76579E0090550A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				3B89CEE82A765A520090550A /* NetworkMonitor.swift */,
-				3B89CEEB2A765A6A0090550A /* Router.swift */,
-				3B89CEED2A765A7C0090550A /* AppConstants.swift */,
-				3B89CEEF2A765A9F0090550A /* UserDefaults+.swift */,
-				3B8F5C972A7DD9C700C969E6 /* Alert.swift */,
-				3B8F5C992A7E2EE400C969E6 /* String+.swift */,
-				3B8F5C952A7B76C500C969E6 /* Notification+.swift */,
+				3B22531E2A84EF1F00B7ECE3 /* NetworkMonitor */,
+				3B22531D2A84EEF400B7ECE3 /* Router */,
+				3B22531F2A84EF2C00B7ECE3 /* Alert */,
+				3B22531C2A84EEB600B7ECE3 /* Extensions */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -547,7 +584,6 @@
 				3B89CEDF2A76591D0090550A /* TodoAddViewController.swift in Sources */,
 				3B89CED92A7658DB0090550A /* TodoListCell.swift in Sources */,
 				3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */,
-				3B8F5C962A7B76C500C969E6 /* Notification+.swift in Sources */,
 				3B89CEEE2A765A7C0090550A /* AppConstants.swift in Sources */,
 				3B89CED32A76581B0090550A /* LoginViewController.swift in Sources */,
 				3B89CF052A77F79E0090550A /* PasswordResetViewController.swift in Sources */,
