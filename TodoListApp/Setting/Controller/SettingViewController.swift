@@ -69,6 +69,7 @@ extension SettingViewController: UITableViewDelegate {
                         case.success():
                             print("退会成功")
                             UserDefaults.standard.isLogined = false
+                            UserDefaults.standard.isAuthAccountCreated = false
                             Router.shared.showReStart()
                         }
                     }
