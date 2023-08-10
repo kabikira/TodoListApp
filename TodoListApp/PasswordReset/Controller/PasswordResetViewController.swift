@@ -26,6 +26,7 @@ class PasswordResetViewController: UIViewController {
 }
 private extension PasswordResetViewController {
     @objc func tapedPasswordResetEmailButton(_ sender: Any) {
+        passwordResetEmailButton.isUserInteractionEnabled = false
         // resetメール送信
         let email = emailTextField.text ?? ""
         FirebaseUserManager.sendPasswordReset(email: email) { [weak self] result in
@@ -41,6 +42,7 @@ private extension PasswordResetViewController {
                     Alert.showErrorAlert(vc: self, error: error)
                 }
             }
+            self.passwordResetEmailButton.isUserInteractionEnabled = true
         }
     }
 }
