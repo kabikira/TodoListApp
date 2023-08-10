@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
 // MARK: - Actions
 private extension LoginViewController {
     @objc func tapedNewRegistrationButton(_ sender: Any) {
-        Router.shared.showNewRegistration(form: self)
+        Router.shared.showNewRegistration(from: self)
     }
     @objc func tapedLoginButton(_ sender: Any) {
         let email = emailTextField.text ?? ""
@@ -73,7 +73,7 @@ private extension LoginViewController {
     }
     @objc func tapedPasswordResetButton(_ sender: Any) {
         // パスワード送信画面に遷移
-        Router.shared.showPasswordReset(form: self)
+        Router.shared.showPasswordReset(from: self)
     }
     // 匿名ログイン
     @objc func tapedAnonymousLoginButton(_ sender: Any) {
