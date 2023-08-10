@@ -40,6 +40,8 @@ class AccountUpgradeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         wrongEmailButton.isHidden = true
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
 
     }
 
