@@ -77,6 +77,7 @@ private extension LoginViewController {
     }
     // 匿名ログイン
     @objc func tapedAnonymousLoginButton(_ sender: Any) {
+        anonymousLoginButton.isUserInteractionEnabled = false
         FirebaseUserManager.anonymousLogin { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -93,6 +94,7 @@ private extension LoginViewController {
                 // 画面遷移TodoListへ
                 Router.shared.showTodoList(from: self)
             }
+            self.anonymousLoginButton.isUserInteractionEnabled = true
         }
     }
     func createTodosFromConstants() {
