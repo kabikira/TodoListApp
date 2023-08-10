@@ -42,7 +42,6 @@ class AccountUpgradeViewController: UIViewController {
         wrongEmailButton.isHidden = true
         emailTextField.delegate = self
         passwordTextField.delegate = self
-
     }
 
 }
