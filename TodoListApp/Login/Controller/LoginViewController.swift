@@ -81,22 +81,23 @@ private extension LoginViewController {
     @objc func tapedAnonymousLoginButton(_ sender: Any) {
         anonymousLoginButton.isUserInteractionEnabled = false
         FirebaseUserManager.anonymousLogin { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case.failure(let error):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case.failure(let error):
                     Alert.showErrorAlert(vc: self, error: error)
+                case.success():
+                    // userDefaに値をいれる
+                    UserDefaults.standard.isLogined = true
+                    UserDefaults.standard.isAuthAccountCreated = true
+                    // サンプルデータをTodoに入れる
+                    self.createTodosFromConstants()
+                    // 画面遷移TodoListへ
+                    Router.shared.showTodoList(from: self)
+                    Alert.okAlert(vc: self, title: "一時的なアカウントです", message: "データの永続性を保証できません。アカウントのデータを保持したい場合は、正式なアカウント登録をお勧めします。")
                 }
-            case.success():
-                // userDefaに値をいれる
-                UserDefaults.standard.isLogined = true
-                UserDefaults.standard.isAuthAccountCreated = true
-                // サンプルデータをTodoに入れる
-                self.createTodosFromConstants()
-                // 画面遷移TodoListへ
-                Router.shared.showTodoList(from: self)
+                self.anonymousLoginButton.isUserInteractionEnabled = true
             }
-            self.anonymousLoginButton.isUserInteractionEnabled = true
         }
     }
     func createTodosFromConstants() {
