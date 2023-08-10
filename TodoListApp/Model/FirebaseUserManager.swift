@@ -52,6 +52,22 @@ final class FirebaseUserManager {
         }
     }
 
+    // MARK: - emailの更新
+    static func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
+            // 現在のログインユーザーを取得
+            if let user = Auth.auth().currentUser {
+                // メールアドレスを更新
+                user.updateEmail(to: newEmail) { (error) in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                }
+            } else {
+                print("error")
+            }
+        }
     // MARK: - ログイン機能
     static func singIn(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
