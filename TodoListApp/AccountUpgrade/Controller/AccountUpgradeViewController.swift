@@ -111,6 +111,8 @@ extension AccountUpgradeViewController: UITextFieldDelegate {
             return updatedTextLength <= MaxNumCharacters.maxEmail.rawValue
         case passwordTextField:
             return updatedTextLength <= MaxNumCharacters.maxPassword.rawValue
+        case userNameTextField:
+            return updatedTextLength <= MaxNumCharacters.maxUserName.rawValue
         default:
             return true
         }
@@ -118,8 +120,10 @@ extension AccountUpgradeViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        guard let userName = userNameTextField.text else { return }
         emailTextField.text = email.removingWhiteSpace()
         passwordTextField.text = password.removingWhiteSpace()
+        userNameTextField.text = userName.removingWhiteSpace()
     }
 }
 
