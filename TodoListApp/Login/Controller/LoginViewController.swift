@@ -53,6 +53,7 @@ private extension LoginViewController {
         Router.shared.showNewRegistration(from: self)
     }
     @objc func tapedLoginButton(_ sender: Any) {
+        loginButton.isUserInteractionEnabled = false
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         // ログイン処理
@@ -69,6 +70,7 @@ private extension LoginViewController {
                     Alert.showErrorAlert(vc: self, error: error)
                 }
             }
+            self.loginButton.isUserInteractionEnabled = true
         }
     }
     @objc func tapedPasswordResetButton(_ sender: Any) {
