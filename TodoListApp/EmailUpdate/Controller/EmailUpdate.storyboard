@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,20 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="e1d-bf-wW3">
-                                <rect key="frame" x="46.666666666666657" y="330" width="300" height="192"/>
+                                <rect key="frame" x="46.666666666666657" y="320" width="300" height="212"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rHk-y3-Alk">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="UcG-Zi-4be"/>
-                                            <constraint firstAttribute="height" constant="34" id="mJk-fF-kJr" userLabel="height = 44"/>
+                                            <constraint firstAttribute="height" constant="44" id="mJk-fF-kJr" userLabel="height = 44"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qFE-qC-Aey" userLabel="Register Password Text Field">
-                                        <rect key="frame" x="0.0" y="46" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="300" height="44"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="AMf-sb-bI2"/>
@@ -42,24 +41,28 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgs-6W-TiB">
-                                        <rect key="frame" x="0.0" y="102" width="300" height="34"/>
-                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <rect key="frame" x="46.333333333333329" y="112" width="207.33333333333337" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="2bx-WF-UvK" userLabel="height = 44"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="KmD-fj-F8w"/>
+                                            <constraint firstAttribute="height" constant="44" id="2bx-WF-UvK" userLabel="height = 44"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Update your email address">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                         </state>
+                                        <buttonConfiguration key="configuration" style="filled" title="Update your email address" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-K7-0iG">
-                                        <rect key="frame" x="55.333333333333343" y="148" width="189" height="44"/>
+                                        <rect key="frame" x="43.666666666666671" y="168" width="212.66666666666663" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="axF-6Q-8Bx"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Check your email and log in"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Check your email and log in" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -84,9 +87,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
