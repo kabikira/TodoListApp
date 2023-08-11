@@ -49,15 +49,28 @@ private extension NewRegistrationViewController {
     @objc func tappedSendMail(_ sender: Any) {
         let email = registerEmailTextField.text ?? ""
         let password = registerPasswordTextField.text ?? ""
-        //  user登録してメールを送信
+        let userName = registerNameTextField.text ?? ""
+
+        // 最初にユーザーを作成
         FirebaseUserManager.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case.success():
-                print("登録成功")
+            case .success():
+                print("ユーザー登録成功")
+
+                // ユーザー作成成功時に、userNameを設定
+                FirebaseUserManager.registerUserName(userName: userName) { result in
+                    switch result {
+                    case .success():
+                        print("userName作成成功")
+                    case .failure(let error):
+                        Alert.showErrorAlert(vc: self, error: error)
+                    }
+                }
+
+                // メールを送信
                 guard let user = FirebaseUserManager.getCurrentUser() else { return }
-                //TODO: Resultになおしてエラー処理書いたほうがいいかも
-                FirebaseUserManager.sendEmailVerification(to:user)
+                FirebaseUserManager.sendEmailVerification(to: user)
                 DispatchQueue.main.async {
                     Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
                 }
@@ -68,6 +81,79 @@ private extension NewRegistrationViewController {
             }
         }
     }
+
+//    @objc func tappedSendMail(_ sender: Any) {
+//        print(1)
+//        let email = registerEmailTextField.text ?? ""
+//        let password = registerPasswordTextField.text ?? ""
+//        let userName = registerNameTextField.text ?? ""
+//        print(2)
+//
+//        FirebaseUserManager.createUser(email: email, password: password) { [weak self] result in
+//            print(5)
+//            guard let self = self else { return }
+//            switch result {
+//            case.success():
+//                print("登録成功")
+//                //TODO: Resultになおしてエラー処理書いたほうがいいかも
+//                guard let user = FirebaseUserManager.getCurrentUser() else { return }
+//                FirebaseUserManager.sendEmailVerification(to:user)
+//                DispatchQueue.main.async {
+//                    Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
+//                }
+//            case .failure(let error):
+//                DispatchQueue.main.async {
+//                    Alert.showErrorAlert(vc: self, error: error)
+//                }
+//
+//            }
+//        }
+//        FirebaseUserManager.registerUserName(userName: userName) { [weak self] result in
+//            print(3)
+//            guard let self = self else { return }
+//            print(4)
+//            switch result {
+//            case.success():
+//                print("userName作成")
+//            case.failure(let error):
+//                Alert.showErrorAlert(vc: self, error: error)
+//            }
+//        }
+//
+//
+////        //  user登録してメールを送信
+////        FirebaseUserManager.createUser(email: email, password: password) { [weak self] result in
+////            print(4)
+////            guard let self = self else { return }
+////            switch result {
+////            case.success():
+////                print("登録成功")
+////                //TODO: Resultになおしてエラー処理書いたほうがいいかも
+////                guard let user = FirebaseUserManager.getCurrentUser() else { return }
+////                FirebaseUserManager.sendEmailVerification(to:user)
+////                DispatchQueue.main.async {
+////                    Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
+////                }
+////            case .failure(let error):
+////                DispatchQueue.main.async {
+////                    Alert.showErrorAlert(vc: self, error: error)
+////                }
+////            }
+////        }
+////        guard let user = FirebaseUserManager.getCurrentUser() else { return }
+////        FirebaseUserManager.createUserName(userName: userName, user: user) { [weak self] result in
+////            print(3)
+////            guard let self = self else { return }
+////            switch result {
+////            case.failure(let error):
+////                DispatchQueue.main.async {
+////                    Alert.showErrorAlert(vc: self, error: error)
+////                }
+////            case.success():
+////                print("userName作成")
+////            }
+////        }
+//    }
     @objc func tappedLogin(_ sender: Any) {
         // mailをチェックしていたらログイン ユーザデフォ
         let email = registerEmailTextField.text ?? ""
