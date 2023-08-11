@@ -14,8 +14,4 @@ extension String {
         let whiteSpaces: CharacterSet = [" ", "　"]
         return self.trimmingCharacters(in: whiteSpaces)
     }
-    // ASCIIの範囲外の文字を取り除く(全角文字を取り除く)
-    func removingNonASCII() -> String {
-            return self.replacingOccurrences(of: "[^\\x00-\\x7F]", with: "", options: .regularExpression)
-        }
 }
