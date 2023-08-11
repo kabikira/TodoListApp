@@ -135,8 +135,12 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        // 半角と全角のスペースを文字列から取り除く
         emailTextField.text = email.removingWhiteSpace()
         passwordTextField.text = password.removingWhiteSpace()
+        // ASCIIの範囲外の文字を取り除く(全角文字を取り除く)
+        emailTextField.text = email.removingNonASCII()
+        passwordTextField.text = password.removingNonASCII()
     }
 }
 
