@@ -6,8 +6,8 @@
   
 */
 "NewRegistration" = "新規登録";
-"Register and send an email." = "登録してメールを送信します";
-"Check your email and log in" = "メールを確認してログインしてください";
+"Register and send an email." = "登録してメールを送信";
+"Check your email and log in" = "メールを確認してログイン";
 "Email sent." = "メールを送信しました。";
 "Please access the URL in the email" = "メール内のURLにアクセスしてください";
 
@@ -46,3 +46,11 @@
 "Use without creating an account" = "簡単ログイン";
 "AccountUpgrade" = "アカウントをアップグレード";
 "Did you enter a wrong email address?" = "メールアドレスを間違えて入力しましたか?";
+"Temporary account" = "一時的なアカウントです";
+"We cannot guarantee data permanence. If you wish to retain the data in your account, we recommend that you register for a formal account" = "データの永続性を保証できません。アカウントのデータを保持したい場合は、正式なアカウント登録をお勧めします";
+"Update your email address" = "メールアドレスを更新する";
+"Account Upgrades" = "アカウントアップグレード";
+"Verified" = "認証しました";
+"Upgrade is complete" = "アップグレードは完了しています";
+"Upgrade your account" = "アカウントをアップグレードします";
+"Your data will be transferred as is! Proceed with peace of mind!" = "あなたのデータはそのまま引き継がれます！安心して進めてください";
