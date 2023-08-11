@@ -86,7 +86,7 @@
                                                     <constraint firstAttribute="height" constant="44" id="6bw-2U-8RJ"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="Wrong email address."/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Wrong email address."/>
                                             </button>
                                         </subviews>
                                     </stackView>
