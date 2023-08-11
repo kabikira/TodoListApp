@@ -95,7 +95,7 @@ private extension LoginViewController {
                     self.createTodosFromConstants()
                     // 画面遷移TodoListへ
                     Router.shared.showTodoList(from: self)
-                    Alert.okAlert(vc: self, title: "一時的なアカウントです", message: "データの永続性を保証できません。アカウントのデータを保持したい場合は、正式なアカウント登録をお勧めします。")
+                    Alert.okAlert(vc: self, title: R.string.localizable.temporaryAccount(), message: R.string.localizable.weCannotGuaranteeDataPermanenceIfYouWishToRetainTheDataInYourAccountWeRecommendThatYouRegisterForAFormalAccount())
                 }
                 self.anonymousLoginButton.isUserInteractionEnabled = true
             }

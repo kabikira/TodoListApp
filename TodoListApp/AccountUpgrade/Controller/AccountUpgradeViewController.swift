@@ -34,6 +34,7 @@ class AccountUpgradeViewController: UIViewController {
     }
     @IBOutlet private weak var wrongEmailButton: UIButton! {
         didSet {
+            wrongEmailButton.setTitle(R.string.localizable.didYouEnterAWrongEmailAddress(), for: .normal)
             wrongEmailButton.addTarget(self, action: #selector(tappedwrongEmailButton), for: .touchUpInside)
         }
     }
@@ -100,7 +101,8 @@ private extension AccountUpgradeViewController {
                 UserDefaults.standard.isAuthAccountCreated = true
                 print("メールチェック")
                 DispatchQueue.main.async {
-                    Alert.okAlert(vc: self, title: "アカウントアップグレード", message: "認証しました") { [weak self] result in
+                    // TODO:
+                    Alert.okAlert(vc: self, title: R.string.localizable.accountUpgrade(), message: R.string.localizable.verified()) { [weak self] result in
                         guard let self = self else { return }
                         self.dismiss(animated: true)
                     }
