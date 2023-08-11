@@ -23,22 +23,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SWX-Es-geb" userLabel="Log in Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="361.33333333333331"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSJ-PE-e6x">
-                                                <rect key="frame" x="55.333333333333343" y="0.0" width="189" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="6bw-2U-8RJ"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Wrong email address."/>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AccountUpgrade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-4K-7Ef">
-                                                <rect key="frame" x="72" y="55.999999999999979" width="156" height="25.333333333333336"/>
+                                                <rect key="frame" x="72" y="0.0" width="156" height="25.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3wJ-Wv-fsh" userLabel="Register Email Text Field">
-                                                <rect key="frame" x="0.0" y="93.333333333333343" width="300" height="44"/>
+                                                <rect key="frame" x="0.0" y="37.333333333333343" width="300" height="44"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="NpH-1v-3zv"/>
@@ -48,7 +40,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQZ-rZ-Gyh" userLabel="Register Password Text Field">
-                                                <rect key="frame" x="0.0" y="149.33333333333334" width="300" height="44"/>
+                                                <rect key="frame" x="0.0" y="93.333333333333343" width="300" height="44"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="4RJ-B9-gb5"/>
@@ -58,7 +50,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7cN-YL-bqn" userLabel="Register Name Text Field">
-                                                <rect key="frame" x="0.0" y="205.33333333333334" width="300" height="44"/>
+                                                <rect key="frame" x="0.0" y="149.33333333333334" width="300" height="44"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="XER-NP-aZQ"/>
@@ -68,7 +60,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZL-i8-agN">
-                                                <rect key="frame" x="35.666666666666671" y="261.33333333333337" width="228.66666666666663" height="44"/>
+                                                <rect key="frame" x="35.666666666666671" y="205.33333333333334" width="228.66666666666663" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="4Qm-f3-K3Q"/>
                                                 </constraints>
@@ -80,13 +72,21 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcC-a8-o56">
-                                                <rect key="frame" x="33.333333333333329" y="317.33333333333326" width="233.33333333333337" height="44"/>
+                                                <rect key="frame" x="33.333333333333329" y="261.33333333333337" width="233.33333333333337" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="uNf-su-vlo"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Check your email and log in"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Check your email and log in" cornerStyle="capsule"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSJ-PE-e6x">
+                                                <rect key="frame" x="55.333333333333343" y="317.33333333333326" width="189" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="6bw-2U-8RJ"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="Wrong email address."/>
                                             </button>
                                         </subviews>
                                     </stackView>
