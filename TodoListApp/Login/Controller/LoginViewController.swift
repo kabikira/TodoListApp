@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
     }
 }
 // MARK: - Actions
@@ -138,9 +139,6 @@ extension LoginViewController: UITextFieldDelegate {
         // 半角と全角のスペースを文字列から取り除く
         emailTextField.text = email.removingWhiteSpace()
         passwordTextField.text = password.removingWhiteSpace()
-        // ASCIIの範囲外の文字を取り除く(全角文字を取り除く)
-        emailTextField.text = email.removingNonASCII()
-        passwordTextField.text = password.removingNonASCII()
     }
 }
 

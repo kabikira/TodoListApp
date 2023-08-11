@@ -27,6 +27,7 @@ class EmailUpdateViewController: UIViewController {
         super.viewDidLoad()
 //        self.isModalInPresentation = true
         emailTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
     }
 
 }
@@ -98,8 +99,6 @@ extension EmailUpdateViewController: UITextFieldDelegate {
         guard let email = emailTextField.text else { return }
         // 半角と全角のスペースを文字列から取り除く
         emailTextField.text = email.removingWhiteSpace()
-        // ASCIIの範囲外の文字を取り除く(全角文字を取り除く)
-        emailTextField.text = email.removingNonASCII()
     }
 }
 

@@ -43,6 +43,7 @@ class AccountUpgradeViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
     }
 
 }
@@ -137,10 +138,6 @@ extension AccountUpgradeViewController: UITextFieldDelegate {
         emailTextField.text = email.removingWhiteSpace()
         passwordTextField.text = password.removingWhiteSpace()
         userNameTextField.text = userName.removingWhiteSpace()
-        // ASCIIの範囲外の文字を取り除く(全角文字を取り除く)
-        emailTextField.text = email.removingNonASCII()
-        passwordTextField.text = password.removingNonASCII()
-        userNameTextField.text = userName.removingNonASCII()
     }
 }
 

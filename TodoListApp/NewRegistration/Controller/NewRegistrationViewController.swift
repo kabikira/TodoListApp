@@ -41,6 +41,8 @@ class NewRegistrationViewController: UIViewController {
         registerEmailTextField.delegate = self
         registerPasswordTextField.delegate = self
         registerNameTextField.delegate = self
+
+        registerPasswordTextField.isSecureTextEntry = true
     }
 
 }
@@ -150,8 +152,5 @@ extension NewRegistrationViewController: UITextFieldDelegate {
         registerEmailTextField.text = email.removingWhiteSpace()
         registerPasswordTextField.text = password.removingWhiteSpace()
         registerNameTextField.text = userName.removingWhiteSpace()
-        // ASCIIの範囲外の文字を取り除く(全角文字を取り除く)
-        registerEmailTextField.text = email.removingNonASCII()
-        registerPasswordTextField.text = password.removingNonASCII()
     }
 }
