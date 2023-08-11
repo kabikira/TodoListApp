@@ -11,6 +11,7 @@ class NewRegistrationViewController: UIViewController {
     
     @IBOutlet weak var wrongEmailButton: UIButton! {
         didSet {
+            wrongEmailButton.setTitle(R.string.localizable.didYouEnterAWrongEmailAddress(), for: .normal)
             wrongEmailButton.addTarget(self, action: #selector(tappedWrongEmailButton), for: .touchUpInside)
         }
     }

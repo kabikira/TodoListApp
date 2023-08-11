@@ -14,11 +14,13 @@ class EmailUpdateViewController: UIViewController {
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginButton: UIButton! {
         didSet {
+            loginButton.setTitle(R.string.localizable.checkYourEmailAndLogIn(), for: .normal)
             loginButton.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
         }
     }
     @IBOutlet private weak var updateEmailButton: UIButton! {
         didSet {
+            updateEmailButton.setTitle(R.string.localizable.updateYourEmailAddress(), for: .normal)
             updateEmailButton.addTarget(self, action: #selector(tappedUpdateEmailButton), for: .touchUpInside)
         }
     }
@@ -68,7 +70,8 @@ private extension EmailUpdateViewController {
                 // UserDefaultsに値を入れる
                 UserDefaults.standard.isAuthAccountCreated = true
                 DispatchQueue.main.async {
-                    Alert.okAlert(vc: self, title: "アカウントアップグレード", message: "認証しました") { [weak self] _ in
+                    // TODO:
+                    Alert.okAlert(vc: self, title: R.string.localizable.upgradeIsComplete(), message: R.string.localizable.verified()) { [weak self] _ in
                         guard let self = self else { return }
                         // モダール画面を2画面を1度に閉じる
                         //  まず遷移元のViewControllerを定数に入れる
