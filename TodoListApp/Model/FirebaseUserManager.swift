@@ -10,17 +10,34 @@ import FirebaseAuth
 
 final class FirebaseUserManager {
     // MARK: - アカウント作成機能
-   static func createUser(email: String, password: String, completion: @escaping(Result<Void, NSError>) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+    static func createUser(email: String, password: String, completion: @escaping(Result<Void, NSError>) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error as NSError? {
                 completion(.failure(error))
             } else {
-                 completion(.success)
+                completion(.success)
+            }
+        }
+    }
+
+    // MARK: - UserNameを登録
+    static func registerUserName(userName: String, completion: @escaping(Result<Void, NSError>) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.displayName = userName
+            changeRequest.commitChanges { error in
+                if let error = error as NSError? {
+                    completion(.failure(error))
+                } else {
+                    let userName = user.displayName
+                    print("User name is \(userName ?? "No name set")")
+                    completion(.success)
+                }
             }
         }
     }
     // MARK: - 匿名ログイン
-   static func anonymousLogin(completion: @escaping(Result<Void, NSError>) -> Void) {
+    static func anonymousLogin(completion: @escaping(Result<Void, NSError>) -> Void) {
         Auth.auth().signInAnonymously() { result, error  in
             if let error = error {
                 completion(.failure(error as NSError))
@@ -52,20 +69,20 @@ final class FirebaseUserManager {
 
     // MARK: - emailの更新
     static func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
-            // 現在のログインユーザーを取得
-            if let user = Auth.auth().currentUser {
-                // メールアドレスを更新
-                user.updateEmail(to: newEmail) { (error) in
-                    if let error = error {
-                        completion(.failure(error))
-                    } else {
-                        completion(.success(()))
-                    }
+        // 現在のログインユーザーを取得
+        if let user = Auth.auth().currentUser {
+            // メールアドレスを更新
+            user.updateEmail(to: newEmail) { (error) in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(()))
                 }
-            } else {
-                print("error")
             }
+        } else {
+            print("error")
         }
+    }
     // MARK: - ログイン機能
     static func singIn(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
@@ -78,15 +95,15 @@ final class FirebaseUserManager {
     }
 
     // MARK: - 登録認証のメール送信
-//    func sendEmailVerification(to user: User, completion: @escaping (Result<Void, NSError>) -> Void) {
-//        user.sendEmailVerification() { error in
-//            if let error = error as NSError? {
-//                completion(.failure(error))
-//            } else {
-//                completion(.success)
-//            }
-//        }
-//    }
+    //    func sendEmailVerification(to user: User, completion: @escaping (Result<Void, NSError>) -> Void) {
+    //        user.sendEmailVerification() { error in
+    //            if let error = error as NSError? {
+    //                completion(.failure(error))
+    //            } else {
+    //                completion(.success)
+    //            }
+    //        }
+    //    }
     // errorを伝えたいならResultのほうがいいかな?
     static func sendEmailVerification(to user: User) {
         user.sendEmailVerification()
@@ -95,17 +112,17 @@ final class FirebaseUserManager {
     // MARK: - 登録認証のメールのURLを確認したか
     static func  checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
-                if let error = error as NSError? {
-                    completion(.failure(error))
+            if let error = error as NSError? {
+                completion(.failure(error))
+            } else {
+                guard let user = result?.user else { return }
+                if user.isEmailVerified {
+                    completion(.success)
                 } else {
-                    guard let user = result?.user else { return }
-                    if user.isEmailVerified {
-                        completion(.success)
-                    } else {
-                        completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Email not verified"])))
-                    }
+                    completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Email not verified"])))
                 }
             }
+        }
     }
     // MARK: - パスワード再設定案内のメール送信
     static func sendPasswordReset(email: String, completion: @escaping (Result<(), NSError>) -> Void) {
@@ -119,8 +136,8 @@ final class FirebaseUserManager {
     }
     // MARK: - ログインユーザーを取得
     static func getCurrentUser() -> User? {
-            return Auth.auth().currentUser
-        }
+        return Auth.auth().currentUser
+    }
     // MARK: - ログイン状態をチェック
     static func checkIsLogin(completion: () -> Void) {
         if Auth.auth().currentUser != nil {

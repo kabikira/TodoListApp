@@ -54,10 +54,21 @@ private extension AccountUpgradeViewController {
         wrongEmailButton.isHidden = false
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
+        let userName = userNameTextField.text ?? ""
         FirebaseUserManager.accountUpgrade(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():
+                // ユーザー作成成功時に、userNameを設定
+                FirebaseUserManager.registerUserName(userName: userName) { result in
+                    switch result {
+                    case .success():
+                        print("userName作成成功")
+                    case .failure(let error):
+                        Alert.showErrorAlert(vc: self, error: error)
+                    }
+                }
+                // メールを送信
                 guard let user = FirebaseUserManager.getCurrentUser() else { return }
                 FirebaseUserManager.sendEmailVerification(to: user)
                 DispatchQueue.main.async {
@@ -83,6 +94,7 @@ private extension AccountUpgradeViewController {
             guard let self = self else { return }
             switch result {
             case.success():
+                
                 // 認証アカウントのUserDefaultsをtrue
                 UserDefaults.standard.isAuthAccountCreated = true
                 print("メールチェック")
@@ -111,6 +123,8 @@ extension AccountUpgradeViewController: UITextFieldDelegate {
             return updatedTextLength <= MaxNumCharacters.maxEmail.rawValue
         case passwordTextField:
             return updatedTextLength <= MaxNumCharacters.maxPassword.rawValue
+        case userNameTextField:
+            return updatedTextLength <= MaxNumCharacters.maxUserName.rawValue
         default:
             return true
         }
@@ -118,8 +132,10 @@ extension AccountUpgradeViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        guard let userName = userNameTextField.text else { return }
         emailTextField.text = email.removingWhiteSpace()
         passwordTextField.text = password.removingWhiteSpace()
+        userNameTextField.text = userName.removingWhiteSpace()
     }
 }
 
