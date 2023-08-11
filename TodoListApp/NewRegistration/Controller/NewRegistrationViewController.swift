@@ -152,8 +152,6 @@ extension NewRegistrationViewController: UITextFieldDelegate {
         registerNameTextField.text = userName.removingWhiteSpace()
         // ASCIIの範囲外の文字を取り除く(全角文字を取り除く)
         registerEmailTextField.text = email.removingNonASCII()
-        registerPasswordTextField.text = email.removingNonASCII()
-        registerNameTextField.text = email.removingNonASCII()
+        registerPasswordTextField.text = password.removingNonASCII()
     }
-
 }
