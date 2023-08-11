@@ -21,26 +21,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="voE-Na-bXR" userLabel="New Registration Stack View">
                                 <rect key="frame" x="46.666666666666657" y="257.33333333333337" width="300" height="337.33333333333337"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifh-Vb-FP9">
-                                        <rect key="frame" x="55.333333333333343" y="0.0" width="189" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="Iwq-wo-GPQ"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Wrong email address."/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Wrong email address.">
-                                            <color key="baseForegroundColor" name="AccentColor"/>
-                                        </buttonConfiguration>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NewRegistration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGs-il-h1c">
-                                        <rect key="frame" x="74.333333333333343" y="52.000000000000007" width="151" height="25.333333333333336"/>
+                                        <rect key="frame" x="74.333333333333343" y="0.0" width="151" height="25.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DaI-8q-0FL" userLabel="Register Email Text Field">
-                                        <rect key="frame" x="0.0" y="85.333333333333371" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="33.333333333333371" width="300" height="44"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="D8e-QE-Vfh"/>
@@ -50,7 +38,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mR-xj-Dyb" userLabel="Register Password Text Field">
-                                        <rect key="frame" x="0.0" y="137.33333333333337" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="85.333333333333371" width="300" height="44"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="1zo-PF-jTr"/>
@@ -60,7 +48,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zwJ-j7-keR" userLabel="Register Name Text Field">
-                                        <rect key="frame" x="0.0" y="189.33333333333337" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="137.33333333333337" width="300" height="44"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Io4-oZ-Jp1"/>
@@ -70,7 +58,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsA-Jk-lbN">
-                                        <rect key="frame" x="35.666666666666671" y="241.33333333333337" width="228.66666666666663" height="44"/>
+                                        <rect key="frame" x="35.666666666666671" y="189.33333333333337" width="228.66666666666663" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="1es-1i-qvM"/>
                                         </constraints>
@@ -83,7 +71,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vA-KA-6P4">
-                                        <rect key="frame" x="43.666666666666671" y="293.33333333333331" width="212.66666666666663" height="44"/>
+                                        <rect key="frame" x="43.666666666666671" y="241.33333333333337" width="212.66666666666663" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="2nI-rR-KGO"/>
                                         </constraints>
@@ -92,6 +80,17 @@
                                         <state key="normal" title="Check your email and log in"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Check your email and log in" cornerStyle="capsule">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifh-Vb-FP9">
+                                        <rect key="frame" x="55.333333333333343" y="293.33333333333331" width="189" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Iwq-wo-GPQ"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Wrong email address."/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Wrong email address.">
+                                            <color key="baseForegroundColor" name="AccentColor"/>
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
@@ -123,9 +122,6 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
