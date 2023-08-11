@@ -416,6 +416,7 @@
 				3B8307302A75E42A00C3068B /* Resources */,
 				280274880A8D8AFDABA2E694 /* [CP] Embed Pods Frameworks */,
 				3B89CEF92A7664670090550A /* ShellScript */,
+				3B2253202A8681F100B7ECE3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -503,6 +504,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TodoListApp/Pods-TodoListApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3B2253202A8681F100B7ECE3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}\n$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/FirebaseCrashlytics/run\n\n";
 		};
 		3B89CEF92A7664670090550A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

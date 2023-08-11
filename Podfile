@@ -10,6 +10,8 @@ target 'TodoListApp' do
   pod 'IQKeyboardManagerSwift'
   pod 'LicensePlist'
   pod 'R.swift'
+  pod 'FirebaseAnalytics'
+  pod 'Firebase/Crashlytics'
 
 
 
