@@ -9,7 +9,6 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
-
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.register(UINib.init(nibName: SettingCell.className, bundle: nil), forCellReuseIdentifier: SettingCell.className)
@@ -21,48 +20,42 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         observeNotifications()
-
     }
-
 }
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: セルによって画面遷移分岐させる
+        // タップするセルによって画面遷移分岐
         switch indexPath.row {
+            // アカウントアップグレード
         case SettingItemCell.AccountUpgrade.rawValue:
             DispatchQueue.main.async {
                 if UserDefaults.standard.isAuthAccountCreated {
-                    //TODO
                     Alert.okAlert(vc: self, title: R.string.localizable.upgradeIsComplete(), message: "")
                     return
                 }
-                //TODO
                 Alert.cancelAlert(vc: self, title: R.string.localizable.accountUpgrade(), message: R.string.localizable.yourDataWillBeTransferredAsIsProceedWithPeaceOfMind(), handler: { [weak self] _ in
                     guard let self = self else { return }
-//                    Router.shared.showPasswordReset(form: self)
                     Router.shared.showAccountUpgrade(from: self)
                 })
             }
-
+            // サインアウト
         case SettingItemCell.singOutCellRow.rawValue:
-            //TODO: メインスレッドで実行
-            Alert.cancelAlert(vc: self, title: R.string.localizable.signOut(), message: "",handler: { [weak self] _ in
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                Alert.cancelAlert(vc: self, title: R.string.localizable.signOut(), message: "",handler: { [weak self] _ in
                     FirebaseUserManager.singOut { [weak self] result in
                         guard let self = self else { return }
                         switch result {
                         case.failure(let error):
                             Alert.showErrorAlert(vc: self, error: error)
                         case.success():
-                            print("サインアウト")
                             UserDefaults.standard.isLogined = false
                             UserDefaults.standard.isAuthAccountCreated = false
                             Router.shared.showReStart()
                         }
                     }
-                }
-            })
-
+                })
+            }
+            // アカウント削除
         case SettingItemCell.withDrawCellRow.rawValue:
             //TODO: メインスレッドで実行
             Alert.cancelAlert(vc: self, title: R.string.localizable.areYouSureYouWantToDeleteYourAccount(), message: R.string.localizable.areYouSureYouWantToDeleteYourSavedInformation() ,handler: { [weak self] _ in
@@ -73,7 +66,6 @@ extension SettingViewController: UITableViewDelegate {
                         case.failure(let error):
                             Alert.showErrorAlert(vc: self, error: error)
                         case.success():
-                            print("退会成功")
                             UserDefaults.standard.isLogined = false
                             UserDefaults.standard.isAuthAccountCreated = false
                             Router.shared.showReStart()

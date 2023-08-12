@@ -8,6 +8,7 @@
 import Foundation
 
 extension UserDefaults {
+    // ログインしてるかの判定
     private var loginedKey: String { "logined" }
     var isLogined: Bool {
         set {
@@ -17,6 +18,7 @@ extension UserDefaults {
             bool(forKey: loginedKey)
         }
     }
+    // アカウントをアップデートしてるかの判定
     private var isAuthAccountCreatedKey: String { "isAuthAccountCreated" }
     var isAuthAccountCreated: Bool {
         set {

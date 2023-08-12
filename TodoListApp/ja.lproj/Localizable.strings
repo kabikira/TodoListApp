@@ -46,7 +46,7 @@
 "WeakPasswordError" = "パスワードが脆弱すぎます";
 "Use without creating an account" = "簡単ログイン";
 "AccountUpgrade" = "アカウントをアップグレード";
-"Did you enter a wrong email address?" = "メールアドレスを間違えて入力した";
+"Did you enter a wrong email address?" = "メールアドレスを間違えて登録した";
 "Temporary account" = "一時的なアカウントです";
 "We cannot guarantee data permanence. If you wish to retain the data in your account, we recommend that you register for a formal account" = "データの永続性を保証できません。アカウントのデータを保持したい場合は、正式なアカウント登録をお勧めします";
 "Update your email address" = "メールアドレスを更新する";

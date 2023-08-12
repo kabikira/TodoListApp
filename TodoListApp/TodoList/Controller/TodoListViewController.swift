@@ -10,9 +10,10 @@ import UIKit
 class TodoListViewController: UIViewController {
 
     private var todoItems: [TodoItemModel] = []
+    // 完了済みかの判定するのBool値
     private var showingDone = true
+    // 最初はtodsFirstのデータを取得して表示
     private var selectedTodos = FirebaseCollections.Todos.todosFirst.rawValue
-
 
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
@@ -51,28 +52,29 @@ class TodoListViewController: UIViewController {
                     action: #selector(toggleTodoStatus)
                 )
         navigationItem.title = R.string.localizable.todoList()
+        // 設定画面に遷移
         navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(systemName: ImageNames.gearshape), style: .done, target: self, action: #selector(tapedLeftBarButton(_:)))
-
     }
 
 }
 private extension TodoListViewController {
-    // MARK: - Actions
+    // MARK: - ButtonActions
     @objc func tapedAddBotton(_ sender: Any) {
-        
+        // リスト追加画面に遷移
         Router.shared.showTodoAdd(from: self, todos: selectedTodos)
     }
     @objc func tapedLeftBarButton(_ sender: Any) {
+        // 設定画面に遷移
         Router.shared.showSetting(from: self)
     }
-    @objc func tapedReighBarButton(_ sender: Any) {
-        getUncompletedTodos()
-    }
     @objc func toggleTodoStatus() {
-            showingDone.toggle()
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: showingDone ? ImageNames.checkmarkCircle : ImageNames.circle)
-            reloadData()
-        }
+        // 完了､未完了を切り替え
+        showingDone.toggle()
+        navigationItem.rightBarButtonItem?.image = UIImage(systemName: showingDone ? ImageNames.checkmarkCircle : ImageNames.circle)
+        // todo
+        reloadData()
+    }
+    // セグメントをタップして切り替えしtodosの各項目を取得
     @objc func tapedChangeTodosControl(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -109,6 +111,7 @@ private extension TodoListViewController {
     }
 
     // MARK: - Data Fetching
+    // 完了済み､未完了済みを一緒に表示 or 未完了のみのリストを表示する
     func reloadData() {
         startIndicator()
         if showingDone {
@@ -117,6 +120,7 @@ private extension TodoListViewController {
             getUncompletedTodos()
         }
     }
+    // すべてのリストを取得
     func getAllTodos() {
         FirebaseDBManager.getTodoDataForFirestore(todos: selectedTodos) { [weak self] result in
             DispatchQueue.main.async {
@@ -131,8 +135,8 @@ private extension TodoListViewController {
                 self.stopIndecator()
             }
         }
-
     }
+    // 未完了のリストを取得
     func getUncompletedTodos() {
         FirebaseDBManager.getUndoneTodoDataForFirestore(todos: selectedTodos) { [weak self] result in
             DispatchQueue.main.async {
@@ -149,10 +153,12 @@ private extension TodoListViewController {
         }
     }
     // MARK: - Notification Handling
+    // ネットワーク接続状態を監視
     func observeNotifications() {
         NetworkMonitor.shared.startMonitoring()
         NotificationCenter.default.addObserver(self, selector: #selector(connectionLost), name: NetworkMonitor.connectionLost, object: nil)
     }
+    // ネット接続が切れたらアラート表示
     @objc func connectionLost() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -164,14 +170,8 @@ private extension TodoListViewController {
 
 // MARK: - TableView
 extension TodoListViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.alpha = 0
-//        UIView.animate(withDuration: 0.4) {
-//            cell.alpha = 1.0
-//        }
-//    }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // cellをタップしたときにアニメーション
         let cell = tableView.cellForRow(at: indexPath)
         UIView.animate(withDuration: 0.2,
                        animations: {
@@ -182,9 +182,11 @@ extension TodoListViewController: UITableViewDelegate {
                 cell?.transform = CGAffineTransform.identity
             }
         })
+        // タップしたセルのに完了､未完了のチェックを切り替える
         tableView.deselectRow(at: indexPath, animated: true)
         var todoItem = todoItems[indexPath.row]
         todoItem.isDone.toggle()
+        // todosデータを更新
         FirebaseDBManager.updateTodoData(todos: self.selectedTodos,todoItem: todoItem) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -211,7 +213,6 @@ extension TodoListViewController: UITableViewDelegate {
                     case.failure(let error):
                         Alert.showErrorAlert(vc: self, error: error)
                     case.success():
-                        print("削除")
                         // itemToRemove.idと同じ要素をもつ最初のインデックスを探して削除
                         if let index = self.todoItems.firstIndex(where: { $0.id == itemToRemove.id }) {
                             self.todoItems.remove(at: index)

@@ -13,7 +13,8 @@ class TodoAddViewController: UIViewController {
 
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var notesTextView: UITextView!
-
+    // Routre から呼び出されどのTodoリストカテゴリに属しているかを知る
+    // TODO: func configure はどこからでも呼べるので修正したほうがいいかもしれない
     func configure(todos: String) {
         self.selectedTodos = todos
     }
@@ -28,14 +29,14 @@ class TodoAddViewController: UIViewController {
         notesTextView.delegate = self
         titleTextField.delegate = self
         observeNotifications()
-        // TODO: Doneでtodo編集してセルを更新させてとじる
+        // Doneボタンでtodo編集してセルを更新させてとじる
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.done(), style: .done, target: self, action: #selector(tapedDoneBotton(_:)))
-        // TODO: 閉じる
+        // 閉じるボタン
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: R.string.localizable.cancel(), style: .plain, target: self, action: #selector(tapedCancelBotton(_:)))
 
     }
 }
-// MARK: - Actions
+// MARK: - BottonActions
 private extension TodoAddViewController {
     @objc func tapedDoneBotton(_ sender: Any) {
         let title = titleTextField.text ?? ""
@@ -47,9 +48,7 @@ private extension TodoAddViewController {
                 guard let self = self else { return }
                 switch result {
                 case.success():
-                    print("データベース作成")
-                    //                NotificationCenter.default.post(name: .updateTodoListView, object: nil)
-
+                    break
                 case .failure(let error):
                     Alert.showErrorAlert(vc: self, error: error)
                 }
@@ -58,6 +57,7 @@ private extension TodoAddViewController {
         // Todo一覧画面に戻る処理
         self.navigationController?.popViewController(animated: true)
     }
+    // 1つまえの画面に戻る
     @objc func tapedCancelBotton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -89,27 +89,31 @@ private extension TodoAddViewController {
             Alert.okAlert(vc: self, title: R.string.localizable.networkErrors(), message: NetworkMonitor.connectionLost.rawValue)
         }
     }
-
 }
 // MARK: - UITextViewDelegate
 extension TodoAddViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        // 入力されたときの文字制限をチェック
         return notesTextView.text.count + (text.count - range.length) <= MaxNumCharacters.maxNotes.rawValue
     }
 }
 // MARK: - UITextFieldDelegate
 extension TodoAddViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 入力されたときの文字制限をチェック
         let titleText = titleTextField.text ?? ""
         return titleText.count + (string.count - range.length) <= MaxNumCharacters.maxTitle.rawValue
     }
+    // testFieldに入力するとき
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        // 少し大きくなるアニメーション
         UIView.animate(withDuration: 0.2) {
             textField.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
         }
     }
-
+    // 入力が終わったとき
     func textFieldDidEndEditing(_ textField: UITextField) {
+        // もとに戻るアニメーション
         UIView.animate(withDuration: 0.2) {
             textField.transform = CGAffineTransform.identity
         }

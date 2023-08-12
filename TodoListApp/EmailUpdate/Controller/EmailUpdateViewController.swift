@@ -27,15 +27,16 @@ class EmailUpdateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.isModalInPresentation = true
         emailTextField.delegate = self
+        // パスワードのテキストフィールドの入力値を隠し半角しか入力できないようにする
         passwordTextField.isSecureTextEntry = true
     }
 
 }
-// MARK: - ACTION
+// MARK: - ButtonACTION
 private extension EmailUpdateViewController {
     @objc func tappedUpdateEmailButton() {
+        // ボタンの連続タップを禁止
         updateEmailButton.isUserInteractionEnabled = false
         let email = emailTextField.text ?? ""
             // メールアドレスを更新
@@ -46,9 +47,15 @@ private extension EmailUpdateViewController {
                     print("メールアドレス更新成功")
                     guard let user = FirebaseUserManager.getCurrentUser() else { return }
                     // mail送信
-                    FirebaseUserManager.sendEmailVerification(to: user)
-                    DispatchQueue.main.async {
-                        Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
+                    FirebaseUserManager.sendEmailVerification(to: user) { result in
+                        switch result {
+                        case.success():
+                            DispatchQueue.main.async {
+                                Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
+                            }
+                        case.failure(let error):
+                            Alert.showErrorAlert(vc: self, error: error)
+                        }
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
@@ -70,7 +77,7 @@ private extension EmailUpdateViewController {
                 // UserDefaultsに値を入れる
                 UserDefaults.standard.isAuthAccountCreated = true
                 DispatchQueue.main.async {
-                    // TODO:
+                    // TODO: - 新規登録のときのことを考えてないので修正
                     Alert.okAlert(vc: self, title: R.string.localizable.upgradeIsComplete(), message: R.string.localizable.verified()) { [weak self] _ in
                         guard let self = self else { return }
                         // モダール画面を2画面を1度に閉じる
@@ -94,6 +101,7 @@ private extension EmailUpdateViewController {
 // MARK: - UITextFieldDelegate
 extension EmailUpdateViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 入力されたときの文字制限をチェック
         let currentText = textField.text ?? ""
         let updatedTextLength = currentText.count + (string.count - range.length)
         return updatedTextLength <= MaxNumCharacters.maxEmail.rawValue

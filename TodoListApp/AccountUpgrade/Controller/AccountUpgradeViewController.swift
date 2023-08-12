@@ -10,9 +10,9 @@ import Firebase
 
 class AccountUpgradeViewController: UIViewController {
 
-    @IBOutlet private weak var AccountUpgradeLabel: UILabel! {
+    @IBOutlet private weak var accountUpgrade: UILabel! {
         didSet {
-            // 多言語wrongEmailButton
+            accountUpgrade.text = R.string.localizable.accountUpgrade()
         }
     }
     @IBOutlet private weak var emailTextField: UITextField!
@@ -23,9 +23,7 @@ class AccountUpgradeViewController: UIViewController {
             registerSendMailButton.addTarget(self, action: #selector(tappedregisterSendMailButton), for: .touchUpInside)
         }
     }
-
     @IBOutlet private weak var userNameTextField: UITextField!
-
     @IBOutlet private weak var loginButton: UIButton! {
         didSet {
             loginButton.setTitle(R.string.localizable.checkYourEmailAndLogIn(), for: .normal)
@@ -38,17 +36,15 @@ class AccountUpgradeViewController: UIViewController {
             wrongEmailButton.addTarget(self, action: #selector(tappedwrongEmailButton), for: .touchUpInside)
         }
     }
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        // パスワードのテキストフィールドの入力値を隠し半角しか入力できないようにする
         passwordTextField.isSecureTextEntry = true
     }
-
 }
-// MARK: - Actions
+// MARK: - ButtonActions
 private extension AccountUpgradeViewController {
     @objc func tappedregisterSendMailButton(_ sender: Any) {
         // メール送信成功時認証メールを確認するまで画面を遷移できなくする
@@ -70,11 +66,18 @@ private extension AccountUpgradeViewController {
                         Alert.showErrorAlert(vc: self, error: error)
                     }
                 }
-                // メールを送信
+                // Userを取得
                 guard let user = FirebaseUserManager.getCurrentUser() else { return }
-                FirebaseUserManager.sendEmailVerification(to: user)
-                DispatchQueue.main.async {
-                    Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
+                // mail送信
+                FirebaseUserManager.sendEmailVerification(to: user) { result in
+                    switch result {
+                    case.success():
+                        DispatchQueue.main.async {
+                            Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
+                        }
+                    case.failure(let error):
+                        Alert.showErrorAlert(vc: self, error: error)
+                    }
                 }
             case.failure(let error):
                 DispatchQueue.main.async {
@@ -85,6 +88,7 @@ private extension AccountUpgradeViewController {
     }
     // メールアドレス打ち間違い用メール再送信
     @objc func tappedwrongEmailButton(_ sender: Any) {
+        // Email更新画面に遷移
         Router.shared.showEmailUpdate(from: self)
 
     }
@@ -96,12 +100,9 @@ private extension AccountUpgradeViewController {
             guard let self = self else { return }
             switch result {
             case.success():
-                
                 // 認証アカウントのUserDefaultsをtrue
                 UserDefaults.standard.isAuthAccountCreated = true
-                print("メールチェック")
                 DispatchQueue.main.async {
-                    // TODO:
                     Alert.okAlert(vc: self, title: R.string.localizable.accountUpgrade(), message: R.string.localizable.verified()) { [weak self] result in
                         guard let self = self else { return }
                         self.dismiss(animated: true)
@@ -118,6 +119,7 @@ private extension AccountUpgradeViewController {
 // MARK: - UITextFieldDelegate
 extension AccountUpgradeViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 入力されたときの文字制限をチェック
         let currentText = textField.text ?? ""
         let updatedTextLength = currentText.count + (string.count - range.length)
 
