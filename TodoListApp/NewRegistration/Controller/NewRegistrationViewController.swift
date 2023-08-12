@@ -11,6 +11,8 @@ class NewRegistrationViewController: UIViewController {
     
     @IBOutlet weak var wrongEmailButton: UIButton! {
         didSet {
+            // 登録メール送信ボタンを押すまで隠す
+            wrongEmailButton.isHidden = true
             wrongEmailButton.setTitle(R.string.localizable.didYouEnterAWrongEmailAddress(), for: .normal)
             wrongEmailButton.addTarget(self, action: #selector(tappedWrongEmailButton), for: .touchUpInside)
         }
@@ -50,6 +52,8 @@ class NewRegistrationViewController: UIViewController {
 // MARK: - ButtonActions
 private extension NewRegistrationViewController {
     @objc func tappedSendMail(_ sender: Any) {
+        // 送信ボタンを押したらwrongEmailButton出現
+        wrongEmailButton.isHidden = false
         let email = registerEmailTextField.text ?? ""
         let password = registerPasswordTextField.text ?? ""
         let userName = registerNameTextField.text ?? ""
