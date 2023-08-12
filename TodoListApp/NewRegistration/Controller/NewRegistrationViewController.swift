@@ -112,7 +112,7 @@ private extension NewRegistrationViewController {
     }
     @objc func tappedWrongEmailButton() {
         // Email更新画面に遷移
-        Router.shared.showEmailUpdate(from: self)
+        Router.shared.showEmailUpdate(from: self, isNewRegistration: true)
     }
     func createTodosFromConstants() {
         // ダミーのtodosを作る
