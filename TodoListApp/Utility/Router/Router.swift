@@ -43,8 +43,9 @@ final class Router {
         showPresent(from: from, to: accountUpgrade)
         
     }
-    func showEmailUpdate(from: UIViewController) {
+    func showEmailUpdate(from: UIViewController, isNewRegistration: Bool = false) {
         guard let emailUpdate = R.storyboard.emailUpdate.instantiateInitialViewController() else { return }
+        emailUpdate.setAsNewRegistration(isNewRegistration: isNewRegistration)
         showPresent(from: from, to: emailUpdate)
     }
 
@@ -91,6 +92,12 @@ final class Router {
         default:
             break
         }
+    }
+    // EmailUpdateからTodoListへ画面遷移させる
+    func replaceRootWithTodoList() {
+        guard let todoList = R.storyboard.todoList.instantiateInitialViewController() else { return }
+        let nav = UINavigationController(rootViewController: todoList)
+        window?.rootViewController = nav
     }
     func showReStart() {
         showRoot(window: window)
