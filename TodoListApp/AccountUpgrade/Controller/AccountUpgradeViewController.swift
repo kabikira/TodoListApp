@@ -63,9 +63,11 @@ private extension AccountUpgradeViewController {
                 FirebaseUserManager.registerUserName(userName: userName) { result in
                     switch result {
                     case .success():
-                        print("userName作成成功")
+                        break
                     case .failure(let error):
-                        Alert.showErrorAlert(vc: self, error: error)
+                        DispatchQueue.main.async {
+                            Alert.showErrorAlert(vc: self, error: error)
+                        }
                     }
                 }
                 // Userを取得
