@@ -101,6 +101,29 @@ private extension EmailUpdateViewController {
             }
         }
     }
+    func navigateToTodoListViewAfterRegistration() {
+        DispatchQueue.main.async {
+            Alert.okAlert(vc: self, title: R.string.localizable.accountUpgrade(), message: R.string.localizable.verified()) { [weak self] _ in
+                // TodoListに遷移
+                Router.shared.replaceRootWithTodoList()
+            }
+        }
+    }
+    func dismissAfterEmailUpdate() {
+        DispatchQueue.main.async {
+            Alert.okAlert(vc: self, title: R.string.localizable.accountUpgrade(), message: R.string.localizable.verified()) { [weak self] _ in
+                guard let self = self else { return }
+                // モダール画面を2画面を1度に閉じる
+                //  まず遷移元のViewControllerを定数に入れる
+                let firstPresentingVC = self.presentingViewController
+                // 現在のモダールを閉じる
+                self.dismiss(animated: true) {
+                    // 遷移元のモダールを閉じる
+                    firstPresentingVC?.dismiss(animated: true)
+                }
+            }
+        }
+    }
 }
 // MARK: - UITextFieldDelegate
 extension EmailUpdateViewController: UITextFieldDelegate {
