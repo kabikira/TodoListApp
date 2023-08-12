@@ -48,7 +48,6 @@ private extension EmailUpdateViewController {
             guard let self = self else { return }
             switch result {
             case .success():
-                print("メールアドレス更新成功")
                 guard let user = FirebaseUserManager.getCurrentUser() else { return }
                 // mail送信
                 FirebaseUserManager.sendEmailVerification(to: user) { result in
@@ -77,7 +76,6 @@ private extension EmailUpdateViewController {
             guard let self = self else { return }
             switch result {
             case.success():
-                print("メールチェック")
                 print(self.isNewRegistration)
                 // UserDefaultsに値を入れる
                 UserDefaults.standard.isAuthAccountCreated = true
