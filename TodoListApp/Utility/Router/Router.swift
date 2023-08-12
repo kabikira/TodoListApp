@@ -43,8 +43,9 @@ final class Router {
         showPresent(from: from, to: accountUpgrade)
         
     }
-    func showEmailUpdate(from: UIViewController) {
+    func showEmailUpdate(from: UIViewController, isNewRegistration: Bool = false) {
         guard let emailUpdate = R.storyboard.emailUpdate.instantiateInitialViewController() else { return }
+        emailUpdate.setAsNewRegistration(isNewRegistration: isNewRegistration)
         showPresent(from: from, to: emailUpdate)
     }
 
