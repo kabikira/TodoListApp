@@ -114,9 +114,11 @@ private extension LoginViewController {
             ) { result in
                 switch result {
                 case .success():
-                    print("Successfully created \(TodoConstants.todosTypes[i]) database")
+                    break
                 case .failure(let error):
-                    print("Failed to create \(TodoConstants.todosTypes[i]) database: \(error)")
+                    DispatchQueue.main.async {
+                        Alert.showErrorAlert(vc: self, error: error)
+                    }
                 }
             }
         }
