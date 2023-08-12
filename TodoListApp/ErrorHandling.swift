@@ -9,6 +9,16 @@ import Foundation
 import Firebase
 // Firebaseのエラーハンドリング
 struct ErrorHandling {
+    // 自分で定義したエラー これもアラートで表示したほうがいいのか?
+    enum TodoError: Error {
+        case dataConversionError
+        case userNotLoggedIn
+        case notAnAnonymousUserOrUserIsNil
+        case emailNotVerified
+    }
+
+    // アラートのメッセージで使用するエラー
+    // Firebaseと通信したときFirebase自体からのエラーによってメッセージを切り替える
     static func firebaseErrorMessage(of error: Error) -> String {
         var message = R.string.localizable.generalError()
         // エラー処理
