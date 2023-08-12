@@ -33,7 +33,7 @@ extension SettingViewController: UITableViewDelegate {
                     Alert.okAlert(vc: self, title: R.string.localizable.upgradeIsComplete(), message: "")
                     return
                 }
-                Alert.cancelAlert(vc: self, title: R.string.localizable.accountUpgrade(), message: R.string.localizable.yourDataWillBeTransferredAsIsProceedWithPeaceOfMind(), handler: { [weak self] _ in
+                Alert.cancelAlert(vc: self, title: R.string.localizable.accountUpgrade(), message: R.string.localizable.yourDataWillBeTransferredAsIs(), handler: { [weak self] _ in
                     guard let self = self else { return }
                     Router.shared.showAccountUpgrade(from: self)
                 })
