@@ -35,10 +35,10 @@ class LoginViewController: UIViewController {
         }
     }
     @IBOutlet private weak var passwordResetButton: UIButton! {
-         didSet{
-             passwordResetButton.setTitle(R.string.localizable.forgotPassword(), for: .normal)
-             passwordResetButton.addTarget(self, action: #selector(tapedPasswordResetButton(_:)), for: .touchUpInside)
-            }
+        didSet{
+            passwordResetButton.setTitle(R.string.localizable.forgotPassword(), for: .normal)
+            passwordResetButton.addTarget(self, action: #selector(tapedPasswordResetButton(_:)), for: .touchUpInside)
+        }
     }
     
 
