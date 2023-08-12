@@ -16,6 +16,7 @@ final class Router {
 
     private var window: UIWindow?
     func showRoot(window: UIWindow?) {
+        // UserDegaultsの値で起動経路を切り替える
         if UserDefaults.standard.isLogined {
             guard let vc = R.storyboard.todoList.instantiateInitialViewController() else { return }
                 let nav = UINavigationController(rootViewController: vc)
@@ -77,13 +78,11 @@ final class Router {
         // お問い合わせとプライバシーアンドポリシーはブラウザから見てもらう
         switch settingItem.title {
         case settingItems[1].title:
-            print("お問い合わせ")
             guard let url = URL(string: URLs.googleForms) else { return }
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
         case settingItems[2].title:
-            print("プライバシ")
             guard let url = URL(string: URLs.privacyPolicy) else { return }
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
@@ -91,7 +90,6 @@ final class Router {
 
         default:
             break
-
         }
     }
     func showReStart() {
