@@ -32,6 +32,8 @@ class AccountUpgradeViewController: UIViewController {
     }
     @IBOutlet private weak var wrongEmailButton: UIButton! {
         didSet {
+            // 登録メール送信ボタンを押すまで隠す
+            wrongEmailButton.isHidden = true
             wrongEmailButton.setTitle(R.string.localizable.didYouEnterAWrongEmailAddress(), for: .normal)
             wrongEmailButton.addTarget(self, action: #selector(tappedwrongEmailButton), for: .touchUpInside)
         }
