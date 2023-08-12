@@ -43,31 +43,31 @@ private extension EmailUpdateViewController {
         // ボタンの連続タップを禁止
         updateEmailButton.isUserInteractionEnabled = false
         let email = emailTextField.text ?? ""
-            // メールアドレスを更新
-            FirebaseUserManager.updateEmail(to: email) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success():
-                    print("メールアドレス更新成功")
-                    guard let user = FirebaseUserManager.getCurrentUser() else { return }
-                    // mail送信
-                    FirebaseUserManager.sendEmailVerification(to: user) { result in
-                        switch result {
-                        case.success():
-                            DispatchQueue.main.async {
-                                Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
-                            }
-                        case.failure(let error):
-                            Alert.showErrorAlert(vc: self, error: error)
+        // メールアドレスを更新
+        FirebaseUserManager.updateEmail(to: email) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success():
+                print("メールアドレス更新成功")
+                guard let user = FirebaseUserManager.getCurrentUser() else { return }
+                // mail送信
+                FirebaseUserManager.sendEmailVerification(to: user) { result in
+                    switch result {
+                    case.success():
+                        DispatchQueue.main.async {
+                            Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
                         }
-                    }
-                case .failure(let error):
-                    DispatchQueue.main.async {
+                    case.failure(let error):
                         Alert.showErrorAlert(vc: self, error: error)
                     }
                 }
-                self.updateEmailButton.isUserInteractionEnabled = true
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    Alert.showErrorAlert(vc: self, error: error)
+                }
             }
+            self.updateEmailButton.isUserInteractionEnabled = true
+        }
     }
     @objc func tappedLoginButton() {
         // mailをチェックしていたらログイン
@@ -78,22 +78,18 @@ private extension EmailUpdateViewController {
             switch result {
             case.success():
                 print("メールチェック")
+                print(self.isNewRegistration)
                 // UserDefaultsに値を入れる
                 UserDefaults.standard.isAuthAccountCreated = true
-                DispatchQueue.main.async {
-                    // TODO: - 新規登録のときのことを考えてないので修正
-                    Alert.okAlert(vc: self, title: R.string.localizable.upgradeIsComplete(), message: R.string.localizable.verified()) { [weak self] _ in
-                        guard let self = self else { return }
-                        // モダール画面を2画面を1度に閉じる
-                        //  まず遷移元のViewControllerを定数に入れる
-                        let firstPresentingVC = self.presentingViewController
-                        // 現在のモダールを閉じる
-                        self.dismiss(animated: true) {
-                            // 遷移元のモダールを閉じる
-                            firstPresentingVC?.dismiss(animated: true)
-                        }
-                   }
+
+                // 新規登録の画面から来たとき
+                if self.isNewRegistration {
+                    self.navigateToTodoListViewAfterRegistration()
+                } else {
+                    // 匿名ログインで設定画面からきたとき
+                    self.dismissAfterEmailUpdate()
                 }
+
             case.failure(let error):
                 DispatchQueue.main.async {
                     Alert.showErrorAlert(vc: self, error: error)
