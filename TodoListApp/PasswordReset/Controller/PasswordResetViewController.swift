@@ -17,13 +17,12 @@ class PasswordResetViewController: UIViewController {
             passwordResetEmailButton.addTarget(self, action: #selector(tapedPasswordResetEmailButton(_:)), for: .touchUpInside)
         }
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
-
     }
 }
+// MARK: - ButtonActions
 private extension PasswordResetViewController {
     @objc func tapedPasswordResetEmailButton(_ sender: Any) {
         passwordResetEmailButton.isUserInteractionEnabled = false
@@ -36,7 +35,6 @@ private extension PasswordResetViewController {
                 DispatchQueue.main.async {
                     Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
                 }
-                print("リセットメール送信")
             case.failure(let error):
                 DispatchQueue.main.async {
                     Alert.showErrorAlert(vc: self, error: error)
@@ -49,6 +47,7 @@ private extension PasswordResetViewController {
 // MARK: - UITextFieldDelegate
 extension PasswordResetViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 入力されたときの文字制限をチェック
         let currentText = textField.text ?? ""
         let updatedTextLength = currentText.count + (string.count - range.length)
         return updatedTextLength <= MaxNumCharacters.maxEmail.rawValue

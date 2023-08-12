@@ -49,12 +49,14 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
     }
 }
-// MARK: - Actions
+// MARK: - ButtonActions
 private extension LoginViewController {
     @objc func tapedNewRegistrationButton(_ sender: Any) {
+        // 新規登録画面に遷移
         Router.shared.showNewRegistration(from: self)
     }
     @objc func tapedLoginButton(_ sender: Any) {
+        // ボタンの連続タップを防止
         loginButton.isUserInteractionEnabled = false
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -102,6 +104,7 @@ private extension LoginViewController {
             }
         }
     }
+    // サンプルデータをTodoに入れる
     func createTodosFromConstants() {
         for i in 0..<TodoConstants.todosTypes.count {
             FirebaseDBManager.createTodo(
@@ -122,6 +125,7 @@ private extension LoginViewController {
 // MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 入力されたときの文字制限をチェック
         let currentText = textField.text ?? ""
         let updatedTextLength = currentText.count + (string.count - range.length)
 

@@ -7,11 +7,11 @@
 
 import Foundation
 
+// 設定画面のModel
 struct SettingItem {
     let emoji: String
     let title: String
 }
-// TODO: 仮の実装
 let settingItems: [SettingItem] = [
     SettingItem(emoji: "👀", title: R.string.localizable.accountUpgrade()),
     SettingItem(emoji: "✉️", title: R.string.localizable.contactUs()),

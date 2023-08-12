@@ -102,7 +102,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cWd-8r-q1D"/>
                     <connections>
-                        <outlet property="AccountUpgradeLabel" destination="4gt-4K-7Ef" id="9L7-k4-9t9"/>
+                        <outlet property="accountUpgrade" destination="4gt-4K-7Ef" id="7QH-Z6-UOQ"/>
                         <outlet property="emailTextField" destination="3wJ-Wv-fsh" id="xLr-D7-e2h"/>
                         <outlet property="loginButton" destination="xcC-a8-o56" id="4vb-yK-2yf"/>
                         <outlet property="passwordTextField" destination="rQZ-rZ-Gyh" id="5A8-z2-fF2"/>

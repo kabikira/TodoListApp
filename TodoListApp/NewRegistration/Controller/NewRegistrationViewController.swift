@@ -42,12 +42,12 @@ class NewRegistrationViewController: UIViewController {
         registerEmailTextField.delegate = self
         registerPasswordTextField.delegate = self
         registerNameTextField.delegate = self
-
+        // パスワードのテキストフィールドの入力値を隠し半角しか入力できないようにする
         registerPasswordTextField.isSecureTextEntry = true
     }
 
 }
-// MARK: - Actions
+// MARK: - ButtonActions
 private extension NewRegistrationViewController {
     @objc func tappedSendMail(_ sender: Any) {
         let email = registerEmailTextField.text ?? ""
@@ -59,23 +59,27 @@ private extension NewRegistrationViewController {
             guard let self = self else { return }
             switch result {
             case .success():
-                print("ユーザー登録成功")
-
                 // ユーザー作成成功時に、userNameを設定
                 FirebaseUserManager.registerUserName(userName: userName) { result in
                     switch result {
                     case .success():
-                        print("userName作成成功")
+                        // メールを送信
+                        guard let user = FirebaseUserManager.getCurrentUser() else { return }
+                        FirebaseUserManager.sendEmailVerification(to: user) { result in
+                            switch result {
+                            case.success():
+                                DispatchQueue.main.async {
+                                    Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
+                                }
+                            case.failure(let error):
+                                DispatchQueue.main.async {
+                                    Alert.showErrorAlert(vc: self, error: error)
+                                }
+                            }
+                        }
                     case .failure(let error):
                         Alert.showErrorAlert(vc: self, error: error)
                     }
-                }
-
-                // メールを送信
-                guard let user = FirebaseUserManager.getCurrentUser() else { return }
-                FirebaseUserManager.sendEmailVerification(to: user)
-                DispatchQueue.main.async {
-                    Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -92,7 +96,6 @@ private extension NewRegistrationViewController {
             guard let self = self else { return }
             switch result {
             case.success():
-                print("メールチェック")
                 // userDefaに値をいれる
                 UserDefaults.standard.isLogined = true
                 UserDefaults.standard.isAuthAccountCreated = true
@@ -108,9 +111,11 @@ private extension NewRegistrationViewController {
         }
     }
     @objc func tappedWrongEmailButton() {
+        // Email更新画面に遷移
         Router.shared.showEmailUpdate(from: self)
     }
     func createTodosFromConstants() {
+        // ダミーのtodosを作る
         for i in 0..<TodoConstants.todosTypes.count {
             FirebaseDBManager.createTodo(
                 title: TodoConstants.todosTitles[i],
@@ -119,9 +124,11 @@ private extension NewRegistrationViewController {
             ) { result in
                 switch result {
                 case .success():
-                    print("Successfully created \(TodoConstants.todosTypes[i]) database")
+                    break
                 case .failure(let error):
-                    print("Failed to create \(TodoConstants.todosTypes[i]) database: \(error)")
+                    DispatchQueue.main.async {
+                        Alert.showErrorAlert(vc: self, error: error)
+                    }
                 }
             }
         }
@@ -131,6 +138,7 @@ private extension NewRegistrationViewController {
 // MARK: - UITextFieldDelegate
 extension NewRegistrationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 入力されたときの文字制限をチェック
         let currentText = textField.text ?? ""
         let updatedTextLength = currentText.count + (string.count - range.length)
 
