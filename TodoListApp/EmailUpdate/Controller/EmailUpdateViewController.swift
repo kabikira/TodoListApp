@@ -8,8 +8,12 @@
 import UIKit
 
 class EmailUpdateViewController: UIViewController {
-
-
+    // 新規登録済みかを判断する
+    private var isNewRegistration: Bool = false
+    // isNewRegistrationを変更するメソッド
+    func setAsNewRegistration(isNewRegistration: Bool) {
+        self.isNewRegistration = isNewRegistration
+    }
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginButton: UIButton! {
