@@ -63,6 +63,8 @@ private extension NewRegistrationViewController {
                 FirebaseUserManager.registerUserName(userName: userName) { result in
                     switch result {
                     case .success():
+                        // サンプルデータをTodoに入れる
+                        self.createTodosFromConstants()
                         // メールを送信
                         guard let user = FirebaseUserManager.getCurrentUser() else { return }
                         FirebaseUserManager.sendEmailVerification(to: user) { result in
@@ -99,8 +101,6 @@ private extension NewRegistrationViewController {
                 // userDefaに値をいれる
                 UserDefaults.standard.isLogined = true
                 UserDefaults.standard.isAuthAccountCreated = true
-                // サンプルデータをTodoに入れる
-                self.createTodosFromConstants()
                 // loginへ画面遷移
                 Router.shared.showTodoList(from: self)
             case.failure(let error):
