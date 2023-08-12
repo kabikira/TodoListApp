@@ -93,6 +93,12 @@ final class Router {
             break
         }
     }
+    // EmailUpdateからTodoListへ画面遷移させる
+    func replaceRootWithTodoList() {
+        guard let todoList = R.storyboard.todoList.instantiateInitialViewController() else { return }
+        let nav = UINavigationController(rootViewController: todoList)
+        window?.rootViewController = nav
+    }
     func showReStart() {
         showRoot(window: window)
     }
