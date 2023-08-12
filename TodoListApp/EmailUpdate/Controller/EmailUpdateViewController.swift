@@ -28,14 +28,12 @@ class EmailUpdateViewController: UIViewController {
             updateEmailButton.addTarget(self, action: #selector(tappedUpdateEmailButton), for: .touchUpInside)
         }
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         // パスワードのテキストフィールドの入力値を隠し半角しか入力できないようにする
         passwordTextField.isSecureTextEntry = true
     }
-
 }
 // MARK: - ButtonACTION
 private extension EmailUpdateViewController {
@@ -76,7 +74,6 @@ private extension EmailUpdateViewController {
             guard let self = self else { return }
             switch result {
             case.success():
-                print(self.isNewRegistration)
                 // UserDefaultsに値を入れる
                 UserDefaults.standard.isAuthAccountCreated = true
 
