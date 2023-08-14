@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2253132A8333C000B7ECE3 /* AccountUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */; };
+		3B2253162A837F8200B7ECE3 /* EmailUpdate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */; };
+		3B2253182A837F9200B7ECE3 /* EmailUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */; };
+		3B2253222A86910E00B7ECE3 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2253212A86910E00B7ECE3 /* ErrorHandling.swift */; };
+		3B2253242A87FF9B00B7ECE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B2253232A87FF9B00B7ECE3 /* GoogleService-Info.plist */; };
 		3B8307362A75E42A00C3068B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307352A75E42A00C3068B /* AppDelegate.swift */; };
 		3B8307382A75E42A00C3068B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307372A75E42A00C3068B /* SceneDelegate.swift */; };
-		3B83073A2A75E42A00C3068B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8307392A75E42A00C3068B /* ViewController.swift */; };
-		3B83073D2A75E42A00C3068B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B83073B2A75E42A00C3068B /* Main.storyboard */; };
 		3B83073F2A75E42C00C3068B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B83073E2A75E42C00C3068B /* Assets.xcassets */; };
 		3B8307422A75E42C00C3068B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B8307402A75E42C00C3068B /* LaunchScreen.storyboard */; };
 		3B885DDE2A79603A004DCA7B /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B885DDD2A79603A004DCA7B /* SettingCell.xib */; };
@@ -35,25 +38,29 @@
 		3B89CEEE2A765A7C0090550A /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEED2A765A7C0090550A /* AppConstants.swift */; };
 		3B89CEF02A765A9F0090550A /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEEF2A765A9F0090550A /* UserDefaults+.swift */; };
 		3B89CEF22A765B6F0090550A /* TodoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEF12A765B6F0090550A /* TodoItemModel.swift */; };
-		3B89CEF42A7662B10090550A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B89CEF32A7662B10090550A /* GoogleService-Info.plist */; };
 		3B89CEF62A7663D50090550A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B89CEF52A7663D50090550A /* Settings.bundle */; };
 		3B89CEFB2A767D180090550A /* FirebaseUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEFA2A767D180090550A /* FirebaseUserManager.swift */; };
 		3B89CEFD2A767D2D0090550A /* FirebaseTodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEFC2A767D2D0090550A /* FirebaseTodoManager.swift */; };
-		3B89CEFF2A7680A80090550A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CEFE2A7680A80090550A /* UIViewController+.swift */; };
 		3B89CF032A77F7910090550A /* PasswordReset.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B89CF022A77F7910090550A /* PasswordReset.storyboard */; };
 		3B89CF052A77F79E0090550A /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */; };
 		3B8F5C922A79C03D00C969E6 /* SettingItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C912A79C03D00C969E6 /* SettingItemModel.swift */; };
-		3B8F5C962A7B76C500C969E6 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C952A7B76C500C969E6 /* Notification+.swift */; };
+		3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C972A7DD9C700C969E6 /* Alert.swift */; };
+		3B8F5C9A2A7E2EE400C969E6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C992A7E2EE400C969E6 /* String+.swift */; };
+		3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C9C2A81120900C969E6 /* R.generated.swift */; };
+		3B8F5CA22A82841E00C969E6 /* AccountUpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */; };
 		9111305FEC1717BF98C8238C /* Pods_TodoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C1B6E6A4B152341A9AB756E /* Pods-TodoListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.release.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.release.xcconfig"; sourceTree = "<group>"; };
+		3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = AccountUpgrade.storyboard; path = ../AccountUpgrade.storyboard; sourceTree = "<group>"; };
+		3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmailUpdate.storyboard; sourceTree = "<group>"; };
+		3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUpdateViewController.swift; sourceTree = "<group>"; };
+		3B2253212A86910E00B7ECE3 /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		3B2253232A87FF9B00B7ECE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B8307322A75E42A00C3068B /* TodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8307352A75E42A00C3068B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B8307372A75E42A00C3068B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3B8307392A75E42A00C3068B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3B83073C2A75E42A00C3068B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B83073E2A75E42C00C3068B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B8307412A75E42C00C3068B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B8307432A75E42C00C3068B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,15 +87,16 @@
 		3B89CEED2A765A7C0090550A /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		3B89CEEF2A765A9F0090550A /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		3B89CEF12A765B6F0090550A /* TodoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemModel.swift; sourceTree = "<group>"; };
-		3B89CEF32A7662B10090550A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B89CEF52A7663D50090550A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		3B89CEFA2A767D180090550A /* FirebaseUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserManager.swift; sourceTree = "<group>"; };
 		3B89CEFC2A767D2D0090550A /* FirebaseTodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTodoManager.swift; sourceTree = "<group>"; };
-		3B89CEFE2A7680A80090550A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		3B89CF022A77F7910090550A /* PasswordReset.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordReset.storyboard; sourceTree = "<group>"; };
 		3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		3B8F5C912A79C03D00C969E6 /* SettingItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemModel.swift; sourceTree = "<group>"; };
-		3B8F5C952A7B76C500C969E6 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		3B8F5C972A7DD9C700C969E6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		3B8F5C992A7E2EE400C969E6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		3B8F5C9C2A81120900C969E6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUpgradeViewController.swift; sourceTree = "<group>"; };
 		FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD276F2FB2DE0C4DAD80A825 /* Pods-TodoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,9 +113,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B1905E12A83331D00986B47 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */,
+				3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3B2253142A837F5C00B7ECE3 /* EmailUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				3B22531B2A84EE9A00B7ECE3 /* Controller */,
+			);
+			path = EmailUpdate;
+			sourceTree = "<group>";
+		};
+		3B22531B2A84EE9A00B7ECE3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */,
+				3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3B22531C2A84EEB600B7ECE3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3B89CEEF2A765A9F0090550A /* UserDefaults+.swift */,
+				3B8F5C992A7E2EE400C969E6 /* String+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3B22531D2A84EEF400B7ECE3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3B89CEEB2A765A6A0090550A /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3B22531E2A84EF1F00B7ECE3 /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				3B89CEE82A765A520090550A /* NetworkMonitor.swift */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
+		3B22531F2A84EF2C00B7ECE3 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				3B8F5C972A7DD9C700C969E6 /* Alert.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		3B8307292A75E42A00C3068B = {
 			isa = PBXGroup;
 			children = (
+				3B8F5C9C2A81120900C969E6 /* R.generated.swift */,
 				3B8307342A75E42A00C3068B /* TodoListApp */,
 				3B8307332A75E42A00C3068B /* Products */,
 				5C2B24D71C88C8A6DE6C9749 /* Pods */,
@@ -129,20 +197,23 @@
 				3B8307352A75E42A00C3068B /* AppDelegate.swift */,
 				3B8307372A75E42A00C3068B /* SceneDelegate.swift */,
 				3B89CECB2A76579E0090550A /* Utility */,
+				3B89CEED2A765A7C0090550A /* AppConstants.swift */,
+				3B2253212A86910E00B7ECE3 /* ErrorHandling.swift */,
 				3B89CEB72A76558A0090550A /* Model */,
 				3B89CEC62A7656DE0090550A /* NewRegistration */,
 				3B89CEB82A7655930090550A /* Login */,
+				3B2253142A837F5C00B7ECE3 /* EmailUpdate */,
+				3B8F5C9E2A8283BC00C969E6 /* AccountUpgrade */,
 				3B89CF002A77F75C0090550A /* PasswordReset */,
 				3B89CEB92A7655A10090550A /* TodoList */,
+				3B89CEBF2A7656270090550A /* TodoAdd */,
 				3B89CEC02A76563B0090550A /* TodoEdit */,
 				3B89CEC52A7656820090550A /* Setting */,
-				3B83073B2A75E42A00C3068B /* Main.storyboard */,
-				3B8307392A75E42A00C3068B /* ViewController.swift */,
 				3B83073E2A75E42C00C3068B /* Assets.xcassets */,
+				3B2253232A87FF9B00B7ECE3 /* GoogleService-Info.plist */,
 				3B8307402A75E42C00C3068B /* LaunchScreen.storyboard */,
 				3B89CEB62A763BBC0090550A /* Localizable.strings */,
 				3B8307432A75E42C00C3068B /* Info.plist */,
-				3B89CEF32A7662B10090550A /* GoogleService-Info.plist */,
 				3B89CEF52A7663D50090550A /* Settings.bundle */,
 			);
 			path = TodoListApp;
@@ -188,7 +259,6 @@
 		3B89CEBA2A7655B50090550A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3B89CEBF2A7656270090550A /* TodoAdd */,
 				3B89CEDA2A7658ED0090550A /* TodoListCell.xib */,
 				3B89CED82A7658DB0090550A /* TodoListCell.swift */,
 			);
@@ -285,12 +355,10 @@
 		3B89CECB2A76579E0090550A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				3B89CEE82A765A520090550A /* NetworkMonitor.swift */,
-				3B89CEEB2A765A6A0090550A /* Router.swift */,
-				3B89CEED2A765A7C0090550A /* AppConstants.swift */,
-				3B89CEEF2A765A9F0090550A /* UserDefaults+.swift */,
-				3B89CEFE2A7680A80090550A /* UIViewController+.swift */,
-				3B8F5C952A7B76C500C969E6 /* Notification+.swift */,
+				3B22531E2A84EF1F00B7ECE3 /* NetworkMonitor */,
+				3B22531D2A84EEF400B7ECE3 /* Router */,
+				3B22531F2A84EF2C00B7ECE3 /* Alert */,
+				3B22531C2A84EEB600B7ECE3 /* Extensions */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -310,6 +378,14 @@
 				3B89CF042A77F79E0090550A /* PasswordResetViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		3B8F5C9E2A8283BC00C969E6 /* AccountUpgrade */ = {
+			isa = PBXGroup;
+			children = (
+				3B1905E12A83331D00986B47 /* Controller */,
+			);
+			path = AccountUpgrade;
 			sourceTree = "<group>";
 		};
 		5C2B24D71C88C8A6DE6C9749 /* Pods */ = {
@@ -337,11 +413,13 @@
 			buildConfigurationList = 3B8307462A75E42C00C3068B /* Build configuration list for PBXNativeTarget "TodoListApp" */;
 			buildPhases = (
 				99032559A58D1073840011DB /* [CP] Check Pods Manifest.lock */,
+				3B8F5C9B2A81114300C969E6 /* ShellScript */,
 				3B83072E2A75E42A00C3068B /* Sources */,
 				3B83072F2A75E42A00C3068B /* Frameworks */,
 				3B8307302A75E42A00C3068B /* Resources */,
 				280274880A8D8AFDABA2E694 /* [CP] Embed Pods Frameworks */,
 				3B89CEF92A7664670090550A /* ShellScript */,
+				3B2253202A8681F100B7ECE3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -396,15 +474,16 @@
 				3B8307422A75E42C00C3068B /* LaunchScreen.storyboard in Resources */,
 				3B89CEF62A7663D50090550A /* Settings.bundle in Resources */,
 				3B89CEDD2A76590B0090550A /* TodoAdd.storyboard in Resources */,
+				3B2253132A8333C000B7ECE3 /* AccountUpgrade.storyboard in Resources */,
 				3B89CEB42A763BBC0090550A /* Localizable.strings in Resources */,
 				3B89CED12A76580E0090550A /* Login.storyboard in Resources */,
-				3B89CEF42A7662B10090550A /* GoogleService-Info.plist in Resources */,
+				3B2253162A837F8200B7ECE3 /* EmailUpdate.storyboard in Resources */,
+				3B2253242A87FF9B00B7ECE3 /* GoogleService-Info.plist in Resources */,
 				3B89CEDB2A7658ED0090550A /* TodoListCell.xib in Resources */,
 				3B83073F2A75E42C00C3068B /* Assets.xcassets in Resources */,
 				3B89CED52A7658BA0090550A /* TodoList.storyboard in Resources */,
 				3B89CECD2A7657D90090550A /* NewRegistration.storyboard in Resources */,
 				3B89CEE52A7659720090550A /* Setting.storyboard in Resources */,
-				3B83073D2A75E42A00C3068B /* Main.storyboard in Resources */,
 				3B89CF032A77F7910090550A /* PasswordReset.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +508,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TodoListApp/Pods-TodoListApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3B2253202A8681F100B7ECE3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}\n$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/FirebaseCrashlytics/run\n\n";
+		};
 		3B89CEF92A7664670090550A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,6 +542,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path $PROJECT_NAME/Settings.bundle\nfi\n";
+		};
+		3B8F5C9B2A81114300C969E6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n\n";
 		};
 		99032559A58D1073840011DB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -477,24 +593,27 @@
 			files = (
 				3B89CEE92A765A520090550A /* NetworkMonitor.swift in Sources */,
 				3B89CED72A7658C90090550A /* TodoListViewController.swift in Sources */,
+				3B2253222A86910E00B7ECE3 /* ErrorHandling.swift in Sources */,
+				3B2253182A837F9200B7ECE3 /* EmailUpdateViewController.swift in Sources */,
 				3B89CEF02A765A9F0090550A /* UserDefaults+.swift in Sources */,
+				3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */,
 				3B89CEF22A765B6F0090550A /* TodoItemModel.swift in Sources */,
+				3B8F5CA22A82841E00C969E6 /* AccountUpgradeViewController.swift in Sources */,
 				3B89CEE32A76595C0090550A /* TodoEditViewController.swift in Sources */,
-				3B83073A2A75E42A00C3068B /* ViewController.swift in Sources */,
 				3B89CEEC2A765A6A0090550A /* Router.swift in Sources */,
 				3B8307362A75E42A00C3068B /* AppDelegate.swift in Sources */,
 				3B89CECF2A7657E40090550A /* NewRegistrationViewController.swift in Sources */,
 				3B89CEE72A7659860090550A /* SettingViewController.swift in Sources */,
 				3B89CEDF2A76591D0090550A /* TodoAddViewController.swift in Sources */,
 				3B89CED92A7658DB0090550A /* TodoListCell.swift in Sources */,
-				3B8F5C962A7B76C500C969E6 /* Notification+.swift in Sources */,
+				3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */,
 				3B89CEEE2A765A7C0090550A /* AppConstants.swift in Sources */,
 				3B89CED32A76581B0090550A /* LoginViewController.swift in Sources */,
 				3B89CF052A77F79E0090550A /* PasswordResetViewController.swift in Sources */,
-				3B89CEFF2A7680A80090550A /* UIViewController+.swift in Sources */,
 				3B8307382A75E42A00C3068B /* SceneDelegate.swift in Sources */,
 				3B89CEFD2A767D2D0090550A /* FirebaseTodoManager.swift in Sources */,
 				3B885DE02A796072004DCA7B /* SettingCell.swift in Sources */,
+				3B8F5C9A2A7E2EE400C969E6 /* String+.swift in Sources */,
 				3B89CEFB2A767D180090550A /* FirebaseUserManager.swift in Sources */,
 				3B8F5C922A79C03D00C969E6 /* SettingItemModel.swift in Sources */,
 			);
@@ -503,14 +622,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3B83073B2A75E42A00C3068B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3B83073C2A75E42A00C3068B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3B8307402A75E42C00C3068B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -658,6 +769,7 @@
 				DEVELOPMENT_TEAM = DW275526Z6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodoListApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TODO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -687,6 +799,7 @@
 				DEVELOPMENT_TEAM = DW275526Z6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodoListApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TODO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

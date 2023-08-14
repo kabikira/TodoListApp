@@ -10,20 +10,9 @@ import FirebaseAuth
 
 final class FirebaseUserManager {
     // MARK: - アカウント作成機能
-   static func createUser(email: String, password: String, completion: @escaping(Result<User, NSError>) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error as NSError? {
-                completion(.failure(error))
-            } else {
-                guard let user = result?.user else { return }
-                completion(.success(user))
-            }
-        }
-    }
-    // MARK: - ログイン機能
-    static func singIn(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { _, error in
-            if let error = error as NSError? {
+    static func createUser(email: String, password: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
                 completion(.failure(error))
             } else {
                 completion(.success)
@@ -31,59 +20,134 @@ final class FirebaseUserManager {
         }
     }
 
-    // MARK: - 登録認証のメール送信
-//    func sendEmailVerification(to user: User, completion: @escaping (Result<Void, NSError>) -> Void) {
-//        user.sendEmailVerification() { error in
-//            if let error = error as NSError? {
-//                completion(.failure(error))
-//            } else {
-//                completion(.success)
-//            }
-//        }
-//    }
-    // errorを伝えたいならResultのほうがいいかな?
-    static func sendEmailVerification(to user: User) {
-        user.sendEmailVerification()
-        print("mail送信")
-    }
-    // MARK: - 登録認証のメールのURLを確認したか
-    static func  checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, NSError>) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-                if let error = error as NSError? {
+    // MARK: - UserNameを登録
+    static func registerUserName(userName: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.displayName = userName
+            changeRequest.commitChanges { error in
+                if let error = error {
                     completion(.failure(error))
                 } else {
-                    guard let user = result?.user else { return }
-                    if user.isEmailVerified {
-                        completion(.success)
-                    } else {
-                        completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Email not verified"])))
-                    }
+                    completion(.success)
                 }
             }
+        } else {
+            completion(.failure(ErrorHandling.TodoError.userNotLoggedIn))
+        }
     }
-    // MARK: - パスワード再設定案内のメール送信
-    static func sendPasswordReset(email: String, completion: @escaping (Result<(), NSError>) -> Void) {
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+    // MARK: - 匿名ログイン
+    static func anonymousLogin(completion: @escaping(Result<Void, Error>) -> Void) {
+        Auth.auth().signInAnonymously() { result, error  in
             if let error = error {
-                completion(.failure(error as NSError))
+                completion(.failure(error))
             } else {
-                completion(.success(()))
+                completion(.success)
             }
         }
     }
-    // MARK: - ログイン状態をチェック
-    static func checkIsLogin(completion: () -> Void) {
-        if Auth.auth().currentUser != nil {
-            completion()
-        }
-    }
-    // MARK: - ログアウト状態をチェック
-    static func checkIsLogout(completion: () -> Void) {
-        if Auth.auth().currentUser == nil {
-            completion()
+    // MARK: - アカウントアップグレード
+    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        if let user = Auth.auth().currentUser, user.isAnonymous {
+            let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+            user.link(with: credential) { result, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                completion(.success)
+            }
+        } else {
+            // 期待するユーザー状態ではない場合のエラー
+            completion(.failure(ErrorHandling.TodoError.notAnAnonymousUserOrUserIsNil))
         }
     }
 
+    // MARK: - emailの更新
+    static func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        // 現在のログインユーザーを取得
+        if let user = Auth.auth().currentUser {
+            // メールアドレスを更新
+            user.updateEmail(to: newEmail) { (error) in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success)
+                }
+            }
+        } else {
+            completion(.failure(ErrorHandling.TodoError.userNotLoggedIn))
+        }
+    }
+    // MARK: - ログイン機能
+    static func singIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { _, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success)
+            }
+        }
+    }
+    // errorを伝えたいならResultのほうがいいかな?
+    static func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void) {
+        user.sendEmailVerification { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success)
+            }
+        }
+    }
+
+    // MARK: - 登録認証のメールのURLを確認したか
+    static func  checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                guard let user = result?.user else { return }
+                if user.isEmailVerified {
+                    completion(.success)
+                } else {
+                    completion(.failure(ErrorHandling.TodoError.emailNotVerified))
+                }
+            }
+        }
+    }
+    // MARK: - パスワード再設定案内のメール送信
+    static func sendPasswordReset(email: String, completion: @escaping (Result<(), Error>) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success)
+            }
+        }
+    }
+    // MARK: - ログインユーザーを取得
+    static func getCurrentUser() -> User? {
+        return Auth.auth().currentUser
+    }
+    // MARK: - ログアウト
+    static func singOut(completion: @escaping (Result<Void, Error>) -> Void) {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            completion(.failure(error))
+        }
+        completion(.success)
+    }
+    // MARK: - 退会
+    static func withDarw(completion: @escaping(Result<Void, Error>) -> Void) {
+        Auth.auth().currentUser?.delete { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success)
+            }
+        }
+    }
 }
 ///
 ///Success型がVoidであるときスッキリかける拡張

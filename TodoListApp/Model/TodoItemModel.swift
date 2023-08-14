@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// todosのモデル
 struct TodoItemModel {
     let id: String
     let title: String

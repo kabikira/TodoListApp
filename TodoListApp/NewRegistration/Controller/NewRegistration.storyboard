@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,16 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="voE-Na-bXR" userLabel="New Registration Stack View">
-                                <rect key="frame" x="46.666666666666657" y="283.33333333333337" width="300" height="285.33333333333337"/>
+                                <rect key="frame" x="46.666666666666657" y="257.33333333333337" width="300" height="337.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NewRegistration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGs-il-h1c">
-                                        <rect key="frame" x="74.333333333333343" y="0.0" width="151.00000000000003" height="25.333333333333332"/>
+                                        <rect key="frame" x="74.333333333333343" y="0.0" width="151" height="25.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DaI-8q-0FL" userLabel="Register Email Text Field">
                                         <rect key="frame" x="0.0" y="33.333333333333371" width="300" height="44"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="D8e-QE-Vfh"/>
                                             <constraint firstAttribute="height" constant="44" id="cZt-wY-4zX"/>
@@ -37,6 +39,7 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mR-xj-Dyb" userLabel="Register Password Text Field">
                                         <rect key="frame" x="0.0" y="85.333333333333371" width="300" height="44"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="1zo-PF-jTr"/>
                                             <constraint firstAttribute="height" constant="44" id="b0K-DW-XER"/>
@@ -46,6 +49,7 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zwJ-j7-keR" userLabel="Register Name Text Field">
                                         <rect key="frame" x="0.0" y="137.33333333333337" width="300" height="44"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Io4-oZ-Jp1"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="UYY-Li-lBr"/>
@@ -54,27 +58,46 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsA-Jk-lbN">
-                                        <rect key="frame" x="47.333333333333343" y="189.33333333333337" width="205" height="44"/>
+                                        <rect key="frame" x="35.666666666666671" y="189.33333333333337" width="228.66666666666663" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="1es-1i-qvM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" name="AccentColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Register and send us an email"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Register and send us an email" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vA-KA-6P4">
-                                        <rect key="frame" x="55.333333333333343" y="241.33333333333331" width="189" height="44"/>
+                                        <rect key="frame" x="43.666666666666671" y="241.33333333333337" width="212.66666666666663" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="2nI-rR-KGO"/>
                                         </constraints>
+                                        <color key="tintColor" name="AccentColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Check your email and log in"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Check your email and log in" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifh-Vb-FP9">
+                                        <rect key="frame" x="55.333333333333343" y="293.33333333333331" width="189" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Iwq-wo-GPQ"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Wrong email address."/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Wrong email address.">
+                                            <color key="baseForegroundColor" name="AccentColor"/>
+                                        </buttonConfiguration>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="voE-Na-bXR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="WGW-Jv-Kuv"/>
                             <constraint firstItem="voE-Na-bXR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="e42-IB-zxL"/>
@@ -87,6 +110,7 @@
                         <outlet property="registerNameTextField" destination="zwJ-j7-keR" id="Ya2-wH-Bfp"/>
                         <outlet property="registerPasswordTextField" destination="5mR-xj-Dyb" id="GYZ-S0-sMC"/>
                         <outlet property="registerSendMailButton" destination="fsA-Jk-lbN" id="Azh-dO-yYm"/>
+                        <outlet property="wrongEmailButton" destination="Ifh-Vb-FP9" id="RxD-cj-yK6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -95,8 +119,14 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

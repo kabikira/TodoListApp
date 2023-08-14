@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
+        // このアプリ内のすべてのUIButtonに同時タップを禁止
+        UIButton.appearance().isExclusiveTouch = true
+
 
         return true
     }

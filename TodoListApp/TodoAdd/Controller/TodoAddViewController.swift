@@ -1,5 +1,5 @@
 //
-//  TodoEditViewController.swift
+//  TodoAddViewController.swift
 //  TodoListApp
 //
 //  Created by koala panda on 2023/07/30.
@@ -7,21 +7,18 @@
 
 import UIKit
 
-class TodoEditViewController: UIViewController {
-    // 編集するためのTodoアイテムの具体的なデータを保持するため
-    private var todoItems: TodoItemModel?
-    // 編集されるTodoアイテムがどのTodoリストカテゴリに属しているかを示す
+class TodoAddViewController: UIViewController {
+
     private var selectedTodos: String?
-    
+
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var notesTextView: UITextView!
     // Routre から呼び出されどのTodoリストカテゴリに属しているかを知る
-    // 編集するTodoアイテムを渡してもらう
     // TODO: func configure はどこからでも呼べるので修正したほうがいいかもしれない
-    func configure(todoItems: TodoItemModel, todos: String) {
-        self.todoItems = todoItems
+    func configure(todos: String) {
         self.selectedTodos = todos
     }
+
     override func viewDidLayoutSubviews() {
         styleTextField(titleTextField)
         styleTextView(notesTextView)
@@ -31,37 +28,36 @@ class TodoEditViewController: UIViewController {
         super.viewDidLoad()
         notesTextView.delegate = self
         titleTextField.delegate = self
-        titleTextField.text = todoItems?.title
-        notesTextView.text = todoItems?.notes
         observeNotifications()
         // Doneボタンでtodo編集してセルを更新させてとじる
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.done(), style: .done, target: self, action: #selector(tapedDoneButton(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.done(), style: .done, target: self, action: #selector(tapedDoneBotton(_:)))
         // 閉じるボタン
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: R.string.localizable.cancel(), style: .plain, target: self, action: #selector(tapedCancelBotton(_:)))
+
     }
-    
 }
-// MARK: - ButtonActions
-private extension TodoEditViewController {
-    // 入力されたデータの編集を行う
-    @objc func tapedDoneButton(_ sender: Any) {
-        guard let title = titleTextField.text,
-              let notes = notesTextView.text,
-              let todoItems = todoItems,
-              let selectedTodos = selectedTodos else { return }
-        let updatedTodoItem = TodoItemModel(id: todoItems.id, title: title, notes: notes, isDone: todoItems.isDone)
-        FirebaseDBManager.updateTodoData(todos: selectedTodos,todoItem: updatedTodoItem) { [weak self] result in
-            guard let self = self else { return }
+// MARK: - BottonActions
+private extension TodoAddViewController {
+    @objc func tapedDoneBotton(_ sender: Any) {
+        let title = titleTextField.text ?? ""
+        let notes = notesTextView.text ?? ""
+        guard let selectedTodos = selectedTodos else { return }
+        // ログイン済みか確認 // FirestoreにTodoデータを作成する
+        FirebaseDBManager.createTodo(title: title, notes: notes, todos: selectedTodos) { [weak self] result in
             DispatchQueue.main.async {
+                guard let self = self else { return }
                 switch result {
-                case.failure(let error):
-                    Alert.showErrorAlert(vc: self, error: error)
                 case.success():
-                    self.navigationController?.popViewController(animated: true)
+                    break
+                case .failure(let error):
+                    Alert.showErrorAlert(vc: self, error: error)
                 }
             }
         }
+        // Todo一覧画面に戻る処理
+        self.navigationController?.popViewController(animated: true)
     }
+    // 1つまえの画面に戻る
     @objc func tapedCancelBotton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -81,6 +77,7 @@ private extension TodoEditViewController {
         textView.layer.shadowOpacity = 0.1
         textView.layer.shadowRadius = 10.0
     }
+
     // MARK: - Notification Handling
     func observeNotifications() {
         NetworkMonitor.shared.startMonitoring()
@@ -92,17 +89,16 @@ private extension TodoEditViewController {
             Alert.okAlert(vc: self, title: R.string.localizable.networkErrors(), message: NetworkMonitor.connectionLost.rawValue)
         }
     }
-
 }
 // MARK: - UITextViewDelegate
-extension TodoEditViewController: UITextViewDelegate {
-    // 入力されたときの文字制限をチェック
+extension TodoAddViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        // 入力されたときの文字制限をチェック
         return notesTextView.text.count + (text.count - range.length) <= MaxNumCharacters.maxNotes.rawValue
     }
 }
 // MARK: - UITextFieldDelegate
-extension TodoEditViewController: UITextFieldDelegate {
+extension TodoAddViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // 入力されたときの文字制限をチェック
         let titleText = titleTextField.text ?? ""

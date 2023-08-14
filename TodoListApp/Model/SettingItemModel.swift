@@ -7,16 +7,15 @@
 
 import Foundation
 
+// 設定画面のModel
 struct SettingItem {
     let emoji: String
     let title: String
 }
-// TODO: 仮の実装
 let settingItems: [SettingItem] = [
-    SettingItem(emoji: "👀", title: "アプリの説明"),
-    SettingItem(emoji: "✉️", title: "お問い合わせ"),
-    SettingItem(emoji: "📝", title: "プライバシーポリシー"),
-    SettingItem(emoji: "📱", title: "バージョン Ver1.0"),
-    SettingItem(emoji: "✋", title: "ログアウト"),
-    SettingItem(emoji: "✋", title: "退会")
+    SettingItem(emoji: "👀", title: R.string.localizable.accountUpgrade()),
+    SettingItem(emoji: "✉️", title: R.string.localizable.contactUs()),
+    SettingItem(emoji: "📝", title: R.string.localizable.privacyPolicy()),
+    SettingItem(emoji: "✋", title: R.string.localizable.logout()),
+    SettingItem(emoji: "🦭", title: R.string.localizable.deleteAccount())
 ]

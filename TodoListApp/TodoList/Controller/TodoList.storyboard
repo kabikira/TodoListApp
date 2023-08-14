@@ -39,9 +39,8 @@
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n5Q-D2-1bQ">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n5Q-D2-1bQ">
                                         <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
                             </stackView>
@@ -57,21 +56,27 @@
                                     <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="gq1-rP-Cbp">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ox6-bn-tLz" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="9aF-UY-PPD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="r1U-gX-64c" secondAttribute="trailing" constant="15" id="OAP-ro-ThL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Ox6-bn-tLz" secondAttribute="bottom" id="Wez-dU-eQQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ox6-bn-tLz" secondAttribute="trailing" id="mzb-TB-Cf1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="r1U-gX-64c" secondAttribute="bottom" constant="90" id="pgZ-Gn-IXf"/>
+                            <constraint firstItem="gq1-rP-Cbp" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="qrm-pA-e2V"/>
+                            <constraint firstItem="gq1-rP-Cbp" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="xpH-GQ-Yw6"/>
                             <constraint firstItem="Ox6-bn-tLz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yXe-Mn-If4"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addTaskButton" destination="r1U-gX-64c" id="mfM-dv-imU"/>
                         <outlet property="changeTodosControl" destination="bwx-lU-tHA" id="2es-QO-nVt"/>
+                        <outlet property="indicator" destination="gq1-rP-Cbp" id="ShH-84-eV4"/>
                         <outlet property="tableView" destination="n5Q-D2-1bQ" id="Ikx-ac-Fbs"/>
                     </connections>
                 </viewController>
@@ -82,8 +87,8 @@
     </scenes>
     <resources>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
