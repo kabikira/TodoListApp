@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxOptional
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var anonymousLoginButton: UIButton! {
         didSet {
             anonymousLoginButton.setTitle(R.string.localizable.useWithoutCreatingAnAccount(), for: .normal)
-            anonymousLoginButton.addTarget(self, action: #selector(tapedAnonymousLoginButton(_:)), for: .touchUpInside)
+//            anonymousLoginButton.addTarget(self, action: #selector(tapedAnonymousLoginButton(_:)), for: .touchUpInside)
         }
     }
     @IBOutlet private weak var loginLanel: UILabel! {
@@ -40,6 +43,10 @@ class LoginViewController: UIViewController {
             passwordResetButton.addTarget(self, action: #selector(tapedPasswordResetButton(_:)), for: .touchUpInside)
         }
     }
+
+    private let viewModel = LoginViewModel()
+    private lazy var input: LoginViewModelInput = viewModel
+    private lazy var output: LoginViewModelOutput = viewModel
     
 
     override func viewDidLoad() {
@@ -47,6 +54,38 @@ class LoginViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
+        bindInputStream()
+        bindOutputStream()
+    }
+
+    private func bindInputStream() {
+        let anonymousLoginButtonObservable = anonymousLoginButton.rx.tap.asObservable()
+            // 5秒間タップイベント無視
+            .throttle(.seconds(5), latest: false, scheduler: MainScheduler.instance)
+        
+        rx.disposeBag.insert([
+            anonymousLoginButtonObservable.bind(to: input.anonymousLoginButtonObserver)
+        ])
+    }
+    private func bindOutputStream() {
+        output.createAnonymousAccountObeservable.observe(on: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] in
+                guard let self else { return }
+                // 画面遷移TodoListへ
+                Router.shared.showTodoList(from: self)
+                Alert.okAlert(vc: self, title: R.string.localizable.temporaryAccount(), message: R.string.localizable.weCannotGuaranteeDataPermanenceIfYouWishToRetainTheDataInYourAccountWeRecommendThatYouRegisterForAFormalAccount())
+            }, onError: { error in
+                Alert.showErrorAlert(vc: self, error: error)
+            })
+            .disposed(by: rx.disposeBag)
+
+        output.errorObservable
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] error in
+                guard let self else { return }
+                Alert.showErrorAlert(vc: self, error: error)
+            })
+            .disposed(by: rx.disposeBag)
     }
 }
 // MARK: - ButtonActions
@@ -80,48 +119,6 @@ private extension LoginViewController {
     @objc func tapedPasswordResetButton(_ sender: Any) {
         // パスワード送信画面に遷移
         Router.shared.showPasswordReset(from: self)
-    }
-    // 匿名ログイン
-    @objc func tapedAnonymousLoginButton(_ sender: Any) {
-        anonymousLoginButton.isUserInteractionEnabled = false
-        FirebaseUserManager.anonymousLogin { [weak self] result in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                switch result {
-                case.failure(let error):
-                    Alert.showErrorAlert(vc: self, error: error)
-                case.success():
-                    // userDefaに値をいれる
-                    UserDefaults.standard.isLogined = true
-                    UserDefaults.standard.isAuthAccountCreated = false
-                    // サンプルデータをTodoに入れる
-                    self.createTodosFromConstants()
-                    // 画面遷移TodoListへ
-                    Router.shared.showTodoList(from: self)
-                    Alert.okAlert(vc: self, title: R.string.localizable.temporaryAccount(), message: R.string.localizable.weCannotGuaranteeDataPermanenceIfYouWishToRetainTheDataInYourAccountWeRecommendThatYouRegisterForAFormalAccount())
-                }
-                self.anonymousLoginButton.isUserInteractionEnabled = true
-            }
-        }
-    }
-    // サンプルデータをTodoに入れる
-    func createTodosFromConstants() {
-        for i in 0..<TodoConstants.todosTypes.count {
-            FirebaseDBManager.createTodo(
-                title: TodoConstants.todosTitles[i],
-                notes: TodoConstants.todosNotes[i],
-                todos: TodoConstants.todosTypes[i]
-            ) { result in
-                switch result {
-                case .success():
-                    break
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        Alert.showErrorAlert(vc: self, error: error)
-                    }
-                }
-            }
-        }
     }
 }
 // MARK: - UITextFieldDelegate

@@ -12,6 +12,10 @@ target 'TodoListApp' do
   pod 'R.swift'
   pod 'FirebaseAnalytics'
   pod 'Firebase/Crashlytics'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'NSObject+Rx'
+  pod 'RxOptional'
 
 
 
