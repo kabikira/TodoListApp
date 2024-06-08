@@ -13,12 +13,15 @@ import NSObject_Rx
 protocol LoginViewModelInput {
     // 匿名ログインButtonのタップを受け取る
     var anonymousLoginButtonObserver: AnyObserver<Void> { get }
-
+    // ログインButtonのタップを受け取る
+    var loginButtonObserver: AnyObserver<Void> { get }
 }
 
 protocol LoginViewModelOutput {
     // 匿名ログインButtonがタップされたら匿名ログインアカウントを作成して出力
-    var createAnonymousAccountObeservable: Observable<Void> { get }
+    var createAnonymousAccountObservable: Observable<Void> { get }
+    // ログインButtonがタップされたらログインアカウントを作成して出力
+    var createAccountObservable: Observable<Void> { get }
     // エラーを伝達するためのObservable
     var errorObservable: Observable<Error> { get }
 }
@@ -31,48 +34,59 @@ final class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, HasDispos
         self._anonymousLoginButton.accept(e)
     })
 
+    private let _loginButton = PublishRelay<Void>()
+    lazy var loginButtonObserver: AnyObserver<Void> = .init(eventHandler: { (event) in
+        guard let e = event.element else { return}
+        self._loginButton.accept(e)
+    })
+
     // output
     private let _createAnonymousAccount = PublishRelay<Void>()
-    lazy var createAnonymousAccountObeservable: Observable<Void> = _createAnonymousAccount.asObservable()
+    lazy var createAnonymousAccountObservable: Observable<Void> = _createAnonymousAccount.asObservable()
+
+    private let _createAccount = PublishRelay<Void>()
+    lazy var createAccountObservable: Observable<Void> = _createAccount.asObservable()
 
     private let _errorRelay = PublishRelay<Error>()
     lazy var errorObservable: Observable<Error> = _errorRelay.asObservable()
 
     init() {
-        // 匿名ログインButtonのタップを監視し匿名Accountを作成
-        _anonymousLoginButton
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                #if DEBUG
-                print("匿名タップ")
-                #endif
-                // 匿名Account作成処理
-                FirebaseUserManager.anonymousLogin { result in
-                        switch result {
-                        case.failure(let error):
-                            #if DEBUG
-                            print("ログイン失敗: \(error)")
-                            #endif
-                            self._errorRelay.accept(error)
-                        case.success():
-                            #if DEBUG
-                            print("ログイン成功")
-                            #endif
-                            UserDefaults.standard.isLogined = true
-                            UserDefaults.standard.isAuthAccountCreated = false
-                            self.createTodosFromConstants()
-                            self._createAnonymousAccount.accept(())
-                        }
-                }
-
-            })
-            .disposed(by: disposeBag)
-
-
+        setupBindings()
     }
 }
 // TODO: - これはFirebaseDBManagerにあったほうがいいかな?
 private extension LoginViewModel {
+
+    // 内部実装の詳細はプロトコルに含めない
+    func setupBindings() {
+        _anonymousLoginButton
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+
+                FirebaseUserManager.anonymousLogin { result in
+                    switch result {
+                    case .failure(let error):
+
+                        self._errorRelay.accept(error)
+                    case .success:
+
+                        UserDefaults.standard.isLogined = true
+                        UserDefaults.standard.isAuthAccountCreated = false
+                        self.createTodosFromConstants()
+                        self._createAnonymousAccount.accept(())
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+
+        _loginButton
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                // ログイン処理をここに追加
+            })
+            .disposed(by: disposeBag)
+    }
+
     // サンプルデータをTodoに入れる
     func createTodosFromConstants() {
         for i in 0..<TodoConstants.todosTypes.count {
@@ -91,5 +105,4 @@ private extension LoginViewModel {
             }
         }
     }
-
 }

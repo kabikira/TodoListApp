@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
         ])
     }
     private func bindOutputStream() {
-        output.createAnonymousAccountObeservable.observe(on: MainScheduler.instance)
+        output.createAnonymousAccountObservable.observe(on: MainScheduler.instance)
             .subscribe(onNext: {[weak self] in
                 guard let self else { return }
                 // 画面遷移TodoListへ
