@@ -15,7 +15,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var anonymousLoginButton: UIButton! {
         didSet {
             anonymousLoginButton.setTitle(R.string.localizable.useWithoutCreatingAnAccount(), for: .normal)
-//            anonymousLoginButton.addTarget(self, action: #selector(tapedAnonymousLoginButton(_:)), for: .touchUpInside)
         }
     }
     @IBOutlet private weak var loginLabel: UILabel! {
@@ -82,8 +81,6 @@ class LoginViewController: UIViewController {
                 // 画面遷移TodoListへ
                 Router.shared.showTodoList(from: self)
                 Alert.okAlert(vc: self, title: R.string.localizable.temporaryAccount(), message: R.string.localizable.weCannotGuaranteeDataPermanenceIfYouWishToRetainTheDataInYourAccountWeRecommendThatYouRegisterForAFormalAccount())
-            }, onError: { error in
-                Alert.showErrorAlert(vc: self, error: error)
             })
             .disposed(by: rx.disposeBag)
 
@@ -91,8 +88,6 @@ class LoginViewController: UIViewController {
             .subscribe(onNext: {[weak self] in
                 guard let self else { return }
                 Router.shared.showPasswordReset(from: self)
-            }, onError: { error in
-                Alert.showErrorAlert(vc: self, error: error)
             })
             .disposed(by: rx.disposeBag)
 
