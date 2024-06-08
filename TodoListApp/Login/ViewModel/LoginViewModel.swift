@@ -17,6 +17,8 @@ protocol LoginViewModelInput {
     var loginButtonObserver: AnyObserver<Void> { get }
     // パスワードリセットButtonのタップを受け取る
     var passwordResetButtonObserver: AnyObserver<Void> { get }
+    // 新規登録
+    var newRegistrationButtonObserver: AnyObserver<Void> { get }
 }
 
 protocol LoginViewModelOutput {
@@ -26,6 +28,8 @@ protocol LoginViewModelOutput {
     var createAccountObservable: Observable<Void> { get }
     // パスワードリセットがタップされたことを通知
     var passwordResetObservable: Observable<Void> { get }
+    // 新規登録
+    var newRegistrationObservable: Observable<Void> { get }
     // エラーを伝達するためのObservable
     var errorObservable: Observable<Error> { get }
 }
@@ -50,6 +54,12 @@ final class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, HasDispos
         self._passwordResetButton.accept(e)
     })
 
+    private let _newRegistrationButton = PublishRelay<Void>()
+    lazy var newRegistrationButtonObserver: AnyObserver<Void> = .init(eventHandler: { (event) in
+        guard let e = event.element else { return }
+        self._newRegistrationButton.accept(e)
+    })
+
     // output
     private let _createAnonymousAccount = PublishRelay<Void>()
     lazy var createAnonymousAccountObservable: Observable<Void> = _createAnonymousAccount.asObservable()
@@ -59,6 +69,9 @@ final class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, HasDispos
 
     private let _passwordReset = PublishRelay<Void>()
     lazy var passwordResetObservable: Observable<Void> = _passwordReset.asObservable()
+
+    private let _newRegistration = PublishRelay<Void>()
+    lazy var newRegistrationObservable: Observable<Void> = _newRegistration.asObservable()
 
     private let _errorRelay = PublishRelay<Error>()
     lazy var errorObservable: Observable<Error> = _errorRelay.asObservable()
@@ -103,6 +116,13 @@ private extension LoginViewModel {
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self._passwordReset.accept(())
+            })
+            .disposed(by: disposeBag)
+
+        _newRegistrationButton
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self._newRegistration.accept(())
             })
             .disposed(by: disposeBag)
     }

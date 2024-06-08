@@ -25,7 +25,6 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var newRegistrationButton: UIButton! {
         didSet {
             newRegistrationButton.setTitle(R.string.localizable.signUpForANewAccount(), for: .normal)
-            newRegistrationButton.addTarget(self, action: #selector(tapedNewRegistrationButton(_:)), for: .touchUpInside)
         }
     }
     @IBOutlet private weak var emailTextField: UITextField!
@@ -72,6 +71,13 @@ class LoginViewController: UIViewController {
         rx.disposeBag.insert([
             passwordResetButtonObservable.bind(to: input.passwordResetButtonObserver)
         ])
+
+        let newRegistrationButtonObservable = newRegistrationButton.rx.tap.asObservable()
+            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
+
+        rx.disposeBag.insert([
+            newRegistrationButtonObservable.bind(to: input.newRegistrationButtonObserver)
+        ])
     }
 
     private func bindOutputStream() {
@@ -91,6 +97,13 @@ class LoginViewController: UIViewController {
             })
             .disposed(by: rx.disposeBag)
 
+        output.newRegistrationObservable.observe(on: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] in
+                guard let self else { return }
+                Router.shared.showNewRegistration(from: self)
+            })
+            .disposed(by: rx.disposeBag)
+
         output.errorObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: {[weak self] error in
@@ -102,10 +115,6 @@ class LoginViewController: UIViewController {
 }
 // MARK: - ButtonActions
 private extension LoginViewController {
-    @objc func tapedNewRegistrationButton(_ sender: Any) {
-        // 新規登録画面に遷移
-        Router.shared.showNewRegistration(from: self)
-    }
     @objc func tapedLoginButton(_ sender: Any) {
         // ボタンの連続タップを防止
         loginButton.isUserInteractionEnabled = false
