@@ -15,6 +15,8 @@ protocol LoginViewModelInput {
     var anonymousLoginButtonObserver: AnyObserver<Void> { get }
     // ログインButtonのタップを受け取る
     var loginButtonObserver: AnyObserver<Void> { get }
+    // パスワードリセットButtonのタップを受け取る
+    var passwordResetButtonObserver: AnyObserver<Void> { get }
 }
 
 protocol LoginViewModelOutput {
@@ -22,6 +24,8 @@ protocol LoginViewModelOutput {
     var createAnonymousAccountObservable: Observable<Void> { get }
     // ログインButtonがタップされたらログインアカウントを作成して出力
     var createAccountObservable: Observable<Void> { get }
+    // パスワードリセットがタップされたことを通知
+    var passwordResetObservable: Observable<Void> { get }
     // エラーを伝達するためのObservable
     var errorObservable: Observable<Error> { get }
 }
@@ -40,12 +44,21 @@ final class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, HasDispos
         self._loginButton.accept(e)
     })
 
+    private let _passwordResetButton = PublishRelay<Void>()
+    lazy var passwordResetButtonObserver: AnyObserver<Void> = .init(eventHandler: { (event) in
+        guard let e = event.element else { return }
+        self._passwordResetButton.accept(e)
+    })
+
     // output
     private let _createAnonymousAccount = PublishRelay<Void>()
     lazy var createAnonymousAccountObservable: Observable<Void> = _createAnonymousAccount.asObservable()
 
     private let _createAccount = PublishRelay<Void>()
     lazy var createAccountObservable: Observable<Void> = _createAccount.asObservable()
+
+    private let _passwordReset = PublishRelay<Void>()
+    lazy var passwordResetObservable: Observable<Void> = _passwordReset.asObservable()
 
     private let _errorRelay = PublishRelay<Error>()
     lazy var errorObservable: Observable<Error> = _errorRelay.asObservable()
@@ -83,6 +96,13 @@ private extension LoginViewModel {
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 // ログイン処理をここに追加
+            })
+            .disposed(by: disposeBag)
+
+        _passwordResetButton
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self._passwordReset.accept(())
             })
             .disposed(by: disposeBag)
     }

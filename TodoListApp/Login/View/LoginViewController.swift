@@ -40,7 +40,6 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var passwordResetButton: UIButton! {
         didSet{
             passwordResetButton.setTitle(R.string.localizable.forgotPassword(), for: .normal)
-            passwordResetButton.addTarget(self, action: #selector(tapedPasswordResetButton(_:)), for: .touchUpInside)
         }
     }
 
@@ -61,12 +60,21 @@ class LoginViewController: UIViewController {
     private func bindInputStream() {
         let anonymousLoginButtonObservable = anonymousLoginButton.rx.tap.asObservable()
             // 5秒間タップイベント無視
-            .throttle(.seconds(5), latest: false, scheduler: MainScheduler.instance)
-        
+            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
+
         rx.disposeBag.insert([
             anonymousLoginButtonObservable.bind(to: input.anonymousLoginButtonObserver)
         ])
+
+        let passwordResetButtonObservable = passwordResetButton.rx.tap.asObservable()
+            // 特定の時間内に最後のイベントのみを受け取る
+            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
+
+        rx.disposeBag.insert([
+            passwordResetButtonObservable.bind(to: input.passwordResetButtonObserver)
+        ])
     }
+
     private func bindOutputStream() {
         output.createAnonymousAccountObservable.observe(on: MainScheduler.instance)
             .subscribe(onNext: {[weak self] in
@@ -74,6 +82,15 @@ class LoginViewController: UIViewController {
                 // 画面遷移TodoListへ
                 Router.shared.showTodoList(from: self)
                 Alert.okAlert(vc: self, title: R.string.localizable.temporaryAccount(), message: R.string.localizable.weCannotGuaranteeDataPermanenceIfYouWishToRetainTheDataInYourAccountWeRecommendThatYouRegisterForAFormalAccount())
+            }, onError: { error in
+                Alert.showErrorAlert(vc: self, error: error)
+            })
+            .disposed(by: rx.disposeBag)
+
+        output.passwordResetObservable.observe(on: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] in
+                guard let self else { return }
+                Router.shared.showPasswordReset(from: self)
             }, onError: { error in
                 Alert.showErrorAlert(vc: self, error: error)
             })
@@ -115,10 +132,6 @@ private extension LoginViewController {
             }
             self.loginButton.isUserInteractionEnabled = true
         }
-    }
-    @objc func tapedPasswordResetButton(_ sender: Any) {
-        // パスワード送信画面に遷移
-        Router.shared.showPasswordReset(from: self)
     }
 }
 // MARK: - UITextFieldDelegate
