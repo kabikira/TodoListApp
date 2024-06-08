@@ -18,9 +18,9 @@ class LoginViewController: UIViewController {
 //            anonymousLoginButton.addTarget(self, action: #selector(tapedAnonymousLoginButton(_:)), for: .touchUpInside)
         }
     }
-    @IBOutlet private weak var loginLanel: UILabel! {
+    @IBOutlet private weak var loginLabel: UILabel! {
         didSet {
-            loginLanel.text = R.string.localizable.login()
+            loginLabel.text = R.string.localizable.login()
         }
     }
     @IBOutlet private weak var newRegistrationButton: UIButton! {

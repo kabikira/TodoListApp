@@ -19,16 +19,16 @@ final class Router {
         // UserDegaultsの値で起動経路を切り替える
         if UserDefaults.standard.isLogined {
             guard let vc = R.storyboard.todoList.instantiateInitialViewController() else { return }
-                let nav = UINavigationController(rootViewController: vc)
-                window?.rootViewController = nav
-            } else {
-                guard let vc = R.storyboard.login.instantiateInitialViewController() else { return }
-                let nav = UINavigationController(rootViewController: vc)
-                window?.rootViewController = nav
-            }
+            let nav = UINavigationController(rootViewController: vc)
+            window?.rootViewController = nav
+        } else {
+            guard let vc = R.storyboard.login.instantiateInitialViewController() else { return }
+            let nav = UINavigationController(rootViewController: vc)
+            window?.rootViewController = nav
+        }
         window?.makeKeyAndVisible()
         self.window = window
-        }
+    }
     func showLogin(from: UIViewController) {
         guard let login = R.storyboard.login.instantiateInitialViewController() else { return }
         show(from: from, to: login)
