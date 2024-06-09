@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ww-JI-ttl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ww-JI-ttl">
     <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +23,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="l0v-nZ-lBe" userLabel="Log in Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="361.33333333333331"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lK-IV-WlC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lK-IV-WlC" userLabel="Login Label">
                                                 <rect key="frame" x="124.66666666666667" y="0.0" width="50.333333333333329" height="25.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <nil key="textColor"/>
@@ -103,7 +103,7 @@
                         <outlet property="anonymousLoginButton" destination="8nH-11-2PH" id="6g1-3c-D38"/>
                         <outlet property="emailTextField" destination="gsK-LR-UeQ" id="ciE-aL-NZB"/>
                         <outlet property="loginButton" destination="SkU-jg-XVb" id="a16-vA-F46"/>
-                        <outlet property="loginLanel" destination="0lK-IV-WlC" id="C4O-LI-JF5"/>
+                        <outlet property="loginLabel" destination="0lK-IV-WlC" id="SFX-hO-dOu"/>
                         <outlet property="newRegistrationButton" destination="snF-kn-wmx" id="ds8-N4-ymG"/>
                         <outlet property="passwordResetButton" destination="jPM-Ja-g8M" id="0RH-NG-WTU"/>
                         <outlet property="passwordTextField" destination="guE-I9-v9K" id="cNS-ad-q5z"/>
