@@ -19,13 +19,17 @@ protocol LoginViewModelInput {
     var passwordResetButtonObserver: AnyObserver<Void> { get }
     // 新規登録
     var newRegistrationButtonObserver: AnyObserver<Void> { get }
+    // mail
+    var emailTextObserver: AnyObserver<String> { get }
+    // password
+    var passwordTextObservr: AnyObserver<String> { get }
 }
 
 protocol LoginViewModelOutput {
     // 匿名ログインButtonがタップされたら匿名ログインアカウントを作成して出力
     var createAnonymousAccountObservable: Observable<Void> { get }
-    // ログインButtonがタップされたらログインアカウントを作成して出力
-    var createAccountObservable: Observable<Void> { get }
+    // ログイン成功
+    var loginSuccessObservable: Observable<Void> { get }
     // パスワードリセットがタップされたことを通知
     var passwordResetObservable: Observable<Void> { get }
     // 新規登録
@@ -60,12 +64,24 @@ final class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, HasDispos
         self._newRegistrationButton.accept(e)
     })
 
+    private let _emailText = BehaviorRelay<String>(value: "")
+    lazy var emailTextObserver: AnyObserver<String> = .init(eventHandler: { (event) in
+        guard let e = event.element else { return }
+        self._emailText.accept(e)
+    })
+
+    private let _passwordText = BehaviorRelay<String>(value: "")
+    lazy var passwordTextObservr: AnyObserver<String> = .init(eventHandler: { (event) in
+        guard let e = event.element else { return }
+        self._passwordText.accept(e)
+    })
+
     // output
     private let _createAnonymousAccount = PublishRelay<Void>()
     lazy var createAnonymousAccountObservable: Observable<Void> = _createAnonymousAccount.asObservable()
 
-    private let _createAccount = PublishRelay<Void>()
-    lazy var createAccountObservable: Observable<Void> = _createAccount.asObservable()
+    private let _loginSuccess = PublishRelay<Void>()
+    lazy var loginSuccessObservable: Observable<Void> = _loginSuccess.asObservable()
 
     private let _passwordReset = PublishRelay<Void>()
     lazy var passwordResetObservable: Observable<Void> = _passwordReset.asObservable()
@@ -106,9 +122,19 @@ private extension LoginViewModel {
             .disposed(by: disposeBag)
 
         _loginButton
-            .subscribe(onNext: { [weak self] _ in
+            .withLatestFrom(Observable.combineLatest(_emailText, _passwordText))
+            .flatMapLatest { email, password in
+                FirebaseUserManager.rx.rxSignIn(email: email, password: password)
+            }
+            .subscribe(onNext: { [weak self] result in
                 guard let self = self else { return }
-                // ログイン処理をここに追加
+                switch result {
+                case .success:
+                    UserDefaults.standard.isLogined = true
+                    self._loginSuccess.accept(())
+                case .failure(let error):
+                    self._errorRelay.accept(error)
+                }
             })
             .disposed(by: disposeBag)
 
