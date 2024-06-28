@@ -21,4 +21,10 @@ target 'TodoListApp' do
 
   # Pods for TodoListApp
 
+  target 'TodoListAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+     pod 'Quick', '~> 4.0.0' 
+     pod 'Nimble', '~> 10.0.0'
+  end
 end

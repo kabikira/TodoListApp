@@ -110,6 +110,11 @@ name: nanopb, nameSpecified:
 body: Copyright (c) 2011 P…
 version: 2.30909.0
 
+name: Nimble, nameSpecified: 
+body: Apache License
+     …
+version: 10.0.0
+
 name: NSObject+Rx, nameSpecified: 
 body: The MIT License (MIT…
 version: 
@@ -123,6 +128,11 @@ name: PromisesSwift, nameSpecified:
 body: 
                    …
 version: 2.2.0
+
+name: Quick, nameSpecified: 
+body: Apache License
+     …
+version: 4.0.0
 
 name: R.swift, nameSpecified: 
 body: The MIT License (MIT…
