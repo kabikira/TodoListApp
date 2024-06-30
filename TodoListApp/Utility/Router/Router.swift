@@ -37,6 +37,7 @@ final class Router: RouterProtocol {
             window?.rootViewController = nav
         } else {
             guard let vc = R.storyboard.login.instantiateInitialViewController() else { return }
+            vc.inject()
             let nav = UINavigationController(rootViewController: vc)
             window?.rootViewController = nav
         }

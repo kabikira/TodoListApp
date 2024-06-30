@@ -51,24 +51,14 @@ class LoginViewControllerTests: XCTestCase {
         let mockRouter = MockRouter()
         let viewModel = LoginViewModel()
 
-        print("ストーリーボードから呼び出し")
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! LoginViewController
-
-//        guard let vc = R.storyboard.login.instantiateInitialViewController() else { return }
-//        vc.inject(viewModel: viewModel, router: mockRouter)
-        vc.viewModel = viewModel
-        vc.router = mockRouter
+        guard let vc = R.storyboard.login.instantiateInitialViewController() else { return }
+        vc.inject(viewModel: viewModel, router: mockRouter)
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = vc
         window.makeKeyAndVisible()
 
         vc.passwordResetButton.sendActions(for: .touchUpInside)
-
-        // モーダル遷移をテスト
-//        XCTAssertNotNil(vc.presentedViewController)
-//        XCTAssertTrue(vc.presentedViewController is PasswordResetViewController)
 
         XCTAssertTrue(mockRouter.didShowPasswordReset)
     }

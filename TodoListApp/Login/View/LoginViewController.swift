@@ -40,19 +40,14 @@ class LoginViewController: UIViewController {
         }
     }
 
-//    private var viewModel: LoginViewModel!
-//    private var router: RouterProtocol!
-    var viewModel: LoginViewModel = LoginViewModel()
-    var router: RouterProtocol = Router.shared
-
+    private var viewModel: LoginViewModel!
+    private var router: RouterProtocol!
     private lazy var input: LoginViewModelInput = viewModel
     private lazy var output: LoginViewModelOutput = viewModel
 
-    func inject(viewModel: LoginViewModel, router: RouterProtocol) {
+    func inject(viewModel: LoginViewModel = LoginViewModel(), router: RouterProtocol = Router.shared) {
         self.viewModel = viewModel
         self.router = router
-        self.input = viewModel
-        self.output = viewModel
         print("Dependencies injected: viewModel and router are set")
 
     }
