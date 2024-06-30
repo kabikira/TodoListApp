@@ -836,6 +836,8 @@ PODS:
     - PromisesObjC (= 2.2.0)
   - Quick (4.0.0)
   - R.swift (7.3.0)
+  - RxBlocking (6.5.0):
+    - RxSwift (= 6.5.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -845,6 +847,8 @@ PODS:
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
+  - RxTest (6.5.0):
+    - RxSwift (= 6.5.0)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -858,9 +862,11 @@ DEPENDENCIES:
   - "NSObject+Rx"
   - Quick (~> 4.0.0)
   - R.swift
+  - RxBlocking
   - RxCocoa
   - RxOptional
   - RxSwift
+  - RxTest
 
 SPEC REPOS:
   trunk:
@@ -893,10 +899,12 @@ SPEC REPOS:
     - PromisesSwift
     - Quick
     - R.swift
+    - RxBlocking
     - RxCocoa
     - RxOptional
     - RxRelay
     - RxSwift
+    - RxTest
 
 SPEC CHECKSUMS:
   abseil: 926fb7a82dc6d2b8e1f2ed7f3a718bce691d1e46
@@ -928,11 +936,13 @@ SPEC CHECKSUMS:
   PromisesSwift: cf9eb58666a43bbe007302226e510b16c1e10959
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
   R.swift: cef1c530541cb49412752721797f10dae6b32d11
+  RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxOptional: 3664964c96b69dd20c9cf78bdfe546615e26eca8
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxTest: eb2d23adefc5a5ebf5779c7792fa3edfe6ebcc17
 
-PODFILE CHECKSUM: dbd7b7d2d4701b36c368bcfac6ffdeb945e154aa
+PODFILE CHECKSUM: 669b74dcf79773feee581fb5c2039361cbc4fae6
 
 COCOAPODS: 1.15.2

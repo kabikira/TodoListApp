@@ -138,6 +138,11 @@ name: R.swift, nameSpecified:
 body: The MIT License (MIT…
 version: 7.3.0
 
+name: RxBlocking, nameSpecified: 
+body: **The MIT License**
+…
+version: 6.5.0
+
 name: RxCocoa, nameSpecified: 
 body: **The MIT License**
 …
@@ -153,6 +158,16 @@ body: **The MIT License**
 version: 6.5.0
 
 name: RxSwift, nameSpecified: 
+body: **The MIT License**
+…
+version: 6.5.0
+
+name: RxSwift, nameSpecified: 
+body: **The MIT License**
+…
+version: 6.5.0
+
+name: RxTest, nameSpecified: 
 body: **The MIT License**
 …
 version: 6.5.0

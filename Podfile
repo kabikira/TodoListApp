@@ -26,5 +26,7 @@ target 'TodoListApp' do
     # Pods for testing
      pod 'Quick', '~> 4.0.0' 
      pod 'Nimble', '~> 10.0.0'
+     pod 'RxTest'
+     pod 'RxBlocking'
   end
 end

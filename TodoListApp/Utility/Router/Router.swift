@@ -8,11 +8,25 @@
 import Foundation
 import UIKit
 
+protocol RouterProtocol {
+    func showRoot(window: UIWindow?)
+    func showLogin(from: UIViewController)
+    func showNewRegistration(from: UIViewController)
+    func showAccountUpgrade(from: UIViewController)
+    func showEmailUpdate(from: UIViewController, isNewRegistration: Bool)
+    func showPasswordReset(from: UIViewController)
+    func showTodoList(from: UIViewController)
+    func showTodoAdd(from: UIViewController, todos: String)
+    func showTodoEdit(from: UIViewController, todoItems: TodoItemModel, todos: String)
+    func showSetting(from: UIViewController)
+    func showStettingItems(from: UIViewController, settingItem: SettingItem)
+    func replaceRootWithTodoList()
+    func showReStart()
+}
 
-final class Router {
+final class Router: RouterProtocol {
     static let shared: Router = .init()
     private init() {}
-
 
     private var window: UIWindow?
     func showRoot(window: UIWindow?) {

@@ -12,7 +12,7 @@ import RxOptional
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var anonymousLoginButton: UIButton! {
+    @IBOutlet private weak var anonymousLoginButton: UIButton! {
         didSet {
             anonymousLoginButton.setTitle(R.string.localizable.useWithoutCreatingAnAccount(), for: .normal)
         }
@@ -34,19 +34,34 @@ class LoginViewController: UIViewController {
             loginButton.setTitle(R.string.localizable.login(), for: .normal)
         }
     }
-    @IBOutlet private weak var passwordResetButton: UIButton! {
+    @IBOutlet private(set) weak var passwordResetButton: UIButton! {
         didSet{
             passwordResetButton.setTitle(R.string.localizable.forgotPassword(), for: .normal)
         }
     }
 
-    private let viewModel = LoginViewModel()
+//    private var viewModel: LoginViewModel!
+//    private var router: RouterProtocol!
+    var viewModel: LoginViewModel = LoginViewModel()
+    var router: RouterProtocol = Router.shared
+
     private lazy var input: LoginViewModelInput = viewModel
     private lazy var output: LoginViewModelOutput = viewModel
-    
+
+    func inject(viewModel: LoginViewModel, router: RouterProtocol) {
+        self.viewModel = viewModel
+        self.router = router
+        self.input = viewModel
+        self.output = viewModel
+        print("Dependencies injected: viewModel and router are set")
+
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad called")
+
         passwordTextField.isSecureTextEntry = true
         bindInputStream()
         bindOutputStream()
@@ -99,7 +114,7 @@ class LoginViewController: UIViewController {
         output.passwordResetObservable.observe(on: MainScheduler.instance)
             .subscribe(onNext: {[weak self] in
                 guard let self else { return }
-                Router.shared.showPasswordReset(from: self)
+                router.showPasswordReset(from: self)
             })
             .disposed(by: rx.disposeBag)
 
