@@ -44,6 +44,33 @@ class MockRouter: RouterProtocol {
     func showSetting(from: UIViewController) {}
     func replaceRootWithTodoList() {}
 }
+class LoginViewControllerSpec: QuickSpec {
+    override func spec() {
+        var mockRouter: MockRouter!
+        var viewModel: LoginViewModel!
+        var vc: LoginViewController!
+
+        beforeEach {
+            mockRouter = MockRouter()
+            viewModel = LoginViewModel()
+            vc = R.storyboard.login.instantiateInitialViewController()
+            vc.inject(viewModel: viewModel, router: mockRouter)
+
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = vc
+            window.makeKeyAndVisible()
+        }
+
+        describe("LoginViewController") {
+            context("PasswordResetButtonがタップされたとき") {
+                it("routerのshowPasswordResetが呼び出されること") {
+                    vc.passwordResetButton.sendActions(for: .touchUpInside)
+                    expect(mockRouter.didShowPasswordReset).to(beTrue())
+                }
+            }
+        }
+    }
+}
 
 class LoginViewControllerTests: XCTestCase {
 
