@@ -7,4 +7,4 @@ Firebaseのログイン､データベースを使用したTodoアプリ
 * 外部ライブラリ  CocoaPods  
         Firebase､IQKeyboardManagerSwift､R.swift,LicensePlist 
 
-ログイン画面のみRxSwift､MVVMで実装､テストコード作成途中
+ログイン画面のみRxSwift､MVVMで実装､テストコード実装途中
