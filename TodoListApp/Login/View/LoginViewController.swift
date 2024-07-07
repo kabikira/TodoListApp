@@ -12,7 +12,7 @@ import RxOptional
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet private weak var anonymousLoginButton: UIButton! {
+    @IBOutlet private(set) weak var anonymousLoginButton: UIButton! {
         didSet {
             anonymousLoginButton.setTitle(R.string.localizable.useWithoutCreatingAnAccount(), for: .normal)
         }
@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
             loginLabel.text = R.string.localizable.login()
         }
     }
-    @IBOutlet private weak var newRegistrationButton: UIButton! {
+    @IBOutlet private(set) weak var newRegistrationButton: UIButton! {
         didSet {
             newRegistrationButton.setTitle(R.string.localizable.signUpForANewAccount(), for: .normal)
         }
@@ -101,7 +101,7 @@ class LoginViewController: UIViewController {
             .subscribe(onNext: {[weak self] in
                 guard let self else { return }
                 // 画面遷移TodoListへ
-                Router.shared.showTodoList(from: self)
+                router.showTodoList(from: self)
                 Alert.okAlert(vc: self, title: R.string.localizable.temporaryAccount(), message: R.string.localizable.weCannotGuaranteeDataPermanenceIfYouWishToRetainTheDataInYourAccountWeRecommendThatYouRegisterForAFormalAccount())
             })
             .disposed(by: rx.disposeBag)
@@ -116,7 +116,7 @@ class LoginViewController: UIViewController {
         output.newRegistrationObservable.observe(on: MainScheduler.instance)
             .subscribe(onNext: {[weak self] in
                 guard let self else { return }
-                Router.shared.showNewRegistration(from: self)
+                router.showNewRegistration(from: self)
             })
             .disposed(by: rx.disposeBag)
 

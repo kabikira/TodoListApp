@@ -9,7 +9,103 @@ import Foundation
 import FirebaseAuth
 import RxSwift
 
-final class FirebaseUserManager {
+protocol FirebaseUserManagerProtocol {
+    static func createUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+    static func registerUserName(userName: String, completion: @escaping (Result<Void, Error>) -> Void)
+    static func anonymousLogin(completion: @escaping (Result<Void, Error>) -> Void)
+    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+    static func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void)
+    static func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void)
+    static func checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+    static func sendPasswordReset(email: String, completion: @escaping (Result<Void, Error>) -> Void)
+    static func getCurrentUser() -> User?
+    static func singOut(completion: @escaping (Result<Void, Error>) -> Void)
+    static func withDarw(completion: @escaping(Result<Void, Error>) -> Void)
+    static func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>>
+
+}
+
+enum MockError: Error {
+    case loginFailed
+}
+
+//class MockFirebaseUserManager: FirebaseUserManagerProtocol {
+//    static func rxSignIn(email: String, password: String) -> RxSwift.Observable<Result<Void, Error>> {
+//        <#code#>
+//    }
+//    
+//    static func createUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+//
+//    }
+//    
+//    static func registerUserName(userName: String, completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    static func anonymousLogin(completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    static func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    static func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    static func checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    static func sendPasswordReset(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    static func getCurrentUser() -> User? {
+//        <#code#>
+//    }
+//    
+//    static func singOut(completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    static func withDarw(completion: @escaping (Result<Void, Error>) -> Void) {
+//        <#code#>
+//    }
+//    
+//    var result: Result<Void, Error>?
+//
+//    func anonymousLogin(completion: @escaping (Result<Void, Error>) -> Void) {
+//        if let result = result {
+//            completion(result)
+//        }
+//    }
+//}
+
+final class FirebaseUserManager: FirebaseUserManagerProtocol {
+    static func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>> {
+        return Observable.create { observer in
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    print("ログイン失敗: \(error)") // デバッグメッセージ
+
+                    observer.onNext(.failure(error))
+                } else {
+                    print("ログイン成功") // デバッグメッセージ
+
+                    observer.onNext(.success(()))
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
     // MARK: - アカウント作成機能
     static func createUser(email: String, password: String, completion: @escaping(Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
@@ -120,6 +216,15 @@ final class FirebaseUserManager {
     static func getCurrentUser() -> User? {
         return Auth.auth().currentUser
     }
+    static func singIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { _, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success)
+            }
+        }
+    }
     // MARK: - ログアウト
     static func singOut(completion: @escaping (Result<Void, Error>) -> Void) {
         do {
@@ -137,28 +242,6 @@ final class FirebaseUserManager {
             } else {
                 completion(.success)
             }
-        }
-    }
-}
-
-extension FirebaseUserManager: ReactiveCompatible {}
-extension Reactive where Base: FirebaseUserManager {
-    // MARK: - ログイン機能
-    static func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>> {
-        return Observable.create { observer in
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let error = error {
-                    print("ログイン失敗: \(error)") // デバッグメッセージ
-
-                    observer.onNext(.failure(error))
-                } else {
-                    print("ログイン成功") // デバッグメッセージ
-
-                    observer.onNext(.success(()))
-                }
-                observer.onCompleted()
-            }
-            return Disposables.create()
         }
     }
 }

@@ -92,7 +92,10 @@ final class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, HasDispos
     private let _errorRelay = PublishRelay<Error>()
     lazy var errorObservable: Observable<Error> = _errorRelay.asObservable()
 
-    init() {
+    private let firebaseUserManager: FirebaseUserManagerProtocol.Type
+
+    init(firebaseUserManager: FirebaseUserManagerProtocol.Type = FirebaseUserManager.self) {
+        self.firebaseUserManager = firebaseUserManager
         setupBindings()
     }
 }
@@ -105,7 +108,7 @@ private extension LoginViewModel {
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
 
-                FirebaseUserManager.anonymousLogin { result in
+                self.firebaseUserManager.anonymousLogin { result in
                     switch result {
                     case .failure(let error):
 
@@ -124,13 +127,14 @@ private extension LoginViewModel {
         _loginButton
             .withLatestFrom(Observable.combineLatest(_emailText, _passwordText))
             .flatMapLatest { email, password in
-                FirebaseUserManager.rx.rxSignIn(email: email, password: password)
+                return self.firebaseUserManager.rxSignIn(email: email, password: password)
             }
             .subscribe(onNext: { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success:
                     UserDefaults.standard.isLogined = true
+                    UserDefaults.standard.isAuthAccountCreated = true
                     self._loginSuccess.accept(())
                 case .failure(let error):
                     self._errorRelay.accept(error)

@@ -8,6 +8,8 @@
 import XCTest
 import Quick
 import Nimble
+import RxSwift
+import RxCocoa
 import RxTest
 import RxBlocking
 @testable import TodoListApp
@@ -27,23 +29,30 @@ import RxBlocking
 class MockRouter: RouterProtocol {
 
     var didShowPasswordReset = false
+    var didShowNewRegistration = false
+    var didShowTodoList = false
 
     func showStettingItems(from: UIViewController, settingItem: TodoListApp.SettingItem) {}
     func showReStart() {}
     func showRoot(window: UIWindow?) {}
     func showLogin(from: UIViewController) {}
-    func showNewRegistration(from: UIViewController) {}
+    func showNewRegistration(from: UIViewController) {
+        didShowNewRegistration = true
+    }
     func showAccountUpgrade(from: UIViewController) {}
     func showEmailUpdate(from: UIViewController, isNewRegistration: Bool) {}
     func showPasswordReset(from: UIViewController) {
         didShowPasswordReset = true
     }
-    func showTodoList(from: UIViewController) {}
+    func showTodoList(from: UIViewController) {
+        didShowTodoList = true
+    }
     func showTodoAdd(from: UIViewController, todos: String) {}
     func showTodoEdit(from: UIViewController, todoItems: TodoItemModel, todos: String) {}
     func showSetting(from: UIViewController) {}
     func replaceRootWithTodoList() {}
 }
+
 class LoginViewControllerSpec: QuickSpec {
     override func spec() {
         var mockRouter: MockRouter!
@@ -66,12 +75,29 @@ class LoginViewControllerSpec: QuickSpec {
                 it("routerのshowPasswordResetが呼び出されること") {
                     vc.passwordResetButton.sendActions(for: .touchUpInside)
                     expect(mockRouter.didShowPasswordReset).to(beTrue())
+                    expect(mockRouter.didShowNewRegistration).to(beFalse())
+                }
+            }
+            context("newRegistrationButtonがタップされたとき") {
+                it("routerのshowNewRegistrationが呼び出されること") {
+                    vc.newRegistrationButton.sendActions(for: .touchUpInside)
+                    expect(mockRouter.didShowNewRegistration).to(beTrue())
+                    expect(mockRouter.didShowPasswordReset).to(beFalse())
+                }
+            }
+            context("anonymousLoginButtonがタップされたとき") {
+                it("Firebaseの処理が成功した場合、routerのshowTodoListが呼び出され、アラートが表示されること") {
+                    vc.anonymousLoginButton.sendActions(for: .touchUpInside)
+                    expect(mockRouter.didShowTodoList).to(beTrue())
+                    expect(mockRouter.didShowPasswordReset).to(beFalse())
+                }
+                it("Firebaseの処理が失敗した場合、エラーが表示されること") {
+                    
                 }
             }
         }
     }
 }
-
 class LoginViewControllerTests: XCTestCase {
 
     func testPasswordResetButton() {
