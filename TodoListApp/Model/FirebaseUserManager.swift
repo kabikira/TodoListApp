@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import RxSwift
 
 final class FirebaseUserManager {
     // MARK: - アカウント作成機能
@@ -79,16 +80,6 @@ final class FirebaseUserManager {
             completion(.failure(ErrorHandling.TodoError.userNotLoggedIn))
         }
     }
-    // MARK: - ログイン機能
-    static func singIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { _, error in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success)
-            }
-        }
-    }
     // errorを伝えたいならResultのほうがいいかな?
     static func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void) {
         user.sendEmailVerification { error in
@@ -146,6 +137,28 @@ final class FirebaseUserManager {
             } else {
                 completion(.success)
             }
+        }
+    }
+}
+
+extension FirebaseUserManager: ReactiveCompatible {}
+extension Reactive where Base: FirebaseUserManager {
+    // MARK: - ログイン機能
+    static func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>> {
+        return Observable.create { observer in
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    print("ログイン失敗: \(error)") // デバッグメッセージ
+
+                    observer.onNext(.failure(error))
+                } else {
+                    print("ログイン成功") // デバッグメッセージ
+
+                    observer.onNext(.success(()))
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
         }
     }
 }

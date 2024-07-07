@@ -84,7 +84,9 @@ private extension NewRegistrationViewController {
                             }
                         }
                     case .failure(let error):
-                        Alert.showErrorAlert(vc: self, error: error)
+                        DispatchQueue.main.async {
+                            Alert.showErrorAlert(vc: self, error: error)
+                        }
                     }
                 }
             case .failure(let error):

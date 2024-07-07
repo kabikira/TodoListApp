@@ -80,7 +80,9 @@ private extension AccountUpgradeViewController {
                             Alert.okAlert(vc: self, title: R.string.localizable.emailSent(), message: R.string.localizable.pleaseAccessTheURLInTheEmail())
                         }
                     case.failure(let error):
-                        Alert.showErrorAlert(vc: self, error: error)
+                        DispatchQueue.main.async {
+                            Alert.showErrorAlert(vc: self, error: error)
+                        }
                     }
                 }
             case.failure(let error):

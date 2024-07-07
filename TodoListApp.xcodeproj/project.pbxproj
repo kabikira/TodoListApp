@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B18EE952A9C4B610095D4C9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B18EE942A9C4B610095D4C9 /* LoginViewModel.swift */; };
 		3B2253132A8333C000B7ECE3 /* AccountUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */; };
 		3B2253162A837F8200B7ECE3 /* EmailUpdate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */; };
 		3B2253182A837F9200B7ECE3 /* EmailUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		0C1B6E6A4B152341A9AB756E /* Pods-TodoListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListApp.release.xcconfig"; path = "Target Support Files/Pods-TodoListApp/Pods-TodoListApp.release.xcconfig"; sourceTree = "<group>"; };
+		3B18EE942A9C4B610095D4C9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3B2253122A8333C000B7ECE3 /* AccountUpgrade.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = AccountUpgrade.storyboard; path = ../AccountUpgrade.storyboard; sourceTree = "<group>"; };
 		3B2253152A837F8200B7ECE3 /* EmailUpdate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmailUpdate.storyboard; sourceTree = "<group>"; };
 		3B2253172A837F9200B7ECE3 /* EmailUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUpdateViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B18EE932A9C4B3A0095D4C9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B18EE942A9C4B610095D4C9 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3B1905E12A83331D00986B47 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,7 +252,8 @@
 		3B89CEB82A7655930090550A /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				3B89CEBD2A7655FD0090550A /* Controller */,
+				3B18EE932A9C4B3A0095D4C9 /* ViewModel */,
+				3B89CEBD2A7655FD0090550A /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -274,13 +285,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		3B89CEBD2A7655FD0090550A /* Controller */ = {
+		3B89CEBD2A7655FD0090550A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				3B89CED02A76580E0090550A /* Login.storyboard */,
 				3B89CED22A76581B0090550A /* LoginViewController.swift */,
 			);
-			path = Controller;
+			path = View;
 			sourceTree = "<group>";
 		};
 		3B89CEBF2A7656270090550A /* TodoAdd */ = {
@@ -599,6 +610,7 @@
 				3B8F5C982A7DD9C700C969E6 /* Alert.swift in Sources */,
 				3B89CEF22A765B6F0090550A /* TodoItemModel.swift in Sources */,
 				3B8F5CA22A82841E00C969E6 /* AccountUpgradeViewController.swift in Sources */,
+				3B18EE952A9C4B610095D4C9 /* LoginViewModel.swift in Sources */,
 				3B89CEE32A76595C0090550A /* TodoEditViewController.swift in Sources */,
 				3B89CEEC2A765A6A0090550A /* Router.swift in Sources */,
 				3B8307362A75E42A00C3068B /* AppDelegate.swift in Sources */,
