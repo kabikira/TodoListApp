@@ -131,6 +131,7 @@ private extension LoginViewModel {
                 switch result {
                 case .success:
                     UserDefaults.standard.isLogined = true
+                    UserDefaults.standard.isAuthAccountCreated = true
                     self._loginSuccess.accept(())
                 case .failure(let error):
                     self._errorRelay.accept(error)
