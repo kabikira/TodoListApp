@@ -9,6 +9,17 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
+    private let firebaseUserManager: FirebaseUserManagerProtocol
+
+    init?(coder: NSCoder, firebaseUserManager: FirebaseUserManagerProtocol = FirebaseUserManager()) {
+        self.firebaseUserManager = firebaseUserManager
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.register(UINib.init(nibName: SettingCell.className, bundle: nil), forCellReuseIdentifier: SettingCell.className)
@@ -42,7 +53,7 @@ extension SettingViewController: UITableViewDelegate {
         case SettingItemCell.singOutCellRow.rawValue:
             DispatchQueue.main.async {
                 Alert.cancelAlert(vc: self, title: R.string.localizable.signOut(), message: "",handler: { [weak self] _ in
-                    FirebaseUserManager.singOut { [weak self] result in
+                    self?.firebaseUserManager.singOut { [weak self] result in
                         guard let self = self else { return }
                         switch result {
                         case.failure(let error):
@@ -59,7 +70,7 @@ extension SettingViewController: UITableViewDelegate {
         case SettingItemCell.withDrawCellRow.rawValue:
             //TODO: メインスレッドで実行
             Alert.cancelAlert(vc: self, title: R.string.localizable.areYouSureYouWantToDeleteYourAccount(), message: R.string.localizable.areYouSureYouWantToDeleteYourSavedInformation() ,handler: { [weak self] _ in
-                FirebaseUserManager.withDarw { [weak self] result in
+                self?.firebaseUserManager.withDarw { [weak self] result in
                     DispatchQueue.main.async {
                         guard let self = self else { return }
                         switch result {

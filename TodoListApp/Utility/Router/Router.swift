@@ -87,8 +87,11 @@ final class Router: RouterProtocol {
         show(from: from, to: todoEdit)
     }
     func showSetting(from: UIViewController) {
-        guard let setting = R.storyboard.setting.instantiateInitialViewController() else { return }
-        show(from: from, to: setting)
+        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+        let controller = storyboard.instantiateViewController(identifier: "SettingViewController") { coder in
+            return SettingViewController(coder: coder, firebaseUserManager: FirebaseUserManager())
+        }
+        show(from: from, to: controller)
     }
     func showStettingItems(from: UIViewController, settingItem: SettingItem) {
         // お問い合わせとプライバシーアンドポリシーはブラウザから見てもらう
