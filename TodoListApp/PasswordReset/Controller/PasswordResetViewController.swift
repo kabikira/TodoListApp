@@ -9,6 +9,16 @@ import UIKit
 
 class PasswordResetViewController: UIViewController {
 
+    private let firebaseUserManager = FirebaseUserManager()
+//
+//    init(firebaseUserManager: FirebaseUserManagerProtocol = FirebaseUserManager()) {
+//        self.firebaseUserManager = firebaseUserManager
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordResetEmailButton: UIButton! {
@@ -28,7 +38,7 @@ private extension PasswordResetViewController {
         passwordResetEmailButton.isUserInteractionEnabled = false
         // resetメール送信
         let email = emailTextField.text ?? ""
-        FirebaseUserManager.sendPasswordReset(email: email) { [weak self] result in
+        self.firebaseUserManager.sendPasswordReset(email: email) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():

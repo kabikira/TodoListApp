@@ -49,6 +49,7 @@
 		3B8F5C9A2A7E2EE400C969E6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C992A7E2EE400C969E6 /* String+.swift */; };
 		3B8F5C9D2A81120900C969E6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5C9C2A81120900C969E6 /* R.generated.swift */; };
 		3B8F5CA22A82841E00C969E6 /* AccountUpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */; };
+		3BD6848C2C3DFC84007FA2D0 /* NewRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD6848B2C3DFC84007FA2D0 /* NewRegistrationTests.swift */; };
 		3BDE1A7F2C161D3100ADA950 /* TodoListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE1A7E2C161D3100ADA950 /* TodoListAppTests.swift */; };
 		9111305FEC1717BF98C8238C /* Pods_TodoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC83BB6CE69B6DE586B10AE8 /* Pods_TodoListApp.framework */; };
 		9F731D2371BFF2A51A6B8B3E /* Pods_TodoListAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C973A71B367129E53C3FD7 /* Pods_TodoListAppTests.framework */; };
@@ -111,6 +112,7 @@
 		3B8F5C992A7E2EE400C969E6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3B8F5C9C2A81120900C969E6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		3B8F5CA12A82841E00C969E6 /* AccountUpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUpgradeViewController.swift; sourceTree = "<group>"; };
+		3BD6848B2C3DFC84007FA2D0 /* NewRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRegistrationTests.swift; sourceTree = "<group>"; };
 		3BDE1A7C2C161D3100ADA950 /* TodoListAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BDE1A7E2C161D3100ADA950 /* TodoListAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAppTests.swift; sourceTree = "<group>"; };
 		4BC378EC487725184F8B6C21 /* Pods-TodoListAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoListAppTests.release.xcconfig"; path = "Target Support Files/Pods-TodoListAppTests/Pods-TodoListAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				3BDE1A7E2C161D3100ADA950 /* TodoListAppTests.swift */,
+				3BD6848B2C3DFC84007FA2D0 /* NewRegistrationTests.swift */,
 			);
 			path = TodoListAppTests;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BDE1A7F2C161D3100ADA950 /* TodoListAppTests.swift in Sources */,
+				3BD6848C2C3DFC84007FA2D0 /* NewRegistrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

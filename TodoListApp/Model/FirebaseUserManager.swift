@@ -10,85 +10,23 @@ import FirebaseAuth
 import RxSwift
 
 protocol FirebaseUserManagerProtocol {
-    static func createUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
-    static func registerUserName(userName: String, completion: @escaping (Result<Void, Error>) -> Void)
-    static func anonymousLogin(completion: @escaping (Result<Void, Error>) -> Void)
-    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
-    static func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void)
-    static func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void)
-    static func checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
-    static func sendPasswordReset(email: String, completion: @escaping (Result<Void, Error>) -> Void)
-    static func getCurrentUser() -> User?
-    static func singOut(completion: @escaping (Result<Void, Error>) -> Void)
-    static func withDarw(completion: @escaping(Result<Void, Error>) -> Void)
-    static func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>>
+     func createUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func registerUserName(userName: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func anonymousLogin(completion: @escaping (Result<Void, Error>) -> Void)
+     func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void)
+     func checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func sendPasswordReset(email: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func getCurrentUser() -> User?
+     func singOut(completion: @escaping (Result<Void, Error>) -> Void)
+     func withDarw(completion: @escaping(Result<Void, Error>) -> Void)
+     func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>>
 
 }
-
-enum MockError: Error {
-    case loginFailed
-}
-
-//class MockFirebaseUserManager: FirebaseUserManagerProtocol {
-//    static func rxSignIn(email: String, password: String) -> RxSwift.Observable<Result<Void, Error>> {
-//        <#code#>
-//    }
-//    
-//    static func createUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-//
-//    }
-//    
-//    static func registerUserName(userName: String, completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    static func anonymousLogin(completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    static func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    static func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    static func checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    static func sendPasswordReset(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    static func getCurrentUser() -> User? {
-//        <#code#>
-//    }
-//    
-//    static func singOut(completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    static func withDarw(completion: @escaping (Result<Void, Error>) -> Void) {
-//        <#code#>
-//    }
-//    
-//    var result: Result<Void, Error>?
-//
-//    func anonymousLogin(completion: @escaping (Result<Void, Error>) -> Void) {
-//        if let result = result {
-//            completion(result)
-//        }
-//    }
-//}
 
 final class FirebaseUserManager: FirebaseUserManagerProtocol {
-    static func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>> {
+     func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>> {
         return Observable.create { observer in
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error = error {
@@ -107,7 +45,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
     }
 
     // MARK: - アカウント作成機能
-    static func createUser(email: String, password: String, completion: @escaping(Result<Void, Error>) -> Void) {
+     func createUser(email: String, password: String, completion: @escaping(Result<Void, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 completion(.failure(error))
@@ -118,7 +56,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
     }
 
     // MARK: - UserNameを登録
-    static func registerUserName(userName: String, completion: @escaping(Result<Void, Error>) -> Void) {
+     func registerUserName(userName: String, completion: @escaping(Result<Void, Error>) -> Void) {
         if let user = Auth.auth().currentUser {
             let changeRequest = user.createProfileChangeRequest()
             changeRequest.displayName = userName
@@ -134,7 +72,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
         }
     }
     // MARK: - 匿名ログイン
-    static func anonymousLogin(completion: @escaping(Result<Void, Error>) -> Void) {
+     func anonymousLogin(completion: @escaping(Result<Void, Error>) -> Void) {
         Auth.auth().signInAnonymously() { result, error  in
             if let error = error {
                 completion(.failure(error))
@@ -144,7 +82,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
         }
     }
     // MARK: - アカウントアップグレード
-    static func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+     func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         if let user = Auth.auth().currentUser, user.isAnonymous {
             let credential = EmailAuthProvider.credential(withEmail: email, password: password)
             user.link(with: credential) { result, error in
@@ -161,7 +99,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
     }
 
     // MARK: - emailの更新
-    static func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
+     func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
         // 現在のログインユーザーを取得
         if let user = Auth.auth().currentUser {
             // メールアドレスを更新
@@ -177,7 +115,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
         }
     }
     // errorを伝えたいならResultのほうがいいかな?
-    static func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void) {
+     func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void) {
         user.sendEmailVerification { error in
             if let error = error {
                 completion(.failure(error))
@@ -188,7 +126,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
     }
 
     // MARK: - 登録認証のメールのURLを確認したか
-    static func  checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+     func  checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 completion(.failure(error))
@@ -203,7 +141,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
         }
     }
     // MARK: - パスワード再設定案内のメール送信
-    static func sendPasswordReset(email: String, completion: @escaping (Result<(), Error>) -> Void) {
+     func sendPasswordReset(email: String, completion: @escaping (Result<(), Error>) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 completion(.failure(error))
@@ -213,10 +151,10 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
         }
     }
     // MARK: - ログインユーザーを取得
-    static func getCurrentUser() -> User? {
+     func getCurrentUser() -> User? {
         return Auth.auth().currentUser
     }
-    static func singIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+     func singIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {
                 completion(.failure(error))
@@ -226,7 +164,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
         }
     }
     // MARK: - ログアウト
-    static func singOut(completion: @escaping (Result<Void, Error>) -> Void) {
+     func singOut(completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             try Auth.auth().signOut()
         } catch let error {
@@ -235,7 +173,7 @@ final class FirebaseUserManager: FirebaseUserManagerProtocol {
         completion(.success)
     }
     // MARK: - 退会
-    static func withDarw(completion: @escaping(Result<Void, Error>) -> Void) {
+     func withDarw(completion: @escaping(Result<Void, Error>) -> Void) {
         Auth.auth().currentUser?.delete { error in
             if let error = error {
                 completion(.failure(error))

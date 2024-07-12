@@ -50,8 +50,11 @@ final class Router: RouterProtocol {
     }
 
     func showNewRegistration(from: UIViewController) {
-        guard let newRegistration = R.storyboard.newRegistration.instantiateInitialViewController() else { return }
-        show(from: from, to: newRegistration)
+        let storyboard = UIStoryboard(name: "NewRegistration", bundle: nil)
+        let controller = storyboard.instantiateViewController(identifier: "NewRegistrationViewController") { coder in
+            return NewRegistrationViewController(coder: coder, firebaseUserManager: FirebaseUserManager())
+        }
+        show(from: from, to: controller)
     }
     func showAccountUpgrade(from: UIViewController) {
         guard let accountUpgrade = R.storyboard.accountUpgrade.instantiateInitialViewController() else { return }

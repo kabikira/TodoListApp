@@ -8,7 +8,18 @@
 import UIKit
 
 class NewRegistrationViewController: UIViewController {
-    
+
+    private let firebaseUserManager: FirebaseUserManagerProtocol
+
+    init?(coder: NSCoder, firebaseUserManager: FirebaseUserManagerProtocol = FirebaseUserManager()) {
+        self.firebaseUserManager = firebaseUserManager
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     @IBOutlet weak var wrongEmailButton: UIButton! {
         didSet {
             // 登録メール送信ボタンを押すまで隠す
@@ -22,10 +33,10 @@ class NewRegistrationViewController: UIViewController {
             newRegisterLabel.text = R.string.localizable.newRegistration()
         }
     }
-    @IBOutlet private weak var registerEmailTextField: UITextField!
-    @IBOutlet private weak var registerPasswordTextField: UITextField!
-    @IBOutlet private weak var registerNameTextField: UITextField!
-    @IBOutlet private weak var registerSendMailButton: UIButton! {
+    @IBOutlet weak var registerEmailTextField: UITextField!
+    @IBOutlet weak var registerPasswordTextField: UITextField!
+    @IBOutlet weak var registerNameTextField: UITextField!
+    @IBOutlet weak var registerSendMailButton: UIButton! {
         didSet {
             registerSendMailButton.setTitle(R.string.localizable.registerAndSendAnEmail(), for: .normal)
             registerSendMailButton.addTarget(self, action: #selector(tappedSendMail(_:)), for: .touchUpInside)
@@ -38,7 +49,6 @@ class NewRegistrationViewController: UIViewController {
         }
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         registerEmailTextField.delegate = self
@@ -47,10 +57,9 @@ class NewRegistrationViewController: UIViewController {
         // パスワードのテキストフィールドの入力値を隠し半角しか入力できないようにする
         registerPasswordTextField.isSecureTextEntry = true
     }
-
 }
 // MARK: - ButtonActions
-private extension NewRegistrationViewController {
+extension NewRegistrationViewController {
     @objc func tappedSendMail(_ sender: Any) {
         // 送信ボタンを押したらwrongEmailButton出現
         wrongEmailButton.isHidden = false
@@ -59,19 +68,19 @@ private extension NewRegistrationViewController {
         let userName = registerNameTextField.text ?? ""
 
         // 最初にユーザーを作成
-        FirebaseUserManager.createUser(email: email, password: password) { [weak self] result in
+        self.firebaseUserManager.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success():
                 // ユーザー作成成功時に、userNameを設定
-                FirebaseUserManager.registerUserName(userName: userName) { result in
+                self.firebaseUserManager.registerUserName(userName: userName) { result in
                     switch result {
                     case .success():
                         // サンプルデータをTodoに入れる
                         self.createTodosFromConstants()
                         // メールを送信
-                        guard let user = FirebaseUserManager.getCurrentUser() else { return }
-                        FirebaseUserManager.sendEmailVerification(to: user) { result in
+                        guard let user = self.firebaseUserManager.getCurrentUser() else { return }
+                        self.firebaseUserManager.sendEmailVerification(to: user) { result in
                             switch result {
                             case.success():
                                 DispatchQueue.main.async {
@@ -100,14 +109,14 @@ private extension NewRegistrationViewController {
         // mailをチェックしていたらログイン ユーザデフォ
         let email = registerEmailTextField.text ?? ""
         let password = registerPasswordTextField.text ?? ""
-        FirebaseUserManager.checkAuthenticationEmail(email: email, password: password) { [weak self] result in
+        self.firebaseUserManager.checkAuthenticationEmail(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():
                 // userDefaに値をいれる
                 UserDefaults.standard.isLogined = true
                 UserDefaults.standard.isAuthAccountCreated = true
-                // loginへ画面遷移
+                // todoへ画面遷移
                 Router.shared.showTodoList(from: self)
             case.failure(let error):
                 DispatchQueue.main.async {

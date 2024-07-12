@@ -10,6 +10,18 @@ import Firebase
 
 class AccountUpgradeViewController: UIViewController {
 
+    private let firebaseUserManager = FirebaseUserManager()
+
+//    init(firebaseUserManager: FirebaseUserManagerProtocol = FirebaseUserManager()) {
+//        self.firebaseUserManager = firebaseUserManager
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+
+
     @IBOutlet private weak var accountUpgrade: UILabel! {
         didSet {
             accountUpgrade.text = R.string.localizable.accountUpgrade()
@@ -55,12 +67,12 @@ private extension AccountUpgradeViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let userName = userNameTextField.text ?? ""
-        FirebaseUserManager.accountUpgrade(email: email, password: password) { [weak self] result in
+        self.firebaseUserManager.accountUpgrade(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():
                 // ユーザー作成成功時に、userNameを設定
-                FirebaseUserManager.registerUserName(userName: userName) { result in
+                self.firebaseUserManager.registerUserName(userName: userName) { result in
                     switch result {
                     case .success():
                         break
@@ -71,9 +83,9 @@ private extension AccountUpgradeViewController {
                     }
                 }
                 // Userを取得
-                guard let user = FirebaseUserManager.getCurrentUser() else { return }
+                guard let user = self.firebaseUserManager.getCurrentUser() else { return }
                 // mail送信
-                FirebaseUserManager.sendEmailVerification(to: user) { result in
+                self.firebaseUserManager.sendEmailVerification(to: user) { result in
                     switch result {
                     case.success():
                         DispatchQueue.main.async {
@@ -102,7 +114,7 @@ private extension AccountUpgradeViewController {
         // mailをチェックしていたらログイン
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        FirebaseUserManager.checkAuthenticationEmail(email: email, password: password) { [weak self] result in
+        self.firebaseUserManager.checkAuthenticationEmail(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():

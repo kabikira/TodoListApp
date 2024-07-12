@@ -92,9 +92,9 @@ final class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, HasDispos
     private let _errorRelay = PublishRelay<Error>()
     lazy var errorObservable: Observable<Error> = _errorRelay.asObservable()
 
-    private let firebaseUserManager: FirebaseUserManagerProtocol.Type
+    private let firebaseUserManager: FirebaseUserManagerProtocol
 
-    init(firebaseUserManager: FirebaseUserManagerProtocol.Type = FirebaseUserManager.self) {
+    init(firebaseUserManager: FirebaseUserManagerProtocol = FirebaseUserManager()) {
         self.firebaseUserManager = firebaseUserManager
         setupBindings()
     }

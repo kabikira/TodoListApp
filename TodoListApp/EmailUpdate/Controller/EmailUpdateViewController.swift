@@ -8,6 +8,18 @@
 import UIKit
 
 class EmailUpdateViewController: UIViewController {
+
+    private let firebaseUserManager = FirebaseUserManager()
+
+//    init(firebaseUserManager: FirebaseUserManagerProtocol = FirebaseUserManager()) {
+//        self.firebaseUserManager = firebaseUserManager
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     // 新規登録済みかを判断する
     private var isNewRegistration: Bool = false
     // isNewRegistrationを変更するメソッド
@@ -42,13 +54,13 @@ private extension EmailUpdateViewController {
         updateEmailButton.isUserInteractionEnabled = false
         let email = emailTextField.text ?? ""
         // メールアドレスを更新
-        FirebaseUserManager.updateEmail(to: email) { [weak self] result in
+        self.firebaseUserManager.updateEmail(to: email) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success():
-                guard let user = FirebaseUserManager.getCurrentUser() else { return }
+                guard let user = self.firebaseUserManager.getCurrentUser() else { return }
                 // mail送信
-                FirebaseUserManager.sendEmailVerification(to: user) { result in
+                self.firebaseUserManager.sendEmailVerification(to: user) { result in
                     switch result {
                     case.success():
                         DispatchQueue.main.async {
@@ -72,7 +84,7 @@ private extension EmailUpdateViewController {
         // mailをチェックしていたらログイン
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        FirebaseUserManager.checkAuthenticationEmail(email: email, password: password) { [weak self] result in
+        self.firebaseUserManager.checkAuthenticationEmail(email: email, password: password) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case.success():
