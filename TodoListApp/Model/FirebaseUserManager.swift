@@ -9,6 +9,21 @@ import Foundation
 import FirebaseAuth
 import RxSwift
 
+protocol FirebaseUserManagerProtocol {
+     func createUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func registerUserName(userName: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func anonymousLogin(completion: @escaping (Result<Void, Error>) -> Void)
+     func accountUpgrade(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func updateEmail(to newEmail: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func sendEmailVerification(to user: User, completion: @escaping (Result<Void, Error>) -> Void)
+     func checkAuthenticationEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func sendPasswordReset(email: String, completion: @escaping (Result<Void, Error>) -> Void)
+     func getCurrentUser() -> User?
+     func singOut(completion: @escaping (Result<Void, Error>) -> Void)
+     func withDarw(completion: @escaping(Result<Void, Error>) -> Void)
+     func rxSignIn(email: String, password: String) -> Observable<Result<Void, Error>>
+}
+
 final class FirebaseUserManager {
     // MARK: - アカウント作成機能
     static func createUser(email: String, password: String, completion: @escaping(Result<Void, Error>) -> Void) {
