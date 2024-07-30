@@ -39,7 +39,7 @@ Firebaseのログイン､データベースを使用したTodoアプリ
 - 問題点:
 	- テストコード実装
 		- ブランチ https://github.com/kabikira/TodoListApp/tree/feature-Add-tests にてQuick､Nimbleを使用してテストを実装を試みたが以下の問題点があり実装に至らなかった｡
-			-  FirebaseUserManager.swiftやRouter.swift､Alert.swift等がスタティックメゾットで呼び出していること､直接Firebaseに依存している関数を使用していたため、ユニットテストの際にモックを使うことができない作りになっていた｡
+			-  FirebaseUserManager.swiftやRouter.swift､Alert.swift等がスタティックメソッドで呼び出していること､直接Firebaseに依存しているメソッドを使用していたため、ユニットテストの際にモックを使うことができない作りになっていた｡
 			- ViewControllerで```private extension NewRegistrationViewController {}```のように､private extensionの中で関数を記述していたので､外部からアクセスできずテストを書きづらく実装してしまった｡
 	
 	- R.Swiftを使用したローカライズ
