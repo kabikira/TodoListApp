@@ -32,7 +32,7 @@ struct ErrorHandling {
             case .userDisabled: message = R.string.localizable.userDisabledError()
             case .weakPassword: message = R.string.localizable.weakPasswordError()
             default:
-                print("unknown error")
+                message = R.string.localizable.generalError()
             }
         }
         return message
