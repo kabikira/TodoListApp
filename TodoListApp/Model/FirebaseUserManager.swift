@@ -163,12 +163,8 @@ extension Reactive where Base: FirebaseUserManager {
         return Observable.create { observer in
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error = error {
-                    print("ログイン失敗: \(error)") // デバッグメッセージ
-
                     observer.onNext(.failure(error))
                 } else {
-                    print("ログイン成功") // デバッグメッセージ
-
                     observer.onNext(.success(()))
                 }
                 observer.onCompleted()
