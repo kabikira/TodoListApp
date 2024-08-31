@@ -30,6 +30,15 @@ Firebaseのログイン機能や、NoSQLを使用してみたかったこと、�
 		- R.Swiftでのハードコーディング対策
 		- IQKeyboardManagerSwiftを使ってキーボード操作の煩わしさを軽減
 		- LicensePlistでライセンス管理を自動化
+	- ログイン周り
+		- 匿名ログインを実装し、メールアドレスを登録しなくてもアプリを利用可能した、あとからメールアドレスの登録で匿名ユーザーから本ユーザーへ昇格できるように実装
+		- 初回登録時にFirebase Authのメール認証で確認メールをチェックしたかどうか判定してからログインできるように実装
+	- 入力制限
+		- 多量の文字入力を防ぐためUITextField、UITextViewに文字制限を実装
+		- パスワードやEmail入力の際、UITextFieldにスペースを入力させないよう実装
+	- UITableView
+		- prepareForReuseメソッドを使用してCellの再利用するように実装
+		- UITableViewCellのAccessoryをタスク完了､未完了を判断するチェックマークに使用
 	- その他
 		- 日本語､英語の多言語化対応
 		- ライト､ダークモードに対応
@@ -46,6 +55,8 @@ Firebaseのログイン機能や、NoSQLを使用してみたかったこと、�
 	
 	- R.Swiftを使用したローカライズ
 		- ```R.string.localizable.weCannotGuaranteeDataPermanenceIfYouWishToRetainTheDataInYourAccountWeRecommendThatYouRegisterForAFormalAccount())```のようにハードコートをさけて呼び出しているが文章をそのまま変数にしているため､冗長になってしまった｡
+		
+	- UIのデザインがシンプルすぎる
 
 ### アウトプット
 
