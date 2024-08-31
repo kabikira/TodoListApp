@@ -18,12 +18,14 @@ Firebaseのログイン､データベースを使用したTodoアプリ
     - LicensePlist
     - RxSwift
     - RxCocoa
+## 作成理由
+Firebaseのログイン機能や、NoSQLを使用してみたかったこと、基本的なCRUD操作を学習するために作成。　　　
 
 ## 自己評価
 - 良い点:
 	-  設計
-		- Cocoa MVCで実装､ログイン画面のみRxSwiftを学習しMVVMでの実装に挑戦した｡
-		- Routerを使用により画面遷移に関する責務の分割した｡
+		- Cocoa MVCで実装､ログイン画面のみRxSwiftを学習しMVVMでの実装に改修した。
+		- Routerパターンを使用し画面遷移に関する責務の分割した｡
 	- 外部ライブラリの活用
 		- R.Swiftでのハードコーディング対策
 		- IQKeyboardManagerSwiftを使ってキーボード操作の煩わしさを軽減
