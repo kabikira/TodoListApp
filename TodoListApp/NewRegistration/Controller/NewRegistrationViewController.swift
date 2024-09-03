@@ -9,7 +9,7 @@ import UIKit
 
 class NewRegistrationViewController: UIViewController {
     
-    @IBOutlet weak var wrongEmailButton: UIButton! {
+    @IBOutlet private weak var wrongEmailButton: UIButton! {
         didSet {
             // 登録メール送信ボタンを押すまで隠す
             wrongEmailButton.isHidden = true

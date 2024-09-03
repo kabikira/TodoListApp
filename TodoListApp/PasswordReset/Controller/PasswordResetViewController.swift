@@ -10,8 +10,8 @@ import UIKit
 class PasswordResetViewController: UIViewController {
 
 
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordResetEmailButton: UIButton! {
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordResetEmailButton: UIButton! {
         didSet {
             passwordResetEmailButton.setTitle(R.string.localizable.sendPasswordResetEmail(), for: .normal)
             passwordResetEmailButton.addTarget(self, action: #selector(tapedPasswordResetEmailButton(_:)), for: .touchUpInside)
