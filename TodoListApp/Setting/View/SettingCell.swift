@@ -9,8 +9,8 @@ import UIKit
 
 final class SettingCell: UITableViewCell {
 
-    @IBOutlet weak var emojiLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var emojiLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     static var className: String { String(describing: SettingCell.self)}
 
     override func prepareForReuse() {

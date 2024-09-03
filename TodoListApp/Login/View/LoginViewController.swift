@@ -12,7 +12,7 @@ import RxOptional
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var anonymousLoginButton: UIButton! {
+    @IBOutlet private weak var anonymousLoginButton: UIButton! {
         didSet {
             anonymousLoginButton.setTitle(R.string.localizable.useWithoutCreatingAnAccount(), for: .normal)
         }
