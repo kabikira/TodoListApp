@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import RxOptional
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     @IBOutlet private weak var anonymousLoginButton: UIButton! {
         didSet {

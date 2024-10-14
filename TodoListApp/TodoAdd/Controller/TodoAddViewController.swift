@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoAddViewController: UIViewController {
+final class TodoAddViewController: UIViewController {
 
     private var selectedTodos: String?
 
