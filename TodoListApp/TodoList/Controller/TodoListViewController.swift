@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoListViewController: UIViewController {
+final class TodoListViewController: UIViewController {
 
     private var todoItems: [TodoItemModel] = []
     // 完了済みかの判定するのBool値

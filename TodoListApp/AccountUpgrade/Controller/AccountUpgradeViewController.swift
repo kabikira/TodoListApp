@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class AccountUpgradeViewController: UIViewController {
+final class AccountUpgradeViewController: UIViewController {
 
     @IBOutlet private weak var accountUpgrade: UILabel! {
         didSet {

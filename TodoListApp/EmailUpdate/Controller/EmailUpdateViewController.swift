@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmailUpdateViewController: UIViewController {
+final class EmailUpdateViewController: UIViewController {
     // 新規登録済みかを判断する
     private var isNewRegistration: Bool = false
     // isNewRegistrationを変更するメソッド

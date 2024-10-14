@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoEditViewController: UIViewController {
+final class TodoEditViewController: UIViewController {
     // 編集するためのTodoアイテムの具体的なデータを保持するため
     private var todoItems: TodoItemModel?
     // 編集されるTodoアイテムがどのTodoリストカテゴリに属しているかを示す
